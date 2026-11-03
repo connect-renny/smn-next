@@ -52,7 +52,7 @@ export function ReturnTop({ label }: { label: string }) {
       onClick={() => scrollTo(0)}
       className={cn(
         // The rim: orange up to the scroll position, pale track after it.
-        "group fixed end-4 bottom-4 z-60 grid aspect-square w-13 place-items-center rounded-full",
+        "group fixed right-4 bottom-4 z-60 grid aspect-square w-13 place-items-center rounded-full",
         "bg-[conic-gradient(var(--color-orange)_var(--scroll-progress,0%),rgb(255_255_255/0.92)_var(--scroll-progress,0%))]",
         "transition-[opacity,visibility,scale,translate] duration-350 ease-assist focus-visible:outline-offset-3",
         visible

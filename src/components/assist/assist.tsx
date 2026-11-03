@@ -166,7 +166,7 @@ export function Assist({ copy, index, fallbackId, speechLang }: AssistProps) {
   }, [open]);
 
   return (
-    <div ref={root} className="fixed end-4 bottom-[calc(1rem+62px)] z-90">
+    <div ref={root} className="fixed right-4 bottom-[calc(1rem+62px)] z-90">
       {panelMounted && (
         <div
           ref={panelRef}
@@ -174,7 +174,7 @@ export function Assist({ copy, index, fallbackId, speechLang }: AssistProps) {
           role="dialog"
           aria-label={copy.title}
           data-lenis-prevent
-          className="assist-panel absolute end-0 bottom-[calc(100%+14px)] max-h-[min(600px,calc(100svh-200px))] w-[min(380px,calc(100vw-2rem))] origin-bottom-right overflow-y-auto overscroll-contain rounded-[18px] border border-white/16 px-4 pt-[18px] pb-5 text-white backdrop-blur-lg sm:px-[22px] sm:pt-[22px] sm:pb-6 rtl:origin-bottom-left"
+          className="assist-panel absolute right-0 bottom-[calc(100%+14px)] max-h-[min(600px,calc(100svh-200px))] w-[min(380px,calc(100vw-2rem))] origin-bottom-right overflow-y-auto overscroll-contain rounded-[18px] border border-white/16 px-4 pt-[18px] pb-5 text-white backdrop-blur-lg sm:px-[22px] sm:pt-[22px] sm:pb-6"
         >
           {/* Head */}
           <div className="mb-[18px] flex items-center gap-3">
