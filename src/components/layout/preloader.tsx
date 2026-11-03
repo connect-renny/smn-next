@@ -124,12 +124,12 @@ export function Preloader({ alt }: { alt: string }) {
         <div className="pl-mark">
           <div className="pl-mark-float">
             <Image
-              src="/icons/android-chrome-512x512.png"
+              src="/images/brand/smn-mark.svg"
               alt={alt}
-              width={512}
-              height={512}
+              width={53}
+              height={72}
               priority
-              sizes="128px"
+              unoptimized
             />
           </div>
         </div>
