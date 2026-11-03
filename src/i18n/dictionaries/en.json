@@ -1,0 +1,343 @@
+{
+  "meta": {
+    "siteName": "SMN Power Holding SAOG",
+    "title": "SMN Power Holding SAOG",
+    "tagline": "Powering Lives. Powering the Future.",
+    "description": "SMN Power Holding SAOG — Powering Lives. Powering the Future. A publicly listed Omani utility holding company operating within the power generation and water desalination sectors."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "home": "Home",
+    "openMenu": "Open site menu",
+    "closeMenu": "Close site menu",
+    "openNav": "Open navigation menu",
+    "siteMenu": "Site menu",
+    "primaryNav": "Primary",
+    "utilityNav": "Utility",
+    "language": "Change language",
+    "backToTop": "Back to top",
+    "scrollDown": "Scroll down",
+    "sectionShortcuts": "Section shortcuts",
+    "previousUpdates": "Previous updates",
+    "nextUpdates": "Next updates",
+    "opensInNewTab": "(opens in a new tab)",
+    "social": "Social media"
+  },
+  "labels": {
+    "career": "Career",
+    "media": "Media",
+    "contact": "Contact Us",
+    "aboutUs": "About Us",
+    "ourCompany": "Our Company",
+    "visionMission": "Vision & Mission",
+    "mainShareholders": "Main Shareholders",
+    "governance": "Corporate Governance",
+    "companysPhilosophy": "Company’s Philosophy",
+    "boardOfDirectors": "Board of Directors",
+    "auditCommittee": "Audit Committee",
+    "nominationCommittee": "Nomination & Remuneration Committee",
+    "management": "Management",
+    "articlesOfAssociation": "Articles of Association",
+    "ethics": "Ethics",
+    "investors": "Investor Data & News",
+    "disclosures": "Disclosures",
+    "financialReports": "Financial Reports",
+    "dividendsDisclosures": "Dividends Disclosures",
+    "annualReport": "Annual Report",
+    "sharePrice": "Share Price",
+    "msxDiscussion": "MSX Discussion Session",
+    "csr": "CSR",
+    "tenders": "Tenders",
+    "barkaPlant": "Barka II Plant",
+    "rusailPlant": "Al Rusail Plant",
+    "mediaCentre": "Media Centre",
+    "newsOpalMou": "Signed a Memorandum of Understanding with OPAL to Sponsor Number of Social Responsibilities Initiatives",
+    "newsCsrSolar": "CSR Solar Power Initiative",
+    "newsOerTop20": "SMN Power ranks 17th in the OER Top 20 for 2016"
+  },
+  "hero": {
+    "titleLines": ["Powering **Lives**.", "Powering the **Future**."],
+    "playVideo": "Play Video",
+    "explore": "Explore",
+    "tabs": {
+      "barka": {
+        "title": "Barka II Plant",
+        "text": "SMN Barka is an IWPP plant situated at Barka. The site is approximately 50 km northwest of Muscat, Oman."
+      },
+      "rusail": {
+        "title": "Al Rusail Plant",
+        "text": "Al Rusail is a gas-fired power plant in the Rusail Industrial Estate, approximately 45 km from Muscat, Oman."
+      },
+      "news": {
+        "title": "Latest News",
+        "items": [
+          { "title": "Board of Directors Resolutions’ Disclosure", "date": "7 May 2026" },
+          {
+            "title": "Initial Unaudited Preliminary Financials for the Period ended on 30 Jun 2026",
+            "date": ""
+          }
+        ]
+      }
+    }
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "titleLines": [
+      "SMN Power Holding SAOG is a publicly listed",
+      "Omani utility holding company established in May",
+      "2011 that operates within the power generation and",
+      "water desalination sectors."
+    ],
+    "text": "As the holding company of two power entities, SMN Barka and Al Rusail, the holding combines about 864.2 MW of power and 120,000 m3/day potable water capacity.",
+    "moreLabel": "Read more about SMN Power Holding",
+    "facts": {
+      "established": {
+        "label": "Established in",
+        "value": "2011",
+        "unit": "",
+        "sub": "as a holding company"
+      },
+      "barka": {
+        "label": "SMN Barka has",
+        "value": "864.2",
+        "unit": "MW",
+        "sub": "of power capacity"
+      },
+      "rusail": {
+        "label": "Al Rusail has",
+        "value": "120,000",
+        "unit": "m3/day",
+        "sub": "potable water capacity"
+      }
+    }
+  },
+  "shareholders": {
+    "eyebrow": "Shareholders",
+    "items": {
+      "kahrabel": {
+        "titleLines": ["Kahrabel", "F.Z.E."],
+        "text": "Kahrabel oversees and manages the development, construction and operation of the electricity and water production business of ENGIE in the MENA region.",
+        "imageAlt": "Kahrabel F.Z.E.",
+        "moreLabel": "More about Kahrabel F.Z.E."
+      },
+      "mubadala": {
+        "titleLines": ["Mubadala Power", "Holding Company", "Limited"],
+        "text": "Mubadala Power Holding Company Limited is a wholly owned subsidiary of Mubadala Investment Company (‘MCD’), a registered public joint stock company in the Emirate of Abu Dhabi.",
+        "imageAlt": "Mubadala Power Holding Company Limited",
+        "moreLabel": "More about Mubadala Power Holding Company Limited"
+      }
+    }
+  },
+  "governance": {
+    "eyebrow": "Leadership",
+    "title": "Corporate Governance",
+    "cells": {
+      "board": {
+        "imageAlt": "Boardroom",
+        "titleLines": ["Board of", "Directors"],
+        "moreLabel": "More about the Board of Directors"
+      },
+      "philosophy": {
+        "imageAlt": "Manager at work",
+        "titleLines": ["Company’s", "Philosophy"],
+        "moreLabel": "More about the company's philosophy"
+      },
+      "management": {
+        "imageAlt": "Handshake",
+        "titleLines": ["Our", "Management"],
+        "moreLabel": "More about our management team"
+      }
+    }
+  },
+  "links": {
+    "eyebrow": "Useful Links",
+    "title": "Our Subsidiaries",
+    "items": {
+      "nama": "Nama Power & Water Procurement",
+      "apsr": "Authority for Public Services Regulation",
+      "mubadala": "Mubadala",
+      "engie": "ENGIE",
+      "stomo": "ENGIE STOMO",
+      "mem": "Ministry of Energy and Minerals",
+      "msx": "Muscat Stock Exchange"
+    }
+  },
+  "media": {
+    "eyebrow": "Media Centre",
+    "title": "Latest Updates from our company",
+    "dates": {
+      "newsOpalMou": "31 August 2022",
+      "newsCsrSolar": "",
+      "newsOerTop20": ""
+    }
+  },
+  "quicklinks": {
+    "about": "About",
+    "shareholders": "Shareholders",
+    "governance": "Corporate Governance",
+    "links": "Useful Links",
+    "media": "Media"
+  },
+  "menu": {
+    "title": "Menu",
+    "close": "Close",
+    "getInTouch": "Get in touch",
+    "officeTel": "Office Tel:",
+    "fax": "Fax:",
+    "email": "e-mail:"
+  },
+  "footer": {
+    "office": "Office",
+    "addressLines": ["PO Box 121, Jawharat A’Shatti,", "Postal Code: 134,", "Sultanate of Oman"],
+    "contact": "Contact",
+    "phonePrefix": "T :",
+    "faxPrefix": "F :",
+    "email": "E-mail",
+    "aboutUs": "About Us",
+    "downloadAnnualReport": "Download Annual Report",
+    "creditLines": ["Website Design", "and Development"],
+    "credit": "Adventz",
+    "copyright": "© 2026– 2027  www.smnpower.com",
+    "siteLockAlt": "SiteLock Secure"
+  },
+  "assist": {
+    "title": "Ask SMN",
+    "subtitle": "Type, speak or pick a topic",
+    "inputLabel": "What are you looking for?",
+    "placeholder": "I am looking for...",
+    "listening": "Listening...",
+    "speak": "Speak your request",
+    "open": "Ask SMN — search or speak",
+    "close": "Close assistant",
+    "more": "More",
+    "less": "Less",
+    "resultsLabel": "SMN AI :",
+    "found": "Sure, here are some suggestions based on your request.",
+    "notFound": "I couldn't find that on this page. Our team can help — get in touch below.",
+    "tags": [
+      "About SMN",
+      "Barka II Plant",
+      "Shareholders",
+      "Annual Report",
+      "Al Rusail Plant",
+      "Governance",
+      "Board of Directors",
+      "Latest News",
+      "Useful Links",
+      "Contact"
+    ],
+    "stopWords": "the an who what where when how is are do does can me my to for of in on and want looking look see show tell need find get about please your our",
+    "softWords": "company smn power plant holding",
+    "index": {
+      "about": {
+        "title": "About SMN Power",
+        "path": "About Us",
+        "keywords": "about company overview who we are smn power holding saog history profile our company"
+      },
+      "vision": {
+        "title": "Vision & Mission",
+        "path": "About Us",
+        "keywords": "vision mission values goal purpose strategy"
+      },
+      "barka": {
+        "title": "Barka II Plant",
+        "path": "About Us / Plants",
+        "keywords": "barka ii 2 plant iwpp water desalination power station capacity"
+      },
+      "rusail": {
+        "title": "Al Rusail Plant",
+        "path": "About Us / Plants",
+        "keywords": "al rusail plant ipp power station capacity gas"
+      },
+      "facts": {
+        "title": "SMN Power in numbers",
+        "path": "About Us / Facts",
+        "keywords": "numbers facts figures capacity megawatt mw water statistics"
+      },
+      "shareholders": {
+        "title": "Main Shareholders",
+        "path": "Shareholders",
+        "keywords": "shareholders owners owns owner owned ownership investors share stake"
+      },
+      "kahrabel": {
+        "title": "Kahrabel F.Z.E.",
+        "path": "Shareholders",
+        "keywords": "kahrabel engie mena shareholder"
+      },
+      "mubadala": {
+        "title": "Mubadala Power Holding Company",
+        "path": "Shareholders",
+        "keywords": "mubadala abu dhabi power holding shareholder"
+      },
+      "governance": {
+        "title": "Corporate Governance",
+        "path": "Governance",
+        "keywords": "corporate governance policy compliance ethics articles association"
+      },
+      "board": {
+        "title": "Board of Directors",
+        "path": "Governance",
+        "keywords": "board directors chairman members leadership"
+      },
+      "philosophy": {
+        "title": "Company's Philosophy",
+        "path": "Governance",
+        "keywords": "philosophy principles culture values"
+      },
+      "management": {
+        "title": "Our Management",
+        "path": "Governance",
+        "keywords": "management team executives ceo leadership people"
+      },
+      "links": {
+        "title": "Useful Links",
+        "path": "Useful Links",
+        "keywords": "useful links ministry authority apsr opwp regulator partners websites"
+      },
+      "media": {
+        "title": "Media Centre",
+        "path": "Media",
+        "keywords": "media news press latest updates events gallery"
+      },
+      "csrSolar": {
+        "title": "CSR Solar Power Initiative",
+        "path": "Media / News",
+        "keywords": "csr solar school social responsibility community initiative"
+      },
+      "opal": {
+        "title": "MoU with OPAL",
+        "path": "Media / News",
+        "keywords": "opal mou memorandum understanding csr sponsor"
+      },
+      "oer": {
+        "title": "OER Top 20 ranking",
+        "path": "Media / News",
+        "keywords": "oer top 20 ranking award 17th"
+      },
+      "annualReport": {
+        "title": "Download Annual Report",
+        "path": "Investors / Annual Report",
+        "keywords": "annual report pdf download financial results investors disclosure"
+      },
+      "contact": {
+        "title": "Contact us",
+        "path": "Contact",
+        "keywords": "contact phone number mobile whatsapp telephone fax email address office location reach call"
+      }
+    }
+  },
+  "language": {
+    "switchShort": "AR"
+  },
+  "comingSoon": {
+    "eyebrow": "Coming soon",
+    "text": "This page is being prepared and will be published shortly.",
+    "related": "Meanwhile, visit",
+    "backHome": "Back to home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you are looking for doesn’t exist or has moved.",
+    "backHome": "Back to home"
+  }
+}

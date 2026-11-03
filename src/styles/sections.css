@@ -1,0 +1,411 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Section-specific artwork that utilities can't express cleanly
+   (layered gradients, pseudo-element shapes, multi-state transitions).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* Desktop dropdown trigger: the caret flips while its menu is open. */
+  .nav-item:hover > a .caret,
+  .nav-item:focus-within > a .caret {
+    transform: translateY(1px) rotate(225deg);
+  }
+
+  /* ─── Hero scrim — navy wash from the reading side + top/bottom darkening ─ */
+  .hero-scrim {
+    background:
+      linear-gradient(
+        to var(--scrim-to, right),
+        rgb(13 32 66 / 0.95) 0%,
+        rgb(15 36 74 / 0.82) 14%,
+        rgb(18 41 79 / 0.45) 32%,
+        rgb(18 41 79 / 0.12) 50%,
+        rgb(18 41 79 / 0) 66%
+      ),
+      linear-gradient(
+        180deg,
+        rgb(10 24 50 / 0.5) 0%,
+        rgb(10 24 50 / 0.04) 22%,
+        rgb(10 24 50 / 0.04) 62%,
+        rgb(10 24 50 / 0.55) 100%
+      ),
+      radial-gradient(
+        58% 42% at 50% 36%,
+        rgb(8 20 42 / 0.5) 0%,
+        rgb(8 20 42 / 0.24) 58%,
+        rgb(8 20 42 / 0) 100%
+      );
+
+    &:where([dir="rtl"] *) {
+      --scrim-to: left;
+    }
+
+    /* Phones: the wash covers the full width so the centred title reads. */
+    @media (width < 64rem) {
+      background: linear-gradient(
+        180deg,
+        rgb(10 24 50 / 0.55) 0%,
+        rgb(10 24 50 / 0.25) 40%,
+        rgb(10 24 50 / 0.8) 100%
+      );
+    }
+  }
+
+  /* ─── Hero shortcut tabs ────────────────────────────────────────────────── */
+  .hero-tab {
+    --tab-from: rgb(76 158 95 / 0.95);
+    --tab-to: rgb(58 142 80 / 0.95);
+
+    position: relative;
+    display: block;
+    color: #fff;
+
+    /* Thin rule that stays put whether the tab is open or closed. */
+    &::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 2;
+      height: 1px;
+      background: var(--color-orange);
+    }
+
+    &:nth-child(1) {
+      --tab-from: rgb(247 148 49 / 0.95);
+      --tab-to: rgb(224 125 24 / 0.95);
+    }
+    &:nth-child(2) {
+      --tab-from: rgb(36 92 168 / 0.95);
+      --tab-to: rgb(18 64 132 / 0.95);
+    }
+  }
+
+  .hero-tab-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0 clamp(14px, 1.7vw, 32px) clamp(10px, 1.4vh, 15px);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(150deg, var(--tab-from) 0%, var(--tab-to) 100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .hero-tab-detail {
+    display: none;
+  }
+
+  /* Desktop: the panel is bottom-anchored and grows upward on hover/focus. */
+  @media (width >= 64rem) {
+    .hero-tab {
+      height: clamp(30px, 3.7vh, 36px);
+    }
+
+    .hero-tab-panel {
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      height: 100%;
+      transition:
+        height 0.45s var(--ease-soft),
+        padding-top 0.45s var(--ease-soft);
+    }
+
+    .hero-tab-detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(12px);
+      transition:
+        opacity 0.35s ease 0.12s,
+        transform 0.35s ease 0.12s;
+    }
+
+    .hero-tab:hover,
+    .hero-tab:focus-visible {
+      .hero-tab-panel {
+        height: clamp(210px, 29.9vh, 300px);
+        padding-top: clamp(28px, 5.1vh, 54px);
+
+        &::before {
+          opacity: 1;
+        }
+      }
+
+      .hero-tab-detail {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+
+  /* Touch / small screens: a solid tinted row instead of the hover card. */
+  @media (width < 64rem) {
+    .hero-tab-panel {
+      padding-block: 14px;
+
+      &::before {
+        opacity: 0.22;
+      }
+    }
+
+    .hero-tab:active .hero-tab-panel::before {
+      opacity: 0.6;
+    }
+  }
+
+  /* ─── Governance orange tile with its swinging droplet ──────────────────── */
+  .gov-tile {
+    &::after {
+      content: "";
+      position: absolute;
+      top: -14%;
+      inset-inline-start: 72.5%;
+      z-index: 0;
+      width: 50%;
+      aspect-ratio: 220 / 300;
+      background: url("/images/home/gov-tile-shape.png") center / contain no-repeat;
+      transform-origin: 50% 60%;
+      transition:
+        transform 0.8s var(--ease-soft),
+        opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    &:where([dir="rtl"] *)::after {
+      scale: -1 1;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    &:hover,
+    &:focus-visible {
+      &::after {
+        transform: translate(-14%, 6%) rotate(-24deg) scale(1.12);
+      }
+
+      .gov-tile-title {
+        transform: translateY(-4px);
+      }
+    }
+  }
+
+  .gov-tile-title {
+    transition: transform 0.5s var(--ease-soft);
+  }
+
+  /* ─── Quick-link rail ───────────────────────────────────────────────────── */
+  .quicklinks {
+    --ql-ink: rgb(255 255 255 / 0.92);
+    --ql-dot: #fff;
+    --ql-dot-size: 9px;
+    --ql-ring-size: 22px;
+
+    &[data-ink="dark"] {
+      --ql-ink: #232323;
+      --ql-dot: #232323;
+    }
+
+    a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--ql-ink);
+      transition: color 0.45s ease;
+
+      &::before {
+        content: "";
+        flex: 0 0 auto;
+        width: var(--ql-dot-size);
+        height: var(--ql-dot-size);
+        border-radius: 50%;
+        background: var(--ql-dot);
+        transition:
+          background-color 0.45s ease,
+          transform 0.3s ease-out;
+      }
+
+      /* Dotted ring that orbits the current dot. */
+      &::after {
+        content: "";
+        position: absolute;
+        inset-inline-start: calc(var(--ql-dot-size) / 2);
+        top: 50%;
+        width: var(--ql-ring-size);
+        height: var(--ql-ring-size);
+        /* Centred with negative margins, not `translate`: Lightning CSS drops a
+           `translate` that sits beside `transform`, which knocked the ring off
+           the dot. Logical margin also mirrors for RTL on its own. */
+        margin-block-start: calc(var(--ql-ring-size) / -2);
+        margin-inline-start: calc(var(--ql-ring-size) / -2);
+        border: 1.5px dotted var(--ql-dot);
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0.7);
+        transition:
+          opacity 0.45s ease,
+          transform 0.45s var(--ease-out-expo),
+          border-color 0.45s ease;
+        pointer-events: none;
+      }
+
+      &:hover::before,
+      &[aria-current="true"]::before {
+        transform: scale(1.333);
+      }
+
+      &[aria-current="true"]::after {
+        opacity: 0.85;
+        transform: scale(1);
+        animation: ql-ring-spin 6s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes ql-ring-spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quicklinks a[aria-current="true"]::after {
+    animation: none;
+  }
+
+  .gov-tile::after,
+  .gov-tile-title,
+  .hero-tab-panel,
+  .hero-tab-detail {
+    transition: none;
+  }
+}
+
+/* ─── Footer: four ruled columns on the 68.75vw column (302/349/384/285) ─── */
+@layer components {
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "office" "contact" "about" "report" "lock" "credit" "copy";
+
+    > * {
+      border-bottom: 1px solid var(--color-footer-rule);
+    }
+    > [data-area="copy"] {
+      border-bottom: 0;
+    }
+    > [data-area="blank"] {
+      display: none;
+    }
+
+    @media (width >= 40rem) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "office contact"
+        "about  report"
+        "credit lock"
+        "copy   copy";
+    }
+
+    @media (width >= 64rem) {
+      grid-template-columns: 302fr 349fr 384fr 285fr;
+      grid-template-rows: auto clamp(100px, 6.72vw, 129px);
+      grid-template-areas:
+        "office contact about report"
+        "credit blank   copy  lock";
+
+      > * {
+        border-bottom: 0;
+        border-inline-end: 1px solid var(--color-footer-rule);
+      }
+      > [data-area="office"],
+      > [data-area="credit"] {
+        border-inline-start: 1px solid var(--color-footer-rule);
+      }
+      > [data-area="office"],
+      > [data-area="about"] {
+        border-bottom: 1px solid var(--color-footer-rule);
+      }
+      > [data-area="blank"] {
+        display: block;
+      }
+    }
+
+    [data-area="office"] {
+      grid-area: office;
+    }
+    [data-area="contact"] {
+      grid-area: contact;
+    }
+    [data-area="about"] {
+      grid-area: about;
+    }
+    [data-area="report"] {
+      grid-area: report;
+    }
+    [data-area="credit"] {
+      grid-area: credit;
+    }
+    [data-area="blank"] {
+      grid-area: blank;
+    }
+    [data-area="copy"] {
+      grid-area: copy;
+    }
+    [data-area="lock"] {
+      grid-area: lock;
+    }
+  }
+}
+
+/* ─── Shareholders: hovered panel widens, its neighbour gives way ───────── */
+@layer components {
+  .sh-panel {
+    flex: 1 1 0%;
+  }
+
+  @media (hover: hover) and (width >= 64rem) {
+    .sh-panel,
+    .sh-scrim {
+      transition:
+        flex-grow 0.9s var(--ease-assist),
+        background-color 0.9s var(--ease-assist);
+    }
+
+    /* Capped at 1.15 so the narrower panel never rewraps mid-animation. */
+    .shareholders:hover .sh-panel:hover {
+      flex-grow: 1.15;
+    }
+
+    .shareholders:hover .sh-panel:not(:hover) .sh-scrim {
+      background-color: rgb(0 0 0 / 0.18);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sh-panel,
+    .sh-scrim {
+      transition: none;
+    }
+  }
+}

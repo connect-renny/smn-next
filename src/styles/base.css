@@ -1,0 +1,94 @@
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-navy-deep text-navy antialiased;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    @apply bg-navy text-white;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-navy) #fff;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-orange;
+  }
+
+  /* Arabic glyphs need a little more leading than the Latin comp. */
+  :lang(ar) body {
+    line-height: 1.6;
+  }
+}
+
+/* Docked header state, set by <StickyHeader data-stuck>. */
+@custom-variant stuck (&:where([data-stuck="true"], [data-stuck="true"] *));
+
+/* ─── Lenis ─── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ─── Layout utilities ─── */
+
+/* Every home screen is at least one viewport tall; content never clips. */
+@utility section-fit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+/* The 68.75vw column the comp centres Governance, Media and Footer on. */
+@utility shell {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+
+  @media (width >= 64rem) {
+    width: 68.75vw;
+    padding-inline: 0;
+  }
+}
+
+/* Full-width header / hero container. */
+@utility site-container {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 1.5rem;
+  }
+}

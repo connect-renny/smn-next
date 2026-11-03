@@ -1,0 +1,158 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Design tokens — taken 1:1 from the approved demo (scss/abstracts/_variables)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ─── Brand colours ─── */
+  --color-navy: #12294f;
+  --color-navy-deep: #0b1c39;
+  --color-orange: #f79431;
+  --color-orange-dark: #e07d18;
+  --color-orange-tile: #ff6e00;
+  --color-ink: #1d1b1a;
+  --color-subs: #13121b;
+  --color-footer-bg: #0a1e51;
+  --color-media-rule: #dcdcdc;
+  --color-media-arrow: #6b6b6b;
+
+  /* ─── Section greys ─── */
+  --color-about-ink: #232323;
+  --color-about-muted: #717171;
+  --color-fact-ink: #333232;
+  --color-fact-rule: #b4aeae;
+  --color-footer-muted: #848484;
+  --color-footer-rule: #172b60;
+  --color-report: #4eb95b;
+  --color-report-dark: #43a550;
+
+  /* ─── Fluid type scale (values from the 1920 comp, scaled by viewport) ─── */
+  --text-hero: clamp(2.125rem, 4.8vw, 5.75rem);
+  --text-nav: clamp(11px, 0.68vw, 13px);
+  --text-utility: clamp(10px, 0.63vw, 12px);
+  --text-label: clamp(11px, 0.71vw, 13.5px);
+  --text-micro: clamp(10px, 0.54vw, 10.5px);
+  --text-eyebrow: clamp(12px, 0.755vw, 14.5px);
+  --text-eyebrow-md: clamp(13px, 0.86vw, 16.5px);
+  --text-eyebrow-lg: clamp(13px, 0.92vw, 17.7px);
+  --text-body: clamp(13px, 0.854vw, 16.4px);
+  --text-footer: clamp(14px, 0.833vw, 16px);
+  --text-footer-sm: clamp(12px, 0.73vw, 14px);
+  --text-about-title: clamp(22px, 1.9vw, 36.5px);
+  --text-fact-label: clamp(14px, 0.95vw, 18.3px);
+  --text-fact-value: clamp(30px, 2.24vw, 43px);
+  --text-fact-unit: clamp(22px, 1.82vw, 35px);
+  --text-sh-title: clamp(32px, 2.97vw, 57px);
+  --text-section-title: clamp(30px, 2.86vw, 55px);
+  --text-media-title: clamp(24px, 1.916vw, 36.8px);
+  --text-card-title: clamp(15px, 0.95vw, 18.3px);
+  --text-gov-tile: clamp(20px, 1.74vw, 33.5px);
+
+  /* ─── Fluid spacing (named, so components never need arbitrary values) ─── */
+  --spacing-drop: clamp(17px, 1.2vw, 23px);
+  --spacing-eyebrow: clamp(10px, 0.78vw, 15px);
+  --spacing-header-top: clamp(12px, 1.1vw, 20px);
+  --spacing-header-bottom: clamp(8px, 0.9vw, 14px);
+  --spacing-header-rows: clamp(8px, 1vw, 18px);
+  --spacing-nav: clamp(16px, 1.8vw, 34px);
+  --spacing-utility: clamp(20px, 2.2vw, 42px);
+  --spacing-logo: clamp(140px, 12vw, 228px);
+  --spacing-title: clamp(18px, 1.6vw, 31px);
+  --spacing-copy: clamp(15px, 1.25vw, 27px);
+  /* Not "--spacing-block": Tailwind would turn `inline-block` into an inline-size utility. */
+  --spacing-block-gap: clamp(32px, 3.65vw, 70px);
+  --spacing-cell: clamp(20px, 1.77vw, 34px);
+  --spacing-section-y: clamp(72px, 9vw, 120px);
+
+  /* ─── Layout ─── */
+  --container-site: 1628px;
+  --header-h: 106px;
+
+  /* ─── Motion ─── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-assist: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+  --animate-nav-down: nav-down 0.4s ease both;
+
+  @keyframes nav-down {
+    0% {
+      transform: translateY(-40px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1.9);
+      opacity: 0;
+    }
+  }
+}
+
+/* Fonts come from next/font at runtime, so they are mapped "inline". */
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-body);
+
+  /* shadcn/ui semantic tokens, mapped onto the brand palette */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --font-body: var(--font-poppins), "Century Gothic", "Helvetica Neue", Arial, sans-serif;
+
+  --background: #ffffff;
+  --foreground: #12294f;
+  --primary: #12294f;
+  --primary-foreground: #ffffff;
+  --secondary: #f79431;
+  --secondary-foreground: #ffffff;
+  --muted: #eaeaea;
+  --muted-foreground: #707070;
+  --accent: #f79431;
+  --accent-foreground: #ffffff;
+  --popover: #0b1c39;
+  --popover-foreground: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #232323;
+  --destructive: #c0392b;
+  --border: #d6d6d6;
+  --input: #d6d6d6;
+  --ring: #f79431;
+  --radius: 0rem;
+}
+
+/* Arabic: Plex Sans Arabic first, Poppins still covers Latin glyphs/digits. */
+:root:lang(ar) {
+  --font-body: var(--font-arabic), var(--font-poppins), Tahoma, Arial, sans-serif;
+}

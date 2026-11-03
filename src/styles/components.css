@@ -1,0 +1,440 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Reusable visual components that need pseudo-elements or keyframes.
+   Everything else is styled with utilities in the JSX.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* ─── Round "+" disc ─────────────────────────────────────────────────────── */
+  .btn-plus {
+    position: relative;
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: clamp(32px, 1.82vw, 35px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-orange);
+    color: #fff;
+    transition:
+      background-color 0.3s ease-out,
+      transform 0.3s ease-out;
+
+    /* The comp draws an 11px glyph inside a 35px disc. */
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background: currentColor;
+      border-radius: 1px;
+    }
+    &::before {
+      width: 31.5%;
+      height: 3px;
+    }
+    &::after {
+      width: 3px;
+      height: 31.5%;
+    }
+
+    &:hover,
+    :where(a, button):hover > &,
+    :where(a, button):focus-visible > & {
+      background: var(--color-orange-dark);
+      transform: rotate(90deg);
+    }
+  }
+
+  /* On the orange governance tiles the disc inverts to near-black. */
+  .btn-plus--dark {
+    background: var(--color-ink);
+
+    &:hover,
+    :where(a, button):hover > &,
+    :where(a, button):focus-visible > & {
+      background: #000;
+    }
+  }
+
+  /* ─── Orange play disc with a soft pulse ─────────────────────────────────── */
+  .play-circle {
+    position: relative;
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: clamp(40px, 2.4vw, 46px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-orange);
+    transition: transform 0.3s ease-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--color-orange);
+      border-radius: 50%;
+      animation: var(--animate-pulse-ring);
+    }
+
+    :where(a, button):hover > & {
+      transform: scale(1.08);
+    }
+  }
+
+  /* ─── Scroll cue: long arrow sliding into an orange disc ─────────────────── */
+  .scroll-cue {
+    position: absolute;
+    inset-inline-start: clamp(20px, 1.5vw, 29px);
+    bottom: clamp(70px, 10.9vh, 106px);
+    z-index: 4;
+    width: clamp(28px, 1.72vw, 33px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-orange);
+    transition: background-color 0.3s ease-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--color-orange);
+      border-radius: 50%;
+      animation: cue-pulse 2.8s ease-out infinite;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background: var(--color-orange-dark);
+    }
+  }
+
+  .scroll-cue-track {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    width: clamp(7px, 0.52vw, 10px);
+    height: clamp(28px, 1.93vw, 37px);
+    overflow: hidden;
+    translate: -50% 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      animation: cue-arrow 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+  }
+
+  /* ─── Preloader ─────────────────────────────────────────────────────────── */
+  .preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at 50% 46%, #1a3d73 0%, var(--color-navy-deep) 62%);
+
+    /* Iris: a crisp, hard-edged hole opens from the centre onto the page. */
+    &[data-state="leaving"] {
+      /* Exactly to the far corner, so the whole ease is on screen. */
+      --pl-hole: calc(hypot(50vw, 50vh) + 2px);
+      pointer-events: none;
+      mask: radial-gradient(
+        circle at 50% 50%,
+        transparent var(--pl-hole),
+        #000 calc(var(--pl-hole) + 0.5px) /* half a pixel: sharp, not jagged */
+      );
+      opacity: 0; /* fallback where @property isn't supported */
+      transition:
+        --pl-hole 0.95s cubic-bezier(0.76, 0, 0.24, 1) 0.15s,
+        opacity 0.05s linear 1.08s; /* only after the iris is done */
+    }
+  }
+
+  .preloader-stage {
+    position: relative;
+    width: clamp(160px, 31vmin, 245px);
+    aspect-ratio: 1;
+    transition:
+      transform 0.45s cubic-bezier(0.55, 0, 0.1, 1),
+      opacity 0.3s ease;
+
+    /* Soft breathing glow behind the mark. */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 22%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgb(247 148 49 / 0.32), transparent 70%);
+      filter: blur(14px);
+      animation: pl-glow 2.6s ease-in-out infinite alternate;
+    }
+
+    [data-state="leaving"] & {
+      transform: scale(0.82);
+      opacity: 0;
+    }
+  }
+
+  .preloader-scene {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+
+    /* SVG children rotate/scale around their own box unless told otherwise. */
+    & * {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+  }
+
+  .pl-orbit {
+    transform-box: view-box !important;
+    transform-origin: 100px 100px !important;
+    animation:
+      pl-fade-in 0.6s ease 0.5s both,
+      pl-spin 7s linear infinite;
+  }
+
+  .pl-orbit-ring {
+    fill: none;
+    stroke: rgb(255 255 255 / 0.22);
+    stroke-width: 1.4;
+    stroke-dasharray: 2 6;
+    stroke-linecap: round;
+  }
+
+  .pl-track {
+    fill: none;
+    stroke: rgb(255 255 255 / 0.1);
+    stroke-width: 3;
+  }
+
+  .pl-progress {
+    fill: none;
+    stroke: url(#pl-progress);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: calc(var(--pl-offset, 100) * 1px);
+    rotate: -90deg;
+    filter: drop-shadow(0 0 6px rgb(247 148 49 / 0.55));
+    transition: stroke-dashoffset 2.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+    [data-state="full"] &,
+    [data-state="leaving"] & {
+      transition-duration: 0.5s;
+    }
+  }
+
+  .pl-ripple {
+    fill: none;
+    stroke: rgb(120 200 255 / 0.7);
+    stroke-width: 1.6;
+    opacity: 0;
+    animation: pl-ripple 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.42s infinite;
+  }
+
+  .pl-ripple-late {
+    animation-delay: 0.62s;
+  }
+
+  .pl-spark {
+    fill: #fff;
+    scale: 0;
+    animation: pl-twinkle 2.2s ease-in-out infinite;
+  }
+
+  .pl-mark {
+    position: absolute;
+    inset: 22%;
+    transform-origin: 50% 100%;
+    animation: pl-drop 0.95s both;
+  }
+
+  .pl-mark-float {
+    width: 100%;
+    height: 100%;
+    animation: pl-float 2.6s ease-in-out 0.95s infinite alternate;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.35));
+      user-select: none;
+    }
+  }
+
+  /* ─── CSS caret (header + dropdown triggers) ────────────────────────────── */
+  .caret {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 1.6px solid currentColor;
+    border-bottom: 1.6px solid currentColor;
+    transform: translateY(-3px) rotate(45deg);
+    transition: transform 0.3s ease-out;
+
+    &[data-open] {
+      transform: translateY(1px) rotate(225deg);
+    }
+  }
+}
+
+@keyframes cue-arrow {
+  0%,
+  8% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  38% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  39% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+  66%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes cue-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  70%,
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+
+/* ─── Preloader motion ────────────────────────────────────────────────────── */
+@property --pl-hole {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+/* Falls stretched, squashes on landing, then wobbles to rest. */
+@keyframes pl-drop {
+  0% {
+    transform: translateY(-150%) scale(0.72, 0.92);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+  }
+  12% {
+    opacity: 1;
+  }
+  44% {
+    transform: translateY(0) scale(0.9, 1.12);
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  58% {
+    transform: translateY(4%) scale(1.16, 0.82);
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  74% {
+    transform: translateY(-7%) scale(0.95, 1.06);
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  88% {
+    transform: translateY(1%) scale(1.03, 0.97);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pl-float {
+  from {
+    transform: translateY(0) rotate(-2deg);
+  }
+  to {
+    transform: translateY(-8%) rotate(2.5deg);
+  }
+}
+
+@keyframes pl-ripple {
+  0% {
+    transform: scale(0.35);
+    opacity: 0.9;
+  }
+  55%,
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+@keyframes pl-twinkle {
+  0%,
+  100% {
+    scale: 0;
+    rotate: 0deg;
+  }
+  45% {
+    scale: 1;
+    rotate: 90deg;
+  }
+  70% {
+    scale: 0;
+    rotate: 140deg;
+  }
+}
+
+@keyframes pl-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes pl-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pl-glow {
+  from {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .play-circle::after,
+  .scroll-cue::after,
+  .scroll-cue-track img,
+  .preloader-stage::before,
+  .pl-orbit,
+  .pl-ripple,
+  .pl-spark,
+  .pl-mark,
+  .pl-mark-float {
+    animation: none;
+  }
+
+  /* No iris, no zoom — just a quiet fade. */
+  .preloader[data-state="leaving"] {
+    mask: none;
+    transition: opacity 0.4s ease;
+  }
+  .preloader-stage {
+    transition: opacity 0.3s ease;
+  }
+  [data-state="leaving"] .preloader-stage {
+    transform: none;
+  }
+}
