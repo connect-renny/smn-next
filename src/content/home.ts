@@ -162,6 +162,6 @@ export const assistTargets: Record<keyof Dictionary["assist"]["index"], Href> = 
   csrSolar: { page: "media/csr-solar-power-initiative" },
   opal: { page: "media/opal-mou" },
   oer: { page: "media/oer-top-20" },
-  annualReport: { page: "investors/annual-report" },
+  annualReport: { document: "annualReport" },
   contact: { section: "contact" },
 };

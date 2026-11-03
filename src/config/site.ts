@@ -1,3 +1,5 @@
+import type { Locale } from "@/i18n/config";
+
 /**
  * Site-wide settings. Everything that is still missing for launch lives here,
  * so it can be switched on in one place without touching components.
@@ -14,11 +16,19 @@ export const siteConfig = {
   },
 
   /**
-   * Annual report PDF. While `href` is null the footer card links to the
-   * Annual Report page instead of offering a download.
-   * Example: { href: "/documents/annual-report-2025.pdf", meta: "PDF, 6 MB" }
+   * Annual report PDF per language, hosted on the current smnpower.com as on
+   * the live site. Set to null to fall back to the Annual Report page.
    */
-  annualReport: null as { href: string; meta: string } | null,
+  annualReport: {
+    en: {
+      href: "https://www.smnpower.com/uploads/233399-Annual%20Report%202025_SMN_English%20final.pdf",
+      meta: "PDF, 4.6 MB",
+    },
+    ar: {
+      href: "https://www.smnpower.com/uploads/4326762-Annual%20Report%202025_SMN_Arabic%20final.pdf",
+      meta: "PDF, 3.7 MB",
+    },
+  } as Record<Locale, { href: string; meta: string }> | null,
 
   /** Social profiles. Icons render only for entries with a URL. */
   social: {

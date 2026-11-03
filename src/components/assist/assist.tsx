@@ -8,6 +8,7 @@ import { useGsapPresence } from "@/hooks/use-gsap-presence";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { gsap, prefersReducedMotion, useGSAP } from "@/lib/gsap";
 import { cn } from "@/lib/utils";
+import { isExternal, newTab } from "@/lib/nav";
 
 import { createAssistSearch, type AssistEntry } from "./assist-search";
 import { useSpeech } from "./use-speech";
@@ -301,6 +302,7 @@ export function Assist({ copy, index, fallbackId, speechLang }: AssistProps) {
                   <li key={item.id} data-result>
                     <Link
                       href={item.href}
+                      {...(isExternal(item.href) && newTab)}
                       onClick={() => close()}
                       className="assist-card relative block rounded-[10px] border border-transparent bg-white/7 py-[13px] ps-4 pe-11 text-white transition-colors hover:border-orange/55 hover:bg-white/11"
                     >

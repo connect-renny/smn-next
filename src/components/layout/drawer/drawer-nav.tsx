@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import type { ResolvedLink, ResolvedNavigation } from "@/lib/nav";
+import { newTab, type ResolvedLink, type ResolvedNavigation } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 type DrawerNavProps = {
@@ -29,7 +29,12 @@ export function DrawerNav({ nav, home, label, onNavigate, className }: DrawerNav
   const flatLinks = [...nav.main.filter((group) => !group.children.length), ...nav.utility];
 
   const renderLink = (link: ResolvedLink, linkClass: string) => (
-    <Link href={link.href} className={linkClass} onClick={(e) => onNavigate(e, link.href)}>
+    <Link
+      href={link.href}
+      {...(link.external && newTab)}
+      className={linkClass}
+      onClick={(e) => onNavigate(e, link.href)}
+    >
       {link.label}
     </Link>
   );

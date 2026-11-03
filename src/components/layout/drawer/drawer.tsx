@@ -176,7 +176,7 @@ export function SiteDrawer({
                 {withNav && (
                   <DrawerNav
                     nav={nav}
-                    home={{ label: labels.home, href: homeHref }}
+                    home={{ label: labels.home, href: homeHref, external: false }}
                     label={labels.title}
                     onNavigate={onNavigate}
                   />

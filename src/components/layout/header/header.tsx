@@ -4,7 +4,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import type { ResolvedNavigation } from "@/lib/nav";
+import { newTab, type ResolvedNavigation } from "@/lib/nav";
 
 import { ActiveLink } from "./active-link";
 import { LanguageSwitcher } from "./language-switcher";
@@ -74,6 +74,7 @@ export function Header({ locale, dict, nav }: HeaderProps) {
                   <li key={link.href}>
                     <Link
                       href={link.href}
+                      {...(link.external && newTab)}
                       className="text-utility font-semibold tracking-[0.03em] whitespace-nowrap text-white uppercase transition-colors hover:text-orange"
                     >
                       {link.label}
@@ -115,6 +116,7 @@ export function Header({ locale, dict, nav }: HeaderProps) {
                             <li key={child.href}>
                               <Link
                                 href={child.href}
+                                {...(child.external && newTab)}
                                 className="block px-[18px] py-[9px] text-xs leading-[1.35] font-medium tracking-[0.02em] text-white/85 uppercase transition-colors hover:bg-white/5 hover:text-orange"
                               >
                                 {child.label}

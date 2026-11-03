@@ -3,7 +3,13 @@ import { resolveHref, type Href } from "@/config/routes";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
-export type ResolvedLink = { label: string; href: string };
+/** `external` links (other sites, PDFs) open in a new tab. */
+export type ResolvedLink = { label: string; href: string; external: boolean };
+
+/** Props that open a link in a new tab, as the live site does for PDFs. */
+export const newTab = { target: "_blank", rel: "noopener noreferrer" } as const;
+
+export const isExternal = (href: string) => /^https?:\/\//.test(href);
 export type ResolvedGroup = ResolvedLink & { children: ResolvedLink[]; match: string[] };
 
 /** Path prefixes (after the locale) that light up each top-level item. */
@@ -17,7 +23,8 @@ function matchFor(href: Href, children: NavLink[] = []): string[] {
 }
 
 export function resolveLink(locale: Locale, dict: Dictionary, link: NavLink): ResolvedLink {
-  return { label: dict.labels[link.label], href: resolveHref(locale, link.href) };
+  const href = resolveHref(locale, link.href);
+  return { label: dict.labels[link.label], href, external: isExternal(href) };
 }
 
 export function resolveNavigation(locale: Locale, dict: Dictionary) {

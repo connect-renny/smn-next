@@ -12,7 +12,6 @@ import { Header } from "@/components/layout/header/header";
 import { Preloader } from "@/components/layout/preloader";
 import { ReturnTop } from "@/components/layout/return-top";
 import { resolveHref } from "@/config/routes";
-import { siteConfig } from "@/config/site";
 import { assistTargets } from "@/content/home";
 import { isLocale, localeMeta, locales, type Locale } from "@/i18n/config";
 import { getDictionary, type Dictionary } from "@/i18n/get-dictionary";
@@ -62,10 +61,7 @@ export const viewport: Viewport = {
 function assistIndex(locale: Locale, index: Dictionary["assist"]["index"]): AssistEntry[] {
   return (Object.keys(assistTargets) as (keyof typeof assistTargets)[]).map((id) => {
     const entry = index[id];
-    const href =
-      id === "annualReport" && siteConfig.annualReport
-        ? siteConfig.annualReport.href
-        : resolveHref(locale, assistTargets[id]);
+    const href = resolveHref(locale, assistTargets[id]);
     return { id, title: entry.title, path: entry.path, keywords: entry.keywords, href };
   });
 }

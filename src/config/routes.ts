@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/config";
 
@@ -59,7 +60,11 @@ export const innerPages = {
 
 export type PageSlug = keyof typeof innerPages;
 
-export type Href = { section: SectionId } | { page: PageSlug } | { external: string };
+/** Downloads configured per language in `siteConfig` (see `resolveHref`). */
+export type DocumentId = "annualReport";
+
+export type Href =
+  { section: SectionId } | { page: PageSlug } | { external: string } | { document: DocumentId };
 
 export function isPageSlug(value: string): value is PageSlug {
   return Object.hasOwn(innerPages, value);
@@ -68,6 +73,9 @@ export function isPageSlug(value: string): value is PageSlug {
 /** Turns a typed destination into a locale-aware URL. */
 export function resolveHref(locale: Locale, href: Href): string {
   if ("external" in href) return href.external;
+  if ("document" in href) {
+    return siteConfig.annualReport?.[locale].href ?? `/${locale}/investors/annual-report`;
+  }
   if ("page" in href) return `/${locale}/${href.page}`;
   return href.section === "home" ? `/${locale}` : `/${locale}#${href.section}`;
 }

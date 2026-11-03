@@ -47,7 +47,7 @@ export const mainNav: NavGroup[] = [
       { label: "disclosures", href: { page: "investors/disclosures" } },
       { label: "financialReports", href: { page: "investors/financial-reports" } },
       { label: "dividendsDisclosures", href: { page: "investors/dividends-disclosures" } },
-      { label: "annualReport", href: { page: "investors/annual-report" } },
+      { label: "annualReport", href: { document: "annualReport" } },
       { label: "sharePrice", href: { page: "investors/share-price" } },
       { label: "msxDiscussion", href: { page: "investors/msx-discussion-session" } },
     ],

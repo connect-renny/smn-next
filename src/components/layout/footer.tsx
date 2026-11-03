@@ -5,7 +5,7 @@ import { resolveHref } from "@/config/routes";
 import { activeSocialLinks, siteConfig } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import type { ResolvedNavigation } from "@/lib/nav";
+import { newTab, type ResolvedNavigation } from "@/lib/nav";
 import { BrandIcon } from "@/components/ui/brand-icons";
 
 type FooterProps = { locale: Locale; dict: Dictionary; nav: ResolvedNavigation };
@@ -22,7 +22,7 @@ const bandText = "text-footer-sm leading-[1.7] font-medium tracking-[-0.03em] up
 export function Footer({ locale, dict, nav }: FooterProps) {
   const f = dict.footer;
   const social = activeSocialLinks();
-  const report = siteConfig.annualReport;
+  const report = siteConfig.annualReport?.[locale];
 
   return (
     <footer id="contact" data-snap="" className="relative overflow-hidden bg-footer-bg text-white">
@@ -115,8 +115,8 @@ export function Footer({ locale, dict, nav }: FooterProps) {
         {/* Annual report card */}
         <div data-area="report">
           <a
-            href={report?.href ?? resolveHref(locale, { page: "investors/annual-report" })}
-            {...(report ? { download: "" } : {})}
+            href={resolveHref(locale, { document: "annualReport" })}
+            {...(report && newTab)}
             className="group flex h-full min-h-70 flex-col items-center justify-center bg-report text-center text-white transition-colors hover:bg-report-dark lg:h-[clamp(280px,18.23vw,350px)] lg:min-h-0 lg:justify-start lg:pt-[clamp(40px,4.06vw,78px)]"
           >
             <Image
