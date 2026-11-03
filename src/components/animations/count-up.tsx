@@ -21,7 +21,7 @@ function format(n: number, spec: ReturnType<typeof readSpec>) {
 }
 
 /**
- * Counts up to `value` when scrolled into view. The final figure is rendered on
+ * Counts up to `value` each time it scrolls into view, from either direction. The final figure is rendered on
  * the server (SEO, no-JS, reduced motion) and an invisible copy reserves its
  * width, so nothing beside the number shifts while the digits climb.
  */
@@ -43,7 +43,12 @@ export function CountUp({ value, className }: { value: string; className?: strin
           n: spec.value,
           duration: 1.8,
           ease: "power3.out",
-          scrollTrigger: { trigger: scope.current, start: "top 85%", once: true },
+          scrollTrigger: {
+            trigger: scope.current,
+            start: "top 85%",
+            end: "bottom 15%",
+            toggleActions: "restart none restart none",
+          },
           onUpdate: () => {
             el.textContent = format(counter.n, spec);
           },
