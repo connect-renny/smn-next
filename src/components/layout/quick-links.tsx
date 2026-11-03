@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+import { cn } from "@/lib/utils";
 
 type QuickLinksProps = {
   label: string;
@@ -10,11 +12,14 @@ type QuickLinksProps = {
 /**
  * Pinned rail of section shortcuts. Its ink and current marker follow
  * whichever section sits behind it, sampled at the rail's own height so the
- * swap lands as the rail crosses the seam. Desktop only.
+ * swap lands as the rail crosses the seam. It fades out once the footer
+ * reaches it, so the two never overlap. Desktop only.
  */
 export function QuickLinks({ label, links }: QuickLinksProps) {
   const [ink, setInk] = useState<"light" | "dark">("light");
   const [current, setCurrent] = useState("");
+  const [overFooter, setOverFooter] = useState(false);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     let frame = 0;
@@ -34,6 +39,10 @@ export function QuickLinks({ label, links }: QuickLinksProps) {
         });
       setInk(nextInk);
       setCurrent(nextId);
+
+      const footer = document.querySelector("footer");
+      const rail = ref.current?.getBoundingClientRect();
+      setOverFooter(!!footer && !!rail && footer.getBoundingClientRect().top < rail.bottom);
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(sync);
@@ -51,8 +60,14 @@ export function QuickLinks({ label, links }: QuickLinksProps) {
 
   return (
     <nav
+      ref={ref}
       aria-label={label}
-      className="quicklinks fixed start-[clamp(14px,1vw,20px)] top-[52%] z-50 -translate-y-1/2 max-lg:hidden"
+      aria-hidden={overFooter || undefined}
+      inert={overFooter}
+      className={cn(
+        "quicklinks fixed start-[clamp(14px,1vw,20px)] top-[52%] z-50 -translate-y-1/2 transition-[opacity,visibility] duration-400 max-lg:hidden",
+        overFooter && "invisible opacity-0",
+      )}
       data-ink={ink}
     >
       <ul className="flex flex-col gap-[clamp(14px,2.4vh,26px)]">
