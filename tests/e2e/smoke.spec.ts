@@ -28,7 +28,7 @@ test.describe("pages", () => {
     const errors = trackErrors(page);
     await page.goto("/ar");
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
-    await expect(page.locator("#about dt").first()).toHaveText("تأسست في عام");
+    await expect(page.locator("#about")).toContainText("ولكونها الشركة القابضة");
     expect(errors).toEqual([]);
   });
 

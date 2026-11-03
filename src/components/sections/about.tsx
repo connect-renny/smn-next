@@ -75,7 +75,10 @@ export function About({ locale, dict }: AboutProps) {
                     className="mb-[clamp(16px,1.23vw,24px)] h-[clamp(56px,4.69vw,90px)] w-auto origin-bottom transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-safe:group-hover:-translate-y-1.5 motion-safe:group-hover:scale-110 motion-safe:group-hover:-rotate-6 rtl:motion-safe:group-hover:rotate-6"
                   />
                   <dt className="text-fact-label leading-[1.2]">{fact.label}</dt>
-                  <dd className="flex items-baseline gap-[clamp(10px,1.04vw,20px)] text-fact-value leading-[1.15] font-bold whitespace-nowrap">
+                  <dd
+                    dir="auto"
+                    className="flex items-baseline gap-[clamp(10px,1.04vw,20px)] text-fact-value leading-[1.15] font-bold whitespace-nowrap"
+                  >
                     <CountUp value={fact.value} />
                     {fact.unit && (
                       <em className="text-fact-unit font-medium not-italic">{fact.unit}</em>

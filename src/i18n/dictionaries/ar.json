@@ -2,8 +2,8 @@
   "meta": {
     "siteName": "إس إم إن باور القابضة ش.م.ع.ع",
     "title": "إس إم إن باور القابضة ش.م.ع.ع",
-    "tagline": "طاقة تنير الحياة. طاقة تصنع المستقبل.",
-    "description": "إس إم إن باور القابضة ش.م.ع.ع — طاقة تنير الحياة. طاقة تصنع المستقبل. شركة عمانية قابضة مدرجة في قطاع المرافق، تعمل في قطاعي توليد الكهرباء وتحلية المياه."
+    "tagline": "Powering Lives. Powering the Future.",
+    "description": "SMN Power Holding SAOG — Powering Lives. Powering the Future. A publicly listed Omani utility holding company operating within the power generation and water desalination sectors."
   },
   "a11y": {
     "skipToContent": "انتقل إلى المحتوى",
@@ -25,55 +25,58 @@
   },
   "labels": {
     "career": "الوظائف",
-    "media": "الإعلام",
+    "media": "وسائل الإعلام",
     "contact": "اتصل بنا",
-    "aboutUs": "من نحن",
+    "aboutUs": "معلومات عنا",
     "ourCompany": "شركتنا",
-    "visionMission": "الرؤية والرسالة",
-    "mainShareholders": "كبار المساهمين",
+    "visionMission": "الرسالة والرؤية",
+    "mainShareholders": "المؤسسون",
     "governance": "حوكمة الشركات",
     "companysPhilosophy": "فلسفة الشركة",
     "boardOfDirectors": "مجلس الإدارة",
     "auditCommittee": "لجنة التدقيق",
-    "nominationCommittee": "لجنة الترشيحات والمكافآت",
-    "management": "الإدارة التنفيذية",
-    "articlesOfAssociation": "النظام الأساسي",
-    "ethics": "الأخلاقيات",
-    "investors": "بيانات وأخبار المستثمرين",
-    "disclosures": "الإفصاحات",
+    "nominationCommittee": "لجنة التعيين والمكافآت",
+    "management": "Management",
+    "articlesOfAssociation": "Articles of Association",
+    "ethics": "أخلاقيات العمل",
+    "investors": "تاريخ المستثمر والأخبار",
+    "disclosures": "الافصاح",
     "financialReports": "التقارير المالية",
-    "dividendsDisclosures": "إفصاحات توزيعات الأرباح",
+    "dividendsDisclosures": "الإفصاح عن الأرباح",
     "annualReport": "التقرير السنوي",
     "sharePrice": "سعر السهم",
-    "msxDiscussion": "جلسة النقاش في بورصة مسقط",
+    "msxDiscussion": "جلسة مناقشة MSX",
     "csr": "المسؤولية الاجتماعية",
     "tenders": "المناقصات",
     "barkaPlant": "محطة بركاء 2",
     "rusailPlant": "محطة الرسيل",
-    "mediaCentre": "المركز الإعلامي",
+    "mediaCentre": "Media Centre",
     "newsOpalMou": "توقيع مذكرة تفاهم مع أوبال لرعاية عدد من مبادرات المسؤولية الاجتماعية",
-    "newsCsrSolar": "مبادرة الطاقة الشمسية ضمن المسؤولية الاجتماعية",
-    "newsOerTop20": "إس إم إن باور تحتل المرتبة 17 في قائمة OER لأفضل 20 شركة لعام 2016"
+    "newsCsrSolar": "التربية توقع اتفاقية مع مجموعة من الشركات لتجهيز إحدى المدارس بنظام الطاقة الشمسية",
+    "newsOerTop20": "شركة إس إم إن باور القابضة تحصل على المركز سابع عشر بين عشرين ضمن أفضل شركات OER لعام 2016"
   },
   "hero": {
-    "titleLines": ["طاقة تنير **الحياة**.", "طاقة تصنع **المستقبل**."],
+    "titleLines": ["Powering **Lives**.", "Powering the **Future**."],
     "playVideo": "تشغيل الفيديو",
     "explore": "استكشف",
     "tabs": {
       "barka": {
         "title": "محطة بركاء 2",
-        "text": "إس إم إن بركاء محطة مستقلة لإنتاج الكهرباء والمياه (IWPP) تقع في ولاية بركاء، على بعد نحو 50 كم شمال غرب مسقط، سلطنة عمان."
+        "text": "تعدّ محطة اس ام ان بركاء محطة مستقلة تنتج المياه والكهرباء وتقع في بركاء. ويبعد الموقع عن مسقط، عُمان بحوالى 50 كلم إلى الشمال الغربي."
       },
       "rusail": {
         "title": "محطة الرسيل",
-        "text": "الرسيل محطة لتوليد الكهرباء تعمل بالغاز في المنطقة الصناعية بالرسيل، على بعد نحو 45 كم من مسقط، سلطنة عمان."
+        "text": "الرسيل هي محطة لتوليد الكهرباء تعمل بالغاز الطبيعي. تقع المحطة في المنطقة الصناعية على بعد حوالي 40 كلم غرب مسقط."
       },
       "news": {
-        "title": "آخر الأخبار",
+        "title": "احدث الأخبار",
         "items": [
-          { "title": "إفصاح عن قرارات مجلس الإدارة", "date": "7 مايو 2026" },
           {
-            "title": "البيانات المالية الأولية غير المدققة للفترة المنتهية في 30 يونيو 2026",
+            "title": "إفصاح قرارات مجلس الإدارة",
+            "date": "7 مايو 2026"
+          },
+          {
+            "title": "النتائج المالية الموحدة غير المدققة لفترة الستة أشهر المنتهية في 30 يونيو 2026م",
             "date": ""
           }
         ]
@@ -81,50 +84,55 @@
     }
   },
   "about": {
-    "eyebrow": "من نحن",
+    "eyebrow": "معلومات عنا",
     "titleLines": [
-      "إس إم إن باور القابضة ش.م.ع.ع شركة مساهمة عامة",
-      "عمانية قابضة في قطاع المرافق، تأسست في مايو",
-      "2011، وتعمل في قطاعي توليد الكهرباء",
-      "وتحلية المياه."
+      "SMN Power Holding SAOG is a publicly listed",
+      "Omani utility holding company established in May",
+      "2011 that operates within the power generation and",
+      "water desalination sectors."
     ],
-    "text": "بصفتها الشركة القابضة لشركتين للطاقة، هما إس إم إن بركاء والرسيل، تجمع الشركة قدرة إنتاجية تبلغ نحو 864.2 ميجاواط من الكهرباء و120,000 م³ يوميًا من المياه الصالحة للشرب.",
+    "text": "ولكونها الشركة القابضة لاثنتين من شركات الطاقة، هما \"اس ام ان بركاء\" و\"الرسيل\"، فإنها توفر 864.2 ميجا وات من الكهرباء و120,000 متر مكعب/يومياً من مياه الشرب.",
     "moreLabel": "اقرأ المزيد عن إس إم إن باور القابضة",
     "facts": {
-      "established": { "label": "تأسست في عام", "value": "2011", "unit": "", "sub": "كشركة قابضة" },
+      "established": {
+        "label": "Established in",
+        "value": "2011",
+        "unit": "",
+        "sub": "as a holding company"
+      },
       "barka": {
-        "label": "تبلغ قدرة إس إم إن بركاء",
+        "label": "SMN Barka has",
         "value": "864.2",
-        "unit": "ميجاواط",
-        "sub": "من الكهرباء"
+        "unit": "MW",
+        "sub": "of power capacity"
       },
       "rusail": {
-        "label": "تبلغ قدرة الرسيل",
+        "label": "Al Rusail has",
         "value": "120,000",
-        "unit": "م³/يوم",
-        "sub": "من المياه الصالحة للشرب"
+        "unit": "m3/day",
+        "sub": "potable water capacity"
       }
     }
   },
   "shareholders": {
-    "eyebrow": "المساهمون",
+    "eyebrow": "المؤسسون",
     "items": {
       "kahrabel": {
-        "titleLines": ["كهربل", "م.م.ح"],
-        "text": "تتولى كهربل الإشراف على تطوير وإنشاء وتشغيل أعمال إنتاج الكهرباء والمياه التابعة لمجموعة إنجي في منطقة الشرق الأوسط وشمال أفريقيا وإدارتها.",
-        "imageAlt": "كهربل م.م.ح",
-        "moreLabel": "المزيد عن كهربل م.م.ح"
+        "titleLines": ["كهربيل", "م.م.ح"],
+        "text": "تشرف شركة كهربيل و تدير عمليات تطوير وبناء وتشغيل أعمال توليد الكهرباء وإنتاج المياه ضمن مجموعة “إنجي” (“جي دي إف سويز” سابقا) في منطقة الشرق الأوسط وشمال إفريقيا.",
+        "imageAlt": "كهربيل م.م.ح",
+        "moreLabel": "المزيد عن كهربيل م.م.ح"
       },
       "mubadala": {
-        "titleLines": ["شركة مبادلة", "القابضة للطاقة", "المحدودة"],
-        "text": "شركة مبادلة القابضة للطاقة المحدودة شركة تابعة مملوكة بالكامل لشركة مبادلة للاستثمار (MCD)، وهي شركة مساهمة عامة مسجلة في إمارة أبوظبي.",
-        "imageAlt": "شركة مبادلة القابضة للطاقة المحدودة",
-        "moreLabel": "المزيد عن شركة مبادلة القابضة للطاقة المحدودة"
+        "titleLines": ["شركة مبادلة", "للطاقة القابضة", "المحدودة"],
+        "text": "شركة مبادلة للطاقة القابضة المحدودة هي شركة تابعة مملوكة بالكامل لشركة مبادلة للاستثمار (“مبادلة”)، وهي شركة مساهمة عامة مسجلة في إمارة أبوظبي.",
+        "imageAlt": "شركة مبادلة للطاقة القابضة المحدودة",
+        "moreLabel": "المزيد عن شركة مبادلة للطاقة القابضة المحدودة"
       }
     }
   },
   "governance": {
-    "eyebrow": "القيادة",
+    "eyebrow": "Leadership",
     "title": "حوكمة الشركات",
     "cells": {
       "board": {
@@ -139,27 +147,27 @@
       },
       "management": {
         "imageAlt": "مصافحة",
-        "titleLines": ["الإدارة", "التنفيذية"],
+        "titleLines": ["Our", "Management"],
         "moreLabel": "المزيد عن فريق الإدارة"
       }
     }
   },
   "links": {
     "eyebrow": "روابط مفيدة",
-    "title": "شركاتنا التابعة",
+    "title": "Our Subsidiaries",
     "items": {
-      "nama": "شركة نماء لشراء الطاقة والمياه",
+      "nama": "نماء لشراء الطاقة والمياه",
       "apsr": "هيئة تنظيم الخدمات العامة",
       "mubadala": "مبادلة",
       "engie": "إنجي",
-      "stomo": "إنجي ستومو",
+      "stomo": "ستومو",
       "mem": "وزارة الطاقة والمعادن",
       "msx": "بورصة مسقط"
     }
   },
   "media": {
-    "eyebrow": "المركز الإعلامي",
-    "title": "آخر أخبار شركتنا",
+    "eyebrow": "Media Centre",
+    "title": "Latest Updates from our company",
     "dates": {
       "newsOpalMou": "31 أغسطس 2022",
       "newsCsrSolar": "",
@@ -167,30 +175,30 @@
     }
   },
   "quicklinks": {
-    "about": "من نحن",
-    "shareholders": "المساهمون",
+    "about": "معلومات عنا",
+    "shareholders": "المؤسسون",
     "governance": "حوكمة الشركات",
     "links": "روابط مفيدة",
-    "media": "الإعلام"
+    "media": "وسائل الإعلام"
   },
   "menu": {
     "title": "القائمة",
     "close": "إغلاق",
     "getInTouch": "تواصل معنا",
     "officeTel": "هاتف المكتب:",
-    "fax": "فاكس:",
+    "fax": "رقم الفاكس:",
     "email": "البريد الإلكتروني:"
   },
   "footer": {
-    "office": "المكتب",
-    "addressLines": ["ص.ب 121، جوهرة الشاطئ،", "الرمز البريدي: 134،", "سلطنة عمان"],
-    "contact": "التواصل",
+    "office": "Office",
+    "addressLines": ["ص.ب 121، جوهرة الشاطي،", "الرمز البريدي: 134،", "سلطنة عمان"],
+    "contact": "اتصل بنا",
     "phonePrefix": "هاتف :",
     "faxPrefix": "فاكس :",
     "email": "البريد الإلكتروني",
-    "aboutUs": "من نحن",
+    "aboutUs": "معلومات عنا",
     "downloadAnnualReport": "تحميل التقرير السنوي",
-    "creditLines": ["تصميم وتطوير", "الموقع"],
+    "creditLines": ["Website Design", "and Development"],
     "credit": "Adventz",
     "copyright": "© 2026– 2027  www.smnpower.com",
     "siteLockAlt": "شعار SiteLock للأمان"
@@ -226,41 +234,41 @@
     "index": {
       "about": {
         "title": "عن إس إم إن باور",
-        "path": "من نحن",
+        "path": "معلومات عنا",
         "keywords": "عن من نحن الشركة شركة نبذة تعريف تاريخ لمحة شركتنا إس إم إن باور القابضة about company overview who we are smn power holding saog history profile"
       },
       "vision": {
-        "title": "الرؤية والرسالة",
-        "path": "من نحن",
+        "title": "الرسالة والرؤية",
+        "path": "معلومات عنا",
         "keywords": "رؤية الرؤية رسالة الرسالة قيم القيم هدف أهداف غاية استراتيجية vision mission values goal purpose strategy"
       },
       "barka": {
         "title": "محطة بركاء 2",
-        "path": "من نحن / المحطات",
+        "path": "معلومات عنا / المحطات",
         "keywords": "بركاء بركا محطة المحطة مياه المياه تحلية كهرباء الكهرباء قدرة إنتاج barka ii 2 plant iwpp water desalination power station capacity"
       },
       "rusail": {
         "title": "محطة الرسيل",
-        "path": "من نحن / المحطات",
+        "path": "معلومات عنا / المحطات",
         "keywords": "الرسيل رسيل محطة المحطة كهرباء الكهرباء غاز الغاز قدرة al rusail plant ipp power station capacity gas"
       },
       "facts": {
         "title": "إس إم إن باور بالأرقام",
-        "path": "من نحن / حقائق",
+        "path": "معلومات عنا / حقائق",
         "keywords": "أرقام الأرقام حقائق إحصائيات احصائيات قدرة ميجاواط مياه numbers facts figures capacity megawatt mw water statistics"
       },
       "shareholders": {
-        "title": "كبار المساهمين",
+        "title": "المؤسسون",
         "path": "المساهمون",
-        "keywords": "مساهمين المساهمين مساهمون المساهمون ملاك الملاك ملكية مالك مستثمرين حصة أسهم shareholders owners ownership investors share stake"
+        "keywords": "المؤسسون مؤسسين مساهمين المساهمين مساهمون المساهمون ملاك الملاك ملكية مالك مستثمرين حصة أسهم shareholders owners ownership investors share stake"
       },
       "kahrabel": {
-        "title": "كهربل م.م.ح",
+        "title": "كهربيل م.م.ح",
         "path": "المساهمون",
-        "keywords": "كهربل إنجي انجي مساهم kahrabel engie mena shareholder"
+        "keywords": "كهربيل كهربل إنجي انجي مساهم kahrabel engie mena shareholder"
       },
       "mubadala": {
-        "title": "شركة مبادلة القابضة للطاقة",
+        "title": "شركة مبادلة للطاقة القابضة",
         "path": "المساهمون",
         "keywords": "مبادلة أبوظبي ابوظبي مساهم mubadala abu dhabi power holding shareholder"
       },
@@ -290,23 +298,23 @@
         "keywords": "روابط الروابط مواقع وزارة الوزارة هيئة الهيئة نماء البورصة شركاء useful links ministry authority apsr opwp regulator partners websites"
       },
       "media": {
-        "title": "المركز الإعلامي",
-        "path": "الإعلام",
+        "title": "وسائل الإعلام",
+        "path": "وسائل الإعلام",
         "keywords": "إعلام الإعلام أخبار الأخبار خبر صحافة جديد فعاليات صور media news press latest updates events gallery"
       },
       "csrSolar": {
         "title": "مبادرة الطاقة الشمسية للمسؤولية الاجتماعية",
-        "path": "الإعلام / الأخبار",
+        "path": "وسائل الإعلام / الأخبار",
         "keywords": "شمسية الشمسية مدرسة المسؤولية الاجتماعية مجتمع المجتمع مبادرة csr solar school social responsibility community initiative"
       },
       "opal": {
         "title": "مذكرة تفاهم مع أوبال",
-        "path": "الإعلام / الأخبار",
+        "path": "وسائل الإعلام / الأخبار",
         "keywords": "أوبال اوبال مذكرة تفاهم رعاية المسؤولية الاجتماعية opal mou memorandum understanding csr sponsor"
       },
       "oer": {
         "title": "تصنيف OER لأفضل 20 شركة",
-        "path": "الإعلام / الأخبار",
+        "path": "وسائل الإعلام / الأخبار",
         "keywords": "تصنيف ترتيب أفضل جائزة المرتبة 17 oer top 20 ranking award 17th"
       },
       "annualReport": {

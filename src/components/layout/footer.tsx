@@ -163,7 +163,9 @@ export function Footer({ locale, dict, nav }: FooterProps) {
         <div data-area="blank" aria-hidden />
 
         <div data-area="copy" className={bandCell}>
-          <p className={`${bandText} ps-1`}>{f.copyright}</p>
+          <p className={`${bandText} ps-1`}>
+            <span dir="ltr">{f.copyright}</span>
+          </p>
         </div>
 
         <div data-area="lock" className={`${bandCell} sm:justify-end lg:justify-center`}>
