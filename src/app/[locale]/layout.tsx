@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans_Arabic, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -25,13 +26,27 @@ const poppins = Poppins({
   display: "swap",
 });
 
-// Only needed on /ar, so it is not preloaded on English pages.
-const plexArabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["300", "400", "500", "600", "700"],
+/**
+ * Droid Arabic Kufi, the client's Arabic face (Regular only, file supplied by
+ * them). It is limited to Arabic code points so Latin words and the Western
+ * digits inside Arabic copy stay in Poppins, and it has no metric fallback —
+ * that fallback would cover Latin too and win over Poppins. Only needed on
+ * /ar, so it is not preloaded on English pages.
+ */
+const droidArabicKufi = localFont({
+  src: "../../fonts/droid-arabic-kufi.woff2",
+  weight: "400",
+  style: "normal",
   variable: "--font-arabic",
   display: "swap",
   preload: false,
+  adjustFontFallback: false,
+  declarations: [
+    {
+      prop: "unicode-range",
+      value: "U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F",
+    },
+  ],
 });
 
 export function generateStaticParams() {
@@ -76,7 +91,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const { index, ...assistCopy } = dict.assist;
 
   return (
-    <html lang={htmlLang} dir={dir} className={`${poppins.variable} ${plexArabic.variable}`}>
+    <html lang={htmlLang} dir={dir} className={`${poppins.variable} ${droidArabicKufi.variable}`}>
       <body>
         {/* Without JS the preloader would never lift. */}
         <noscript>

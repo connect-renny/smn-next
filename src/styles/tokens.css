@@ -152,7 +152,14 @@
   --radius: 0rem;
 }
 
-/* Arabic: Plex Sans Arabic first, Poppins still covers Latin glyphs/digits. */
+/* Arabic: Droid Arabic Kufi for Arabic letters, Poppins for Latin and digits. */
 :root:lang(ar) {
   --font-body: var(--font-arabic), var(--font-poppins), Tahoma, Arial, sans-serif;
+}
+
+/* Arabic words on English pages (the language switcher's "العربية") opt in
+   with lang="ar". Only an explicit attribute matches, so on /ar pages it
+   touches nothing beyond those same links. */
+[lang="ar"]:not(:root) {
+  font-family: var(--font-arabic), var(--font-poppins), Tahoma, Arial, sans-serif;
 }
