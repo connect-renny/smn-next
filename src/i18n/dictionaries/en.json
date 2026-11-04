@@ -415,7 +415,6 @@
     },
     "map": {
       "ariaLabel": "From the world to the Sultanate of Oman: map of SMN locations",
-      "country": "Sultanate of Oman",
       "places": {
         "musandam": "Musandam (Sultanate of Oman)",
         "madha": "Madha (Sultanate of Oman)",
@@ -435,7 +434,14 @@
         "willayah": "Willayah / Town"
       },
       "note": "This map is not an authority on Administrative Boundaries.",
-      "keepScrolling": "Keep scrolling"
+      "keepScrolling": "Keep scrolling",
+      "scrollPrompt": "Scroll to travel to",
+      "journey": {
+        "label": "Map journey",
+        "world": "World",
+        "oman": "Oman",
+        "sites": "Our Sites"
+      }
     },
     "explore": {
       "title": "Explore Further",

@@ -100,6 +100,41 @@ test.describe("our company map", () => {
     expect(errors).toEqual([]);
   });
 
+  test("prompts on arrival, returns when the reader stalls, and the rail jumps", async ({
+    page,
+  }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/about/our-company");
+    await waitForPreloader(page);
+
+    const stage = page.locator(".oman-stage");
+    const prompt = stage.locator(".oman-prompt");
+    const rail = stage.getByRole("navigation", { name: "Map journey" });
+    const scrollToProgress = (progress: number) =>
+      page.evaluate((p) => {
+        const track = document.querySelector(".oman-stage")!.parentElement!;
+        const top = track.getBoundingClientRect().top + window.scrollY;
+        const span = track.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: top + p * span, behavior: "instant" });
+      }, progress);
+
+    await scrollToProgress(0);
+    await expect(prompt).toHaveAttribute("data-shown");
+    await expect(prompt).toContainText("Scroll to travel to Oman");
+    await expect(rail.getByRole("button", { name: "Our Sites" })).toBeVisible();
+
+    // Gone as soon as they scroll; back once they have stopped for a moment.
+    await scrollToProgress(0.15);
+    await expect(prompt).not.toHaveAttribute("data-shown");
+    await expect(prompt).toHaveAttribute("data-shown", "", { timeout: 8_000 });
+
+    // The last step lands on the finished map.
+    await rail.getByRole("button", { name: "Our Sites" }).click();
+    await expect(stage.getByText("MUSCAT")).toBeVisible();
+    await expect(rail.locator("[data-step]").last()).toHaveAttribute("data-reached");
+    expect(errors).toEqual([]);
+  });
+
   test("shows the finished map straight away with reduced motion", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/en/about/our-company");

@@ -19,8 +19,13 @@ export type GlobeData = {
 
 const RAD = Math.PI / 180;
 const MUSCAT = { lon: 58.41, lat: 23.59 };
-/** How far the globe travels on the way to Oman: nearly a full tour of the world. */
-const TOUR_DEGREES = 324;
+/** Where the opening spin starts, relative to Oman. */
+const START_LON_OFFSET = 324;
+/**
+ * The scroll makes one turn, not a fixed number of degrees: it has to land on Oman from
+ * wherever the idle spin left the globe, so it runs from half a turn to a turn and a half.
+ */
+const TOUR_MIN_DEGREES = 180;
 const STAR_COUNT = 170;
 const ORANGE = [0.953, 0.573, 0.0] as const;
 
@@ -87,7 +92,8 @@ export function computeView(
   const narrow = width < 768;
   const bounds = omanBounds(data);
 
-  const top = headerH + (narrow ? 14 : 20);
+  // Phones also keep the journey rail above the map.
+  const top = headerH + (narrow ? 56 : 20);
   const bottom = narrow ? 168 : Math.min(56, height * 0.06);
   const availW = narrow ? width - 28 : width * 0.6;
   const availH = height - top - bottom;
@@ -112,8 +118,8 @@ export function computeView(
 
 /** Scroll progress at which the map has landed and the markers should play. */
 export const MARKERS_AT = 0.86;
-/** Scroll progress at which the approach to Oman takes over from the idle spin. */
-export const IDLE_UNTIL = 0.3;
+/** Scroll progress at which the globe starts levelling out for Oman. */
+const SETTLE_FROM = 0.3;
 
 export type GlobeFrame = {
   lon: number;
@@ -143,12 +149,17 @@ export function globeFrame(
   data: GlobeData,
   idleLon: number,
 ): GlobeFrame {
-  const tour = smoother(segment(p, 0, 0.56));
-  const settle = smooth(segment(p, IDLE_UNTIL, 0.54));
+  // Eases out only: the very first scroll has to turn the globe visibly, then Oman
+  // arrives gently and holds while the lock-on ring closes around it.
+  const toured = 1 - segment(p, 0, 0.46);
+  const tour = 1 - toured * toured;
+  const settle = smooth(segment(p, SETTLE_FROM, 0.46));
   const dive = smoother(segment(p, 0.56, 0.84));
+  const turn =
+    TOUR_MIN_DEGREES + ((((START_LON_OFFSET + idleLon - TOUR_MIN_DEGREES) % 360) + 360) % 360);
 
   return {
-    lon: data.center.lon + TOUR_DEGREES * (1 - tour) + idleLon * (1 - settle),
+    lon: data.center.lon + turn * (1 - tour),
     lat: mix(14, data.center.lat, settle),
     roll: mix(-17, 0, settle),
     // Exponential, so the camera feels like it travels at one speed all the way in.
@@ -157,7 +168,8 @@ export function globeFrame(
     y: mix(view.globeY, view.mapY, dive),
     dive,
     worldOut: smooth(segment(p, 0.62, 0.76)),
-    seedHeat: smooth(segment(p, 0.4, 0.54)),
+    // Already warm on the opening globe, so Oman reads as the destination from the start.
+    seedHeat: mix(0.75, 1, smooth(segment(p, 0.4, 0.54))),
     seedOut: smooth(segment(p, 0.74, 0.82)),
     morph: segment(p, 0.62, 0.87),
     lock: smooth(segment(p, 0.44, 0.52)) * (1 - smooth(segment(p, 0.6, 0.67))),

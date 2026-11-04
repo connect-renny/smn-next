@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 
+import { useSmoothScroll } from "@/components/animations/smooth-scroll-provider";
 import { omanPlaces, type OmanPlaceKind } from "@/content/our-company";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { gsap, MOTION_OK, ScrollTrigger, useGSAP } from "@/lib/gsap";
@@ -12,7 +13,6 @@ import {
   createGlobeRenderer,
   drawStaticMap,
   globeFrame,
-  IDLE_UNTIL,
   MARKERS_AT,
   project,
   supportsWebGL,
@@ -40,9 +40,39 @@ const SIDE_CLASS = {
 } as const;
 
 const IDLE_DEG_PER_SECOND = 5;
+/** The globe spins by itself only until the first scroll; from then on scroll turns it. */
+const IDLE_SPIN_UNTIL = 0.0005;
 const MOUSE_NONE = -99999;
 /** Where the scroll hint bows out: phones sooner, since the legend takes that corner. */
 const HINT_UNTIL = { narrow: MARKERS_AT - 0.04, wide: 0.97 };
+/** The centred prompt: gone at the first scroll, back if the reader stalls before the dive. */
+const PROMPT_AT_START = 0.012;
+const PROMPT_UNTIL = 0.56;
+/** Seconds without scrolling before the globe nudges, then between further nudges. */
+const NUDGE_AFTER = 2.2;
+const NUDGE_EVERY = 7;
+const NUDGE_LIMIT = 4;
+/** Oman within this many degrees of the globe's front counts as already in view. */
+const NUDGE_IN_VIEW = 62;
+/** Where a spin leaves Oman: left of centre, with the whole front of the globe to drift across. */
+const NUDGE_LANDING = -16;
+
+const JOURNEY = [
+  { key: "world", at: 0 },
+  { key: "oman", at: 0.5 },
+  { key: "sites", at: MARKERS_AT + 0.02 },
+] as const;
+const SITES_SCROLL_TO = 0.93;
+
+const wrap360 = (deg: number) => ((deg % 360) + 360) % 360;
+const wrap180 = (deg: number) => wrap360(deg + 180) - 180;
+const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
+
+/** Rail fill: the steps sit evenly spaced, though they fall unevenly along the scroll. */
+const railFill = (p: number) =>
+  p < JOURNEY[1].at
+    ? (p / JOURNEY[1].at) * 0.5
+    : 0.5 + clamp01((p - JOURNEY[1].at) / (JOURNEY[2].at - JOURNEY[1].at)) * 0.5;
 
 /**
  * The pinned world-to-Oman sequence. CSS `sticky` holds the stage (no pin spacer to
@@ -56,10 +86,20 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
   const halo = useRef<HTMLDivElement>(null);
   const lockRing = useRef<HTMLDivElement>(null);
   const scrollHint = useRef<HTMLDivElement>(null);
+  const prompt = useRef<HTMLDivElement>(null);
+  const rail = useRef<HTMLElement>(null);
   const backdrop = useRef<HTMLDivElement>(null);
   const markers = useRef<HTMLDivElement>(null);
   const [isStatic, setStatic] = useState(false);
   const [focus, setFocus] = useState<OmanPlaceKind | null>(null);
+  const { scrollTo } = useSmoothScroll();
+
+  const jumpTo = (at: number) => {
+    const root = track.current;
+    if (!root) return;
+    const top = root.getBoundingClientRect().top + window.scrollY;
+    scrollTo(top + at * (root.offsetHeight - window.innerHeight));
+  };
 
   useGSAP(
     () => {
@@ -117,7 +157,6 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
         const labels = markerLayer.querySelectorAll("[data-marker-label]");
         const pulses = markerLayer.querySelectorAll("[data-marker-pulse]");
         const extras = stageEl.querySelectorAll("[data-map-extra]");
-        const country = markerLayer.querySelector("[data-map-country]");
         const reveal = gsap
           .timeline({ paused: true })
           .fromTo(
@@ -137,12 +176,6 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
               stagger: 0.07,
             },
             0.14,
-          )
-          .fromTo(
-            country,
-            { autoAlpha: 0, letterSpacing: "0.3em" },
-            { autoAlpha: 1, letterSpacing: "0.04em", duration: 1.3, ease: "expo.out" },
-            0.5,
           )
           .fromTo(
             extras,
@@ -206,15 +239,64 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
         });
         visibility.observe(stageEl);
 
-        let idle = 0;
         let time = 0;
         let waveStart = -1;
         let markersShown = false;
+
+        // ─── The nudge: when the reader stalls, the globe shows them where it's heading ───
+        const motion = { idle: 0, lean: 0, zoom: 0 };
+        let nudge: gsap.core.Timeline | null = null;
+        let nudgeCount = 0;
+        let lastMove = 0;
+        let lastTarget = target;
+        let lastReveal = revealTarget;
+
+        const startNudge = (lon: number) => {
+          const offset = wrap180(data.center.lon - lon);
+          // Only the opening spin can be pushed; past that, scroll alone owns the rotation.
+          const spin = progress < IDLE_SPIN_UNTIL && Math.abs(offset) > NUDGE_IN_VIEW;
+          const landed = spin ? NUDGE_LANDING : offset;
+          nudge = gsap.timeline({ onComplete: () => (nudge = null) });
+          if (spin) {
+            const turn = wrap360(NUDGE_LANDING - offset);
+            nudge.to(motion, {
+              idle: motion.idle - turn,
+              duration: 1.1 + turn / 360,
+              ease: "power2.inOut",
+            });
+          }
+          nudge.to(motion, {
+            lean: Math.max(-30, Math.min(30, landed * 0.55)),
+            zoom: 0.05,
+            duration: 0.9,
+            ease: "sine.inOut",
+          });
+          nudge.to(motion, { lean: 0, zoom: 0, duration: 1.3, ease: "sine.inOut" }, "+=0.5");
+        };
+
+        const cancelNudge = () => {
+          if (!nudge) return;
+          nudge.kill();
+          nudge = null;
+          gsap.to(motion, { lean: 0, zoom: 0, duration: 0.6, ease: "power2.out", overwrite: true });
+        };
+
+        let railFilled = -1;
+        const railSteps = rail.current?.querySelectorAll<HTMLElement>("[data-step]");
 
         const tick = (_: number, deltaMs: number) => {
           if (!onScreen) return;
           const dt = Math.min(deltaMs, 50) / 1000;
           time += dt;
+
+          if (target !== lastTarget || revealTarget !== lastReveal) {
+            lastTarget = target;
+            lastReveal = revealTarget;
+            lastMove = time;
+            nudgeCount = 0;
+            cancelNudge();
+          }
+          const stillFor = time - lastMove;
 
           // A second smoothing stage, so touch and stepped wheels glide as well.
           const ease = 1 - Math.exp(-dt * 7);
@@ -223,13 +305,26 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
           leanX += (aimX - leanX) * (1 - Math.exp(-dt * 3.5));
           leanY += (aimY - leanY) * (1 - Math.exp(-dt * 3.5));
 
-          // Spins by itself until the approach to Oman begins; then scroll has sole charge.
-          if (progress < IDLE_UNTIL) idle = (idle - dt * IDLE_DEG_PER_SECOND) % 360;
+          if (progress < IDLE_SPIN_UNTIL) motion.idle -= dt * IDLE_DEG_PER_SECOND;
+          motion.idle = wrap360(motion.idle);
 
-          const frame = globeFrame(progress, view, data, idle);
+          const frame = globeFrame(progress, view, data, motion.idle);
+
+          if (
+            !nudge &&
+            revealTarget >= 1 &&
+            progress < MARKERS_AT - 0.02 &&
+            nudgeCount < NUDGE_LIMIT &&
+            stillFor >= NUDGE_AFTER + nudgeCount * NUDGE_EVERY
+          ) {
+            nudgeCount += 1;
+            startNudge(frame.lon);
+          }
+
           const onGlobe = 1 - frame.dive;
-          frame.lon += leanX * 9 * onGlobe;
+          frame.lon += (leanX * 9 + motion.lean) * onGlobe;
           frame.lat -= leanY * 6 * onGlobe;
+          frame.r *= 1 + motion.zoom;
 
           const offsetX = leanX * -9 * frame.dive;
           const offsetY = leanY * -7 * frame.dive;
@@ -282,6 +377,25 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
 
           const hintUntil = view.width < 768 ? HINT_UNTIL.narrow : HINT_UNTIL.wide;
           scrollHint.current?.toggleAttribute("data-shown", revealed > 0.7 && progress < hintUntil);
+
+          prompt.current?.toggleAttribute(
+            "data-shown",
+            revealed > 0.7 &&
+              progress < PROMPT_UNTIL &&
+              (progress < PROMPT_AT_START || stillFor >= NUDGE_AFTER),
+          );
+
+          if (rail.current) {
+            rail.current.toggleAttribute("data-shown", revealed > 0.7);
+            const filled = Math.round(railFill(progress) * 500) / 500;
+            if (filled !== railFilled) {
+              railFilled = filled;
+              rail.current.style.setProperty("--fill", String(filled));
+              railSteps?.forEach((step, i) =>
+                step.toggleAttribute("data-reached", progress >= JOURNEY[i].at - 0.01),
+              );
+            }
+          }
         };
         gsap.ticker.add(tick);
 
@@ -291,6 +405,8 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
           visibility.disconnect();
           stageEl.removeEventListener("pointermove", onMove);
           stageEl.removeEventListener("pointerleave", onLeave);
+          nudge?.kill();
+          gsap.killTweensOf(motion);
           pin.kill();
           entrance.kill();
           reveal.kill();
@@ -329,7 +445,7 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
   return (
     <div
       ref={track}
-      className={cn("relative h-[560svh] motion-reduce:h-auto", isStatic && "h-auto")}
+      className={cn("relative h-[400svh] motion-reduce:h-auto", isStatic && "h-auto")}
     >
       <div
         ref={stage}
@@ -366,23 +482,6 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
           ref={markers}
           className={cn("oman-markers absolute inset-0", !isStatic && "invisible")}
         >
-          <p
-            data-lon="55.55"
-            data-lat="20.75"
-            className="absolute -translate-x-1/2 -translate-y-1/2"
-          >
-            <span
-              data-map-country
-              dir="auto"
-              className={cn(
-                "oman-marker-label block text-[clamp(13px,1.45vw,27px)] font-medium tracking-[0.04em] whitespace-nowrap",
-                !isStatic && "invisible",
-              )}
-            >
-              {copy.country}
-            </span>
-          </p>
-
           <ul>
             {omanPlaces.map((place) => {
               const label = place.label ? copy.places[place.label] : null;
@@ -423,6 +522,34 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
           </span>
           <span className="oman-scroll-hint-line" />
         </div>
+
+        <div ref={prompt} aria-hidden className="oman-prompt">
+          <span dir="auto" className="oman-prompt-text">
+            {copy.scrollPrompt} <em>{copy.journey.oman}</em>
+          </span>
+          <span className="oman-prompt-line" />
+        </div>
+
+        {!isStatic && (
+          <nav ref={rail} aria-label={copy.journey.label} className="oman-rail">
+            <span aria-hidden className="oman-rail-track">
+              <span className="oman-rail-fill" />
+            </span>
+            <ol>
+              {JOURNEY.map(({ key, at }) => (
+                <li key={key} data-step>
+                  <button
+                    type="button"
+                    onClick={() => jumpTo(key === "sites" ? SITES_SCROLL_TO : at)}
+                  >
+                    <span aria-hidden className="oman-rail-dot" />
+                    <span dir="auto">{copy.journey[key]}</span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
 
         <div className="absolute right-20 bottom-3 left-3.5 flex flex-col gap-2 md:right-[clamp(84px,6vw,115px)] md:bottom-[clamp(16px,3vw,48px)] md:left-auto md:w-[clamp(220px,15vw,288px)]">
           <ul

@@ -245,6 +245,207 @@
     }
   }
 
+  /* The centred prompt on the opening globe, back whenever the reader stalls. */
+  .oman-prompt {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    translate: -50% 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7em;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    font-size: clamp(12px, 0.8vw, 15px);
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.45s ease-out,
+      translate 0.45s ease-out;
+
+    &[data-shown] {
+      opacity: 1;
+      translate: -50% 0;
+    }
+  }
+
+  .oman-prompt-text {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-shadow: 0 0 18px rgb(4 14 41 / 0.95);
+
+    em {
+      font-style: normal;
+      color: var(--color-orange);
+    }
+
+    &:where(:lang(ar)) {
+      letter-spacing: normal;
+    }
+  }
+
+  /* Runs off the foot of the screen, to show the way on is down. */
+  .oman-prompt-line {
+    position: relative;
+    width: 1px;
+    height: clamp(26px, 4.4svh, 44px);
+    overflow: hidden;
+    background: rgb(255 255 255 / 0.3);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--color-orange);
+      animation: oman-scroll-line 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+  }
+
+  /* World → Oman → Our Sites: down the left on desktop, across the top on phones. */
+  .oman-rail {
+    --dot: 9px;
+    --row: 1.9em;
+
+    position: absolute;
+    left: clamp(20px, 3vw, 58px);
+    top: calc(var(--header-h) + clamp(14px, 3.5svh, 44px));
+    height: clamp(116px, 20svh, 190px);
+    font-size: clamp(12px, 0.8vw, 15px);
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.5s ease-out,
+      visibility 0.5s;
+
+    &[data-shown] {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    ol {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    li {
+      opacity: 0.6;
+      transition: opacity 0.3s;
+
+      &[data-reached] {
+        opacity: 1;
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+      height: var(--row);
+      cursor: pointer;
+      white-space: nowrap;
+
+      &:hover .oman-rail-dot {
+        scale: 1.35;
+      }
+    }
+
+    @media (width < 48rem) {
+      --row: 2.9em;
+
+      left: 16px;
+      right: 16px;
+      top: calc(var(--header-h) + 6px);
+      height: auto;
+
+      ol {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      li:nth-child(2) {
+        justify-self: center;
+      }
+
+      li:nth-child(3) {
+        justify-self: end;
+      }
+
+      button {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0.35em;
+        padding-top: 0.5em;
+      }
+
+      li:nth-child(2) button {
+        align-items: center;
+      }
+
+      li:nth-child(3) button {
+        align-items: flex-end;
+      }
+    }
+  }
+
+  .oman-rail-dot {
+    flex: none;
+    width: var(--dot);
+    height: var(--dot);
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background: #0a1f4e;
+    transition:
+      background-color 0.3s,
+      border-color 0.3s,
+      scale 0.2s;
+
+    [data-reached] & {
+      background: var(--color-orange);
+      border-color: var(--color-orange);
+    }
+  }
+
+  .oman-rail-track {
+    position: absolute;
+    left: calc(var(--dot) / 2);
+    top: calc(var(--row) / 2);
+    bottom: calc(var(--row) / 2);
+    width: 1px;
+    background: rgb(255 255 255 / 0.3);
+
+    @media (width < 48rem) {
+      left: calc(var(--dot) / 2);
+      right: calc(var(--dot) / 2);
+      top: calc(0.5em + var(--dot) / 2);
+      bottom: auto;
+      width: auto;
+      height: 1px;
+    }
+  }
+
+  .oman-rail-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--color-orange);
+    transform-origin: top;
+    scale: 1 var(--fill, 0);
+
+    @media (width < 48rem) {
+      transform-origin: left;
+      scale: var(--fill, 0) 1;
+    }
+  }
+
   @keyframes oman-scroll-line {
     from {
       translate: 0 -100%;
