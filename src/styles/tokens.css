@@ -25,6 +25,14 @@
   --color-report: #4eb95b;
   --color-report-dark: #43a550;
 
+  /* ─── Inner-page diagrams ─── */
+  --color-page-copy: #4a4a4a;
+  --color-page-tint: #f8f8f8;
+  --color-diagram-orange: #f39200;
+  --color-diagram-navy: #1f3a84;
+  --color-diagram-green: #71bf44;
+  --color-diagram-dots: #7d7d7d;
+
   /* ─── Fluid type scale (values from the 1920 comp, scaled by viewport) ─── */
   --text-hero: clamp(2.125rem, 4.8vw, 5.75rem);
   --text-nav: clamp(11px, 0.68vw, 13px);
@@ -38,6 +46,10 @@
   --text-footer: clamp(14px, 0.833vw, 16px);
   --text-footer-sm: clamp(12px, 0.73vw, 14px);
   --text-about-title: clamp(22px, 1.9vw, 36.5px);
+  --text-page-title: clamp(28px, 2.5vw, 48px);
+  --text-page-body: clamp(14px, 0.94vw, 18px);
+  --text-lead: clamp(14px, 1.02vw, 19.6px);
+  --text-hero-fact: clamp(22px, 1.56vw, 30px);
   --text-fact-label: clamp(14px, 0.95vw, 18.3px);
   --text-fact-value: clamp(30px, 2.24vw, 43px);
   --text-fact-unit: clamp(22px, 1.82vw, 35px);

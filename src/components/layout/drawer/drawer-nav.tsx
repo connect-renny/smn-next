@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import Link from "next/link";
 
 import { newTab, type ResolvedLink, type ResolvedNavigation } from "@/lib/nav";
@@ -24,9 +24,15 @@ const subLink = "text-sm font-normal text-[#5f6368] uppercase transition-colors 
  * reference). Used below 1024px only, where the header's own nav is hidden.
  */
 export function DrawerNav({ nav, home, label, onNavigate, className }: DrawerNavProps) {
+  const baseId = useId();
   const [expanded, setExpanded] = useState<string | null>(null);
   const groups = nav.main.filter((group) => group.children.length);
-  const flatLinks = [...nav.main.filter((group) => !group.children.length), ...nav.utility];
+  const flatLinks = [
+    ...nav.main.flatMap((group) =>
+      group.href && !group.children.length ? [{ ...group, href: group.href }] : [],
+    ),
+    ...nav.utility,
+  ];
 
   const renderLink = (link: ResolvedLink, linkClass: string) => (
     <Link
@@ -43,16 +49,16 @@ export function DrawerNav({ nav, home, label, onNavigate, className }: DrawerNav
     <nav aria-label={label} className={cn("flex flex-col gap-3.5", className)}>
       {renderLink(home, topLink)}
 
-      {groups.map((group) => {
-        const isOpen = expanded === group.href;
-        const panelId = `site-menu-${group.href.replace(/\W+/g, "-")}`;
+      {groups.map((group, index) => {
+        const isOpen = expanded === group.label;
+        const panelId = `${baseId}-${index}`;
         return (
-          <div key={group.href}>
+          <div key={group.label}>
             <button
               type="button"
               aria-expanded={isOpen}
               aria-controls={panelId}
-              onClick={() => setExpanded(isOpen ? null : group.href)}
+              onClick={() => setExpanded(isOpen ? null : group.label)}
               className={cn(
                 topLink,
                 "flex w-full items-center justify-between py-1 text-start",

@@ -1,7 +1,8 @@
 import type { Href, LabelKey } from "./routes";
 
 export type NavLink = { label: LabelKey; href: Href };
-export type NavGroup = NavLink & { children?: NavLink[] };
+/** A group without `href` is a plain label that only opens its menu. */
+export type NavGroup = { label: LabelKey; href?: Href; children?: NavLink[] };
 
 /** Top utility bar (above the main nav). Language switch is rendered separately. */
 export const utilityNav: NavLink[] = [
@@ -14,7 +15,6 @@ export const utilityNav: NavLink[] = [
 export const mainNav: NavGroup[] = [
   {
     label: "aboutUs",
-    href: { section: "about" },
     children: [
       { label: "ourCompany", href: { page: "about/our-company" } },
       { label: "visionMission", href: { page: "about/vision-mission" } },

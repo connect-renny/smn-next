@@ -23,6 +23,7 @@ const CLIP_FROM = {
  *  - `data-animate="clip"`      image wipe from the bottom edge
  *  - `data-animate="clip-start"` image wipe from the reading edge (RTL aware)
  *  - `data-parallax`            the frame's <img> drifts through a 1.2× crop
+ *  - `data-drift=".8"`          the frame's <img> moves at that share of scroll speed, uncropped
  *
  * Everything is reverted on unmount (useGSAP context) and skipped entirely for
  * reduced-motion users, who simply see the final state.
@@ -68,6 +69,30 @@ export function useScrollAnimations(scope: RefObject<HTMLElement | null>) {
               duration: 1.1,
               ease: "expo.out",
               scrollTrigger: { trigger: el, start: "top 80%", once: true },
+            },
+          );
+        });
+
+        // ─── Drifting photos: same size as their frame, moving at a share of scroll speed ───
+        gsap.utils.toArray<HTMLElement>("[data-drift]", root).forEach((frame) => {
+          const img = frame.querySelector("img");
+          if (!img) return;
+          const rate = 1 - Number(frame.dataset.drift);
+          // Zero offset when the frame is centred on screen, ± half the trigger's travel.
+          const reach = () => (rate * (window.innerHeight + frame.offsetHeight)) / 2;
+          gsap.fromTo(
+            img,
+            { y: () => -reach() },
+            {
+              y: () => reach(),
+              ease: "none",
+              scrollTrigger: {
+                trigger: frame,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
             },
           );
         });

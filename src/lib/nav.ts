@@ -10,11 +10,16 @@ export type ResolvedLink = { label: string; href: string; external: boolean };
 export const newTab = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 export const isExternal = (href: string) => /^https?:\/\//.test(href);
-export type ResolvedGroup = ResolvedLink & { children: ResolvedLink[]; match: string[] };
+/** `href` is null for a label that only opens its menu (About Us). */
+export type ResolvedGroup = Omit<ResolvedLink, "href"> & {
+  href: string | null;
+  children: ResolvedLink[];
+  match: string[];
+};
 
 /** Path prefixes (after the locale) that light up each top-level item. */
-function matchFor(href: Href, children: NavLink[] = []): string[] {
-  const pages = [href, ...children.map((c) => c.href)].flatMap((h) =>
+function matchFor(href: Href | undefined, children: NavLink[] = []): string[] {
+  const pages = [...(href ? [href] : []), ...children.map((c) => c.href)].flatMap((h) =>
     "page" in h ? [h.page] : [],
   );
   const prefixes = new Set(pages.map((p) => p.split("/")[0]));
@@ -31,7 +36,9 @@ export function resolveNavigation(locale: Locale, dict: Dictionary) {
   return {
     utility: utilityNav.map((l) => resolveLink(locale, dict, l)),
     main: mainNav.map<ResolvedGroup>((group) => ({
-      ...resolveLink(locale, dict, group),
+      ...(group.href
+        ? resolveLink(locale, dict, { label: group.label, href: group.href })
+        : { label: dict.labels[group.label], href: null, external: false }),
       match: matchFor(group.href, group.children),
       children: (group.children ?? []).map((c) => resolveLink(locale, dict, c)),
     })),

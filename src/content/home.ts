@@ -145,7 +145,7 @@ export const newsItems: { key: NewsKey; image: string; href: Href }[] = [
 
 /** Where each Assist search result leads (keys match `assist.index`). */
 export const assistTargets: Record<keyof Dictionary["assist"]["index"], Href> = {
-  about: { section: "about" },
+  about: { page: "about/our-company" },
   vision: { page: "about/vision-mission" },
   barka: { page: "plants/barka-ii" },
   rusail: { page: "plants/al-rusail" },

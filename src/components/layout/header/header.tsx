@@ -6,7 +6,7 @@ import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { newTab, type ResolvedNavigation } from "@/lib/nav";
 
-import { ActiveLink } from "./active-link";
+import { ActiveLink, ActiveMenuLabel, NavItem } from "./active-link";
 import { LanguageSwitcher } from "./language-switcher";
 import { SiteDrawer } from "../drawer/drawer";
 import { StickyHeader } from "./sticky-header";
@@ -104,11 +104,18 @@ export function Header({ locale, dict, nav }: HeaderProps) {
                   </li>
 
                   {nav.main.map((group) => (
-                    <li key={group.href} className="nav-item group/nav relative">
-                      <ActiveLink href={group.href} match={group.match} className={navLink}>
-                        {group.label}
-                        {group.children.length > 0 && <i className="caret" aria-hidden />}
-                      </ActiveLink>
+                    <NavItem key={group.label} className="nav-item group/nav relative">
+                      {group.href ? (
+                        <ActiveLink href={group.href} match={group.match} className={navLink}>
+                          {group.label}
+                          {group.children.length > 0 && <i className="caret" aria-hidden />}
+                        </ActiveLink>
+                      ) : (
+                        <ActiveMenuLabel match={group.match} className={navLink}>
+                          {group.label}
+                          <i className="caret" aria-hidden />
+                        </ActiveMenuLabel>
+                      )}
 
                       {group.children.length > 0 && (
                         <ul className="invisible absolute -start-[18px] top-full min-w-66 translate-y-2.5 overflow-hidden rounded-2xl border-t-2 border-orange bg-navy-deep/96 py-2.5 opacity-0 shadow-2xl transition-[opacity,translate,visibility] duration-300 ease-out group-focus-within/nav:visible group-focus-within/nav:translate-y-0 group-focus-within/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:opacity-100">
@@ -125,7 +132,7 @@ export function Header({ locale, dict, nav }: HeaderProps) {
                           ))}
                         </ul>
                       )}
-                    </li>
+                    </NavItem>
                   ))}
                 </ul>
               </nav>

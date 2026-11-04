@@ -22,7 +22,6 @@ export type LabelKey = keyof Dictionary["labels"];
  * the home section that already covers the topic.
  */
 export const innerPages = {
-  "about/our-company": { label: "ourCompany", related: "about" },
   "about/vision-mission": { label: "visionMission", related: "about" },
   "about/main-shareholders": { label: "mainShareholders", related: "shareholders" },
   "plants/barka-ii": { label: "barkaPlant", related: "about" },
@@ -58,7 +57,12 @@ export const innerPages = {
   "media/oer-top-20": { label: "newsOerTop20", related: "media" },
 } as const satisfies Record<string, { label: LabelKey; related: SectionId | null }>;
 
-export type PageSlug = keyof typeof innerPages;
+type PlaceholderSlug = keyof typeof innerPages;
+
+/** Pages with real content: each has its own route folder under `app/[locale]`. */
+export const contentPages = ["about/our-company"] as const;
+
+export type PageSlug = PlaceholderSlug | (typeof contentPages)[number];
 
 /** Downloads configured per language in `siteConfig` (see `resolveHref`). */
 export type DocumentId = "annualReport";
@@ -66,7 +70,7 @@ export type DocumentId = "annualReport";
 export type Href =
   { section: SectionId } | { page: PageSlug } | { external: string } | { document: DocumentId };
 
-export function isPageSlug(value: string): value is PageSlug {
+export function isPageSlug(value: string): value is PlaceholderSlug {
   return Object.hasOwn(innerPages, value);
 }
 

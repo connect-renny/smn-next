@@ -57,11 +57,52 @@ test.describe("pages", () => {
   });
 
   test("an inner page shows 'coming soon', an unknown page is a 404", async ({ page }) => {
-    await page.goto("/en/about/our-company");
+    await page.goto("/en/about/vision-mission");
     await expect(page.getByText("Coming soon", { exact: false }).first()).toBeVisible();
 
     const missing = await page.goto("/en/this-page-does-not-exist");
     expect(missing?.status()).toBe(404);
+  });
+});
+
+test.describe("our company map", () => {
+  test("scrolls from the globe to a labelled Oman, then the explore cards", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/about/our-company");
+    await waitForPreloader(page);
+
+    const stage = page.locator(".oman-stage");
+    const muscat = stage.getByText("MUSCAT");
+    await stage.scrollIntoViewIfNeeded();
+    await expect(muscat).toBeHidden();
+
+    // The foot of the pinned track is the finished map.
+    await page.evaluate(() => {
+      const track = document.querySelector(".oman-stage")!.parentElement!;
+      const end = track.getBoundingClientRect().bottom + window.scrollY - window.innerHeight;
+      window.scrollTo({ top: end, behavior: "instant" });
+    });
+    await expect(muscat).toBeVisible();
+    await expect(stage.getByText("Salalah")).toBeInViewport();
+
+    // The cards fade in as they are reached.
+    await page
+      .locator("h2", { hasText: "Explore Further" })
+      .evaluate((heading) => heading.scrollIntoView({ block: "center", behavior: "instant" }));
+    const cards = page.getByRole("main").getByRole("link", {
+      name: /Mission & Vision|Main Shareholders/,
+    });
+    await expect(cards).toHaveCount(2);
+    await expect(cards.first()).toHaveAttribute("href", "/en/about/vision-mission");
+    expect(errors).toEqual([]);
+  });
+
+  test("shows the finished map straight away with reduced motion", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/en/about/our-company");
+    const stage = page.locator(".oman-stage");
+    await stage.scrollIntoViewIfNeeded();
+    await expect(stage.getByText("MUSCAT")).toBeVisible();
   });
 });
 
