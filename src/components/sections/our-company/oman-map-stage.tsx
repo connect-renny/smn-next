@@ -41,6 +41,8 @@ const SIDE_CLASS = {
 
 const IDLE_DEG_PER_SECOND = 5;
 const MOUSE_NONE = -99999;
+/** Where the scroll hint bows out: phones sooner, since the legend takes that corner. */
+const HINT_UNTIL = { narrow: MARKERS_AT - 0.04, wide: 0.97 };
 
 /**
  * The pinned world-to-Oman sequence. CSS `sticky` holds the stage (no pin spacer to
@@ -53,6 +55,7 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
   const canvas = useRef<HTMLCanvasElement>(null);
   const halo = useRef<HTMLDivElement>(null);
   const lockRing = useRef<HTMLDivElement>(null);
+  const scrollHint = useRef<HTMLDivElement>(null);
   const backdrop = useRef<HTMLDivElement>(null);
   const markers = useRef<HTMLDivElement>(null);
   const [isStatic, setStatic] = useState(false);
@@ -276,6 +279,9 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
             lockRing.current.style.opacity = String(frame.lock);
           }
           if (backdrop.current) backdrop.current.style.opacity = String(frame.backdrop);
+
+          const hintUntil = view.width < 768 ? HINT_UNTIL.narrow : HINT_UNTIL.wide;
+          scrollHint.current?.toggleAttribute("data-shown", revealed > 0.7 && progress < hintUntil);
         };
         gsap.ticker.add(tick);
 
@@ -409,6 +415,13 @@ export function OmanMapStage({ copy }: { copy: Dictionary["ourCompany"]["map"] }
               );
             })}
           </ul>
+        </div>
+
+        <div ref={scrollHint} aria-hidden className="oman-scroll-hint">
+          <span dir="auto" className="oman-scroll-hint-text">
+            {copy.keepScrolling}
+          </span>
+          <span className="oman-scroll-hint-line" />
         </div>
 
         <div className="absolute right-20 bottom-3 left-3.5 flex flex-col gap-2 md:right-[clamp(84px,6vw,115px)] md:bottom-[clamp(16px,3vw,48px)] md:left-auto md:w-[clamp(220px,15vw,288px)]">

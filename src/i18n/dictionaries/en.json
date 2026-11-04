@@ -434,7 +434,8 @@
         "capital": "Capital",
         "willayah": "Willayah / Town"
       },
-      "note": "This map is not an authority on Administrative Boundaries."
+      "note": "This map is not an authority on Administrative Boundaries.",
+      "keepScrolling": "Keep scrolling"
     },
     "explore": {
       "title": "Explore Further",

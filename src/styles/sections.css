@@ -194,6 +194,76 @@
     backdrop-filter: blur(10px);
   }
 
+  /* The nudge for anyone who pauses mid-sequence: a line that keeps flowing downward. */
+  .oman-scroll-hint {
+    position: absolute;
+    left: clamp(20px, 3vw, 58px);
+    bottom: clamp(64px, 5vw, 96px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85em;
+    font-size: clamp(12px, 0.8vw, 15px);
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-out;
+
+    &[data-shown] {
+      opacity: 1;
+    }
+  }
+
+  .oman-scroll-hint-line {
+    position: relative;
+    width: 1px;
+    height: clamp(48px, 3.6vw, 70px);
+    overflow: hidden;
+    background: rgb(255 255 255 / 0.35);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--color-orange);
+      animation: oman-scroll-line 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+  }
+
+  .oman-scroll-hint-text {
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    animation: oman-scroll-text 2s ease-in-out infinite;
+
+    /* Letter-spacing would pull joined Arabic letters apart. */
+    &:where(:lang(ar)) {
+      letter-spacing: normal;
+    }
+  }
+
+  @keyframes oman-scroll-line {
+    from {
+      translate: 0 -100%;
+    }
+    to {
+      translate: 0 100%;
+    }
+  }
+
+  @keyframes oman-scroll-text {
+    0%,
+    100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
   @keyframes oman-lock-spin {
     to {
       rotate: 360deg;

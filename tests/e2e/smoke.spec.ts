@@ -75,6 +75,8 @@ test.describe("our company map", () => {
     const muscat = stage.getByText("MUSCAT");
     await stage.scrollIntoViewIfNeeded();
     await expect(muscat).toBeHidden();
+    const hint = stage.locator(".oman-scroll-hint");
+    await expect(hint).toHaveAttribute("data-shown");
 
     // The foot of the pinned track is the finished map.
     await page.evaluate(() => {
@@ -83,6 +85,7 @@ test.describe("our company map", () => {
       window.scrollTo({ top: end, behavior: "instant" });
     });
     await expect(muscat).toBeVisible();
+    await expect(hint).not.toHaveAttribute("data-shown");
     await expect(stage.getByText("Salalah")).toBeInViewport();
 
     // The cards fade in as they are reached.
