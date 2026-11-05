@@ -8,11 +8,27 @@ import { resolveHref } from "@/config/routes";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
-type BoardHeroProps = { locale: Locale; dict: Dictionary; nextSectionId: string };
+type InnerHeroProps = {
+  locale: Locale;
+  dict: Dictionary;
+  /** The menu group this page sits under; the page itself closes the trail. */
+  parent: { label: string; href: string };
+  current: string;
+  titleLines: readonly string[];
+  text?: string;
+  nextSectionId: string;
+};
 
-export function BoardHero({ locale, dict, nextSectionId }: BoardHeroProps) {
-  const t = dict.boardOfDirectors;
-
+/** The navy-to-green opening of an inner page, with the SMN mark cropped by the end edge. */
+export function InnerHero({
+  locale,
+  dict,
+  parent,
+  current,
+  titleLines,
+  text,
+  nextSectionId,
+}: InnerHeroProps) {
   return (
     <section className="company-hero section-fit text-white">
       <CompanyHeroMark />
@@ -24,16 +40,13 @@ export function BoardHero({ locale, dict, nextSectionId }: BoardHeroProps) {
             label={dict.a11y.breadcrumb}
             items={[
               { label: dict.a11y.home, href: resolveHref(locale, { section: "home" }) },
-              {
-                label: dict.labels.governance,
-                href: resolveHref(locale, { section: "governance" }),
-              },
-              { label: dict.labels.boardOfDirectors },
+              parent,
+              { label: current },
             ]}
           />
 
           <h1 className="mt-[clamp(14px,1.35vw,26px)] text-hero leading-[0.92] font-light tracking-[-0.015em] max-lg:leading-[1.02] rtl:tracking-normal">
-            {t.titleLines.map((line, i) => (
+            {titleLines.map((line, i) => (
               <span key={i} className="-mb-[0.14em] block overflow-hidden pb-[0.2em]">
                 <span data-hero-line className="block">
                   <Lines lines={[line]} />
@@ -42,12 +55,14 @@ export function BoardHero({ locale, dict, nextSectionId }: BoardHeroProps) {
             ))}
           </h1>
 
-          <p
-            data-hero-fade
-            className="mt-title max-w-[840px] text-[clamp(14px,0.94vw,18px)] leading-[1.34] tracking-[-0.045em] max-lg:tracking-[-0.02em] lg:max-w-[42vw] rtl:tracking-normal"
-          >
-            <Lines lines={[t.text]} />
-          </p>
+          {text && (
+            <p
+              data-hero-fade
+              className="mt-title max-w-[840px] text-[clamp(14px,0.94vw,18px)] leading-[1.34] tracking-[-0.045em] max-lg:tracking-[-0.02em] lg:max-w-[42vw] rtl:tracking-normal"
+            >
+              <Lines lines={[text]} />
+            </p>
+          )}
         </div>
 
         <a

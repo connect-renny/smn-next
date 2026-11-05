@@ -274,6 +274,188 @@
     }
   }
 
+  /* ─── Dividends Disclosures ─────────────────────────────────────────────── */
+  .dividend-latest {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(22px, 1.75vw, 34px);
+    border-radius: 12px;
+    background: linear-gradient(155deg, #0e3362 0%, #1b5f6c 52%, #3fa95e 100%);
+
+    @media (width >= 64rem) {
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+    }
+
+    /* The SMN mark, cropped by the card and faint behind the figure. */
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-start: -8%;
+      inset-inline-end: -26%;
+      width: 72%;
+      aspect-ratio: 52.8 / 71.8;
+      background: url("/images/our-company/hero-droplet.svg") center / contain no-repeat;
+      opacity: 0.16;
+      pointer-events: none;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .dividend-table {
+    width: 100%;
+    /* Not collapsed: collapsed borders stay painted while a row waits to fade in. */
+    border-spacing: 0;
+    font-size: var(--text-page-body);
+    font-variant-numeric: tabular-nums;
+
+    th,
+    td {
+      padding-inline: clamp(8px, 0.85vw, 16px);
+      text-align: start;
+      white-space: nowrap;
+    }
+
+    thead th {
+      padding-block: 0 clamp(12px, 0.95vw, 18px);
+      border-bottom: 2px solid var(--color-navy);
+      color: var(--color-navy);
+      font-size: var(--text-eyebrow);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    tbody th,
+    tbody tr:last-child td {
+      border-bottom: 1px solid var(--color-media-rule);
+    }
+
+    tbody th {
+      padding-block: clamp(14px, 1.05vw, 20px);
+      color: var(--color-navy);
+      font-size: clamp(18px, 1.3vw, 25px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      vertical-align: top;
+    }
+
+    tbody td {
+      padding-block: clamp(14px, 1.05vw, 20px);
+      vertical-align: top;
+      transition: background-color 0.3s var(--ease-soft);
+    }
+
+    /* A year holding two payments reads as one block, split by a lighter rule. */
+    tbody tr + tr td {
+      border-top: 1px dashed var(--color-media-rule);
+    }
+
+    tbody tr:hover td {
+      background: var(--color-page-tint);
+    }
+
+    tbody:first-of-type {
+      th {
+        color: var(--color-orange-dark);
+      }
+
+      [data-dividend-bar] {
+        background: linear-gradient(to var(--bar-to, right), #f79431, #f7b531);
+      }
+    }
+
+    /* Phones: each year becomes a card, and each value carries its own label. */
+    @media (width < 48rem) {
+      display: block;
+
+      thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+      }
+
+      tbody {
+        display: block;
+        margin-top: 14px;
+        padding: 14px 16px;
+        border: 1px solid var(--color-media-rule);
+        border-radius: 12px;
+      }
+
+      tbody tr {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px 12px;
+      }
+
+      tbody tr + tr {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px dashed var(--color-media-rule);
+      }
+
+      tbody th,
+      tbody td {
+        display: block;
+        padding: 0;
+        border: 0 !important;
+        background: none !important;
+      }
+
+      tbody th {
+        grid-column: 1 / -1;
+      }
+
+      tbody td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 3px;
+        color: var(--color-about-muted);
+        font-size: 12px;
+        font-weight: 400;
+      }
+
+      .dividend-cash {
+        min-width: 0;
+      }
+    }
+  }
+
+  .dividend-cash {
+    min-width: clamp(130px, 13vw, 250px);
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+
+  .dividend-track {
+    display: block;
+    height: 4px;
+    margin-top: 8px;
+    overflow: hidden;
+    border-radius: 2px;
+    background: rgb(18 41 79 / 0.07);
+
+    > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(to var(--bar-to, right), #0e3362, #3fa95e);
+      transform-origin: 0 50%;
+
+      &:where([dir="rtl"] *) {
+        --bar-to: left;
+
+        transform-origin: 100% 50%;
+      }
+    }
+  }
+
   /* ─── Our Company: world-to-Oman map ─────────────────────────────────────── */
   .oman-stage {
     background: radial-gradient(120% 90% at 50% 42%, #0f2a63 0%, #081a43 52%, #040e29 100%);

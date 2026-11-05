@@ -44,7 +44,6 @@ export const innerPages = {
   investors: { label: "investors", related: null },
   "investors/disclosures": { label: "disclosures", related: null },
   "investors/financial-reports": { label: "financialReports", related: null },
-  "investors/dividends-disclosures": { label: "dividendsDisclosures", related: null },
   "investors/annual-report": { label: "annualReport", related: null },
   "investors/share-price": { label: "sharePrice", related: null },
   "investors/msx-discussion-session": { label: "msxDiscussion", related: null },
@@ -62,6 +61,7 @@ type PlaceholderSlug = keyof typeof innerPages;
 export const contentPages = [
   "about/our-company",
   "corporate-governance/board-of-directors",
+  "investors/dividends-disclosures",
 ] as const;
 
 export type PageSlug = PlaceholderSlug | (typeof contentPages)[number];

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { BoardHero } from "@/components/sections/board-of-directors/board-hero";
+import { InnerHero } from "@/components/layout/inner-hero";
 import { BoardMembers } from "@/components/sections/board-of-directors/board-members";
 import { ExploreFurther } from "@/components/sections/explore-further";
+import { resolveHref } from "@/config/routes";
 import { boardExploreLinks } from "@/content/board-of-directors";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -35,7 +36,18 @@ export default async function BoardOfDirectorsPage({
 
   return (
     <main id="main">
-      <BoardHero locale={locale} dict={dict} nextSectionId={AFTER_HERO_ID} />
+      <InnerHero
+        locale={locale}
+        dict={dict}
+        parent={{
+          label: dict.labels.governance,
+          href: resolveHref(locale, { section: "governance" }),
+        }}
+        current={dict.labels.boardOfDirectors}
+        titleLines={dict.boardOfDirectors.titleLines}
+        text={dict.boardOfDirectors.text}
+        nextSectionId={AFTER_HERO_ID}
+      />
       <BoardMembers dict={dict} id={AFTER_HERO_ID} />
       <ExploreFurther
         locale={locale}

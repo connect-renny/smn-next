@@ -526,6 +526,17 @@
       }
     }
   },
+  "dividends": {
+    "titleLines": ["Dividends", "**Disclosures**"],
+    "latest": "Latest dividend",
+    "table": {
+      "year": "Year",
+      "cash": "Cash",
+      "bonus": "Bonus Share",
+      "cutOff": "Cut Off Date",
+      "payment": "Payment Date"
+    }
+  },
   "comingSoon": {
     "eyebrow": "Coming soon",
     "text": "This page is being prepared and will be published shortly.",

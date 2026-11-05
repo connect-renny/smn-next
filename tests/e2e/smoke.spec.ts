@@ -104,6 +104,29 @@ test.describe("board of directors", () => {
   });
 });
 
+test.describe("dividends disclosures", () => {
+  test("lists every payment, in both languages, without sideways scroll", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/investors/dividends-disclosures");
+    await waitForPreloader(page);
+
+    const table = page.locator(".dividend-table");
+    await expect(table.locator("tbody tr")).toHaveCount(15);
+    await expect(table.locator("tbody")).toHaveCount(10);
+    await expect(table.locator("tbody tr").first()).toContainText("Apr 08, 2025");
+    await expect(page.locator(".dividend-latest")).toContainText("Mar 26, 2025");
+    await expect(page.locator(".dividend-latest")).toContainText("73.00");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    await page.goto("/ar/investors/dividends-disclosures");
+    await waitForPreloader(page);
+    await expect(page.locator(".dividend-table thead")).toContainText("تاريخ الاستقطاع");
+    await expect(page.locator(".dividend-table tbody tr")).toHaveCount(15);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(errors).toEqual([]);
+  });
+});
+
 test.describe("our company map", () => {
   test("scrolls from the globe to a labelled Oman, then the explore cards", async ({ page }) => {
     const errors = trackErrors(page);
