@@ -528,6 +528,7 @@
   },
   "dividends": {
     "titleLines": ["الإفصاح عن", "**الأرباح**"],
+    "text": "A record of the dividends SMN Power Holding has paid to its shareholders since 2011. Each entry lists the cash and bonus share percentages, with the cut-off and payment dates. Payments are grouped by year, starting with the most recent.",
     "latest": "أحدث توزيع للأرباح",
     "table": {
       "year": "سنة",
@@ -539,6 +540,7 @@
   },
   "msxSessions": {
     "titleLines": ["جلسة مناقشة", "**MSX**"],
+    "text": "Watch recordings of SMN Power’s MSX discussion sessions, which cover the company’s half-year and full-year financial results. Choose a session from the timeline to start playing. Sessions are arranged by year, with the latest first.",
     "play": "شاهد الجلسة",
     "previous": "الجلسة السابقة",
     "next": "الجلسة التالية",
@@ -563,7 +565,7 @@
   },
   "tenders": {
     "titleLines": ["المناقصات", "**والدعوات**"],
-    "text": "Open and closed tenders, with the documents you need to take part. Select a tender to see its files.",
+    "text": "Open and closed tenders, with the documents you need to take part. These include invitations for independent director nominations and tenders at the Al-Rusail power plant site. Use the filters to show only open or closed tenders, then select a tender to see its files.",
     "filterLabel": "تصفية المناقصات",
     "filters": {
       "all": "الكل",
@@ -595,6 +597,7 @@
   },
   "contact": {
     "titleLines": ["اتصل", "**بنا**"],
+    "text": "Reach SMN Power by phone or email, or visit our head office in Al Qurum, Muscat. You can also find our Al Rusail and Barka power plants on their site maps below. For directions to the head office, open its location in Google Maps.",
     "telephone": "هاتف المكتب",
     "fax": "رقم الفاكس",
     "call": "اتصل الآن",

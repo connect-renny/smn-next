@@ -18,7 +18,7 @@ export async function generateMetadata({
   return pageMetadata(locale, dict, {
     path: "contact",
     title: dict.labels.contact,
-    description: `${dict.labels.contact} — ${dict.meta.siteName}`,
+    description: dict.contact.text,
     // Stays out of search results (and the sitemap) until the design is approved.
     noIndex: true,
   });
@@ -36,6 +36,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
         dict={dict}
         current={dict.labels.contact}
         titleLines={dict.contact.titleLines}
+        text={dict.contact.text}
         nextSectionId={AFTER_HERO_ID}
       />
       <ContactSection dict={dict} locale={locale} id={AFTER_HERO_ID} />

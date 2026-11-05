@@ -19,7 +19,7 @@ export async function generateMetadata({
   return pageMetadata(locale, dict, {
     path: "investors/dividends-disclosures",
     title: dict.labels.dividendsDisclosures,
-    description: `${dict.labels.dividendsDisclosures} — ${dict.meta.siteName}`,
+    description: dict.dividends.text,
     // Stays out of search results (and the sitemap) until there is an approved design.
     noIndex: true,
   });
@@ -43,6 +43,7 @@ export default async function DividendsDisclosuresPage({
         }}
         current={dict.labels.dividendsDisclosures}
         titleLines={dict.dividends.titleLines}
+        text={dict.dividends.text}
         nextSectionId={AFTER_HERO_ID}
       />
       <DividendsSection dict={dict} id={AFTER_HERO_ID} />

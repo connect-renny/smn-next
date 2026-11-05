@@ -20,7 +20,7 @@ export async function generateMetadata({
   return pageMetadata(locale, dict, {
     path: "investors/msx-discussion-session",
     title: dict.labels.msxDiscussion,
-    description: `${dict.labels.msxDiscussion} — ${dict.meta.siteName}`,
+    description: dict.msxSessions.text,
     // Stays out of search results (and the sitemap) until there is an approved design.
     noIndex: true,
   });
@@ -44,6 +44,7 @@ export default async function MsxDiscussionSessionPage({
         }}
         current={dict.labels.msxDiscussion}
         titleLines={dict.msxSessions.titleLines}
+        text={dict.msxSessions.text}
         nextSectionId={AFTER_HERO_ID}
       />
       <AnimatedSection id={AFTER_HERO_ID} ink="light" snap={false} className="msx-theatre">
