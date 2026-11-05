@@ -11,8 +11,8 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 type InnerHeroProps = {
   locale: Locale;
   dict: Dictionary;
-  /** The menu group this page sits under; the page itself closes the trail. */
-  parent: { label: string; href: string };
+  /** The menu group this page sits under, if any; the page itself closes the trail. */
+  parent?: { label: string; href: string };
   current: string;
   titleLines: readonly string[];
   text?: string;
@@ -40,7 +40,7 @@ export function InnerHero({
             label={dict.a11y.breadcrumb}
             items={[
               { label: dict.a11y.home, href: resolveHref(locale, { section: "home" }) },
-              parent,
+              ...(parent ? [parent] : []),
               { label: current },
             ]}
           />

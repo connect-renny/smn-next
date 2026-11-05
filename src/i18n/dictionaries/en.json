@@ -561,6 +561,38 @@
       "h1-2022": "MSX discussion for H1 2022"
     }
   },
+  "tenders": {
+    "titleLines": ["Tenders", "**& invitations**"],
+    "text": "Open and closed tenders, with the documents you need to take part. Select a tender to see its files.",
+    "filterLabel": "Filter tenders",
+    "filters": {
+      "all": "All",
+      "open": "Open",
+      "closed": "Closed"
+    },
+    "documentCountOne": "1 document",
+    "documentCountMany": "{n} documents",
+    "sparePartsDeadline": "Bids must be submitted by close of business (5:00 pm Oman time) on 30 November 2025.",
+    "titles": {
+      "smnb": "SMNB invitation to independent director nomination",
+      "rpc": "RPC invitation to independent director nomination",
+      "bsfc": "BSFC invitation to independent director nomination",
+      "spareParts": "Sale of spare parts at Al-Rusail power plant site",
+      "fuelOil": "Fuel oil at Al-Rusail power plant site",
+      "plantEquipment": "Sale of all plant equipment at Al-Rusail power plant site"
+    },
+    "documents": {
+      "invitation": "Invitation to independent director nomination",
+      "tenderDocument": "Tender document",
+      "appendixHse": "Appendix 1: RPC HSE policy",
+      "appendixSpareParts": "Appendix 2: Spare parts list",
+      "scheduleC": "Schedule C: Bid price form",
+      "announcement": "Announcement 1",
+      "scheduleDPartB": "Schedule D: Bid price form, Part B sell-off",
+      "scheduleCPartA": "Schedule C: Bid price form, Part A sell-off",
+      "hsePolicy": "RPC HSE policy"
+    }
+  },
   "comingSoon": {
     "eyebrow": "Coming soon",
     "text": "This page is being prepared and will be published shortly.",

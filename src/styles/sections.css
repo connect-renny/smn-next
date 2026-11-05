@@ -1098,6 +1098,439 @@
     }
   }
 
+  /* ─── Tenders ───────────────────────────────────────────────────────────── */
+  .tender-filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+
+    @media (width >= 64rem) {
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+      grid-template-columns: minmax(0, 1fr);
+      gap: clamp(10px, 0.73vw, 14px);
+    }
+  }
+
+  .tender-filter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2px, 0.4vw, 8px);
+    padding: clamp(12px, 1.15vw, 22px);
+    overflow: hidden;
+    border: 1px solid var(--color-media-rule);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--color-navy);
+    cursor: pointer;
+    text-align: start;
+    transition:
+      border-color 0.35s var(--ease-soft),
+      color 0.35s var(--ease-soft),
+      translate 0.5s var(--ease-out-expo);
+
+    /* The chosen one fills with the page's navy-to-green from the reading edge. */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0e3362 0%, #1b5f6c 55%, #3fa95e 100%);
+      opacity: 0;
+      scale: 0.96;
+      transition:
+        opacity 0.4s var(--ease-soft),
+        scale 0.6s var(--ease-out-expo);
+    }
+
+    > * {
+      position: relative;
+    }
+
+    &:hover {
+      border-color: var(--color-navy);
+      translate: 0 -2px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-orange);
+      outline-offset: 2px;
+    }
+
+    &[aria-pressed="true"] {
+      border-color: transparent;
+      color: #fff;
+      translate: none;
+
+      &::before {
+        opacity: 1;
+        scale: 1;
+      }
+    }
+  }
+
+  .tender-filter-count {
+    align-self: flex-start;
+    font-size: clamp(26px, 2.6vw, 50px);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .tender-filter-label {
+    display: flex;
+    align-items: center;
+    gap: 0.55em;
+    font-size: var(--text-eyebrow-md);
+    font-weight: 500;
+  }
+
+  .tender-pulse {
+    position: relative;
+    display: block;
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #55d97a;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: inherit;
+      animation: var(--animate-pulse-ring);
+    }
+  }
+
+  .tender-group + .tender-group {
+    margin-top: clamp(32px, 3.1vw, 60px);
+  }
+
+  .tender-group-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-eyebrow);
+    margin-bottom: clamp(14px, 1.15vw, 22px);
+    color: var(--color-navy);
+    font-size: var(--text-about-title);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+
+    &:where([dir="rtl"] *) {
+      letter-spacing: normal;
+    }
+
+    > span {
+      color: var(--color-about-muted);
+      font-size: 0.6em;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0;
+    }
+  }
+
+  .tender-card {
+    overflow: hidden;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgb(18 41 79 / 0.06);
+    transition: box-shadow 0.5s var(--ease-soft);
+
+    &[data-open] {
+      box-shadow: 0 16px 40px rgb(18 41 79 / 0.13);
+    }
+  }
+
+  .tender-head {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: clamp(12px, 1vw, 19px);
+    width: 100%;
+    min-height: clamp(96px, 5.75vw, 110px);
+    padding: clamp(14px, 1.1vw, 21px) clamp(14px, 1.3vw, 25px);
+    padding-inline-start: clamp(30px, 2.6vw, 50px);
+    overflow: hidden;
+    cursor: pointer;
+    text-align: start;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-orange);
+      outline-offset: -4px;
+    }
+
+    /* The SMN mark, cropped by the end edge of each open tender. */
+    [data-status="open"] & {
+      background: linear-gradient(
+        to var(--tender-to, right),
+        #0e3362 0%,
+        #15466e 46%,
+        #1b6a68 76%,
+        #3fa95e 100%
+      );
+      color: #fff;
+
+      &:where([dir="rtl"] *) {
+        --tender-to: left;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset-block-start: -60%;
+        inset-inline-end: -1%;
+        height: 220%;
+        aspect-ratio: 52.8 / 71.8;
+        background: url("/images/our-company/hero-droplet.svg") center / contain no-repeat;
+        opacity: 0.2;
+        pointer-events: none;
+        transition:
+          opacity 0.6s var(--ease-soft),
+          rotate 1.2s var(--ease-out-expo);
+      }
+
+      &:hover::after {
+        opacity: 0.42;
+        rotate: -9deg;
+      }
+    }
+
+    [data-status="closed"] & {
+      background: #e9edf2;
+      color: var(--color-navy);
+      transition: background-color 0.35s var(--ease-soft);
+
+      &:hover {
+        background: #dfe5ec;
+      }
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .tender-number {
+    position: absolute;
+    inset-block-start: 0.95em;
+    inset-inline-start: 1.1em;
+    font-size: clamp(11px, 0.63vw, 12px);
+    font-weight: 500;
+  }
+
+  .tender-drop {
+    width: clamp(18px, 1.25vw, 24px);
+    transition:
+      translate 0.5s var(--ease-out-expo),
+      scale 0.5s var(--ease-out-expo);
+
+    .tender-head:hover & {
+      translate: 0 -2px;
+      scale: 1.1;
+    }
+
+    [data-status="closed"] & {
+      filter: grayscale(1);
+      opacity: 0.45;
+    }
+  }
+
+  .tender-title {
+    display: block;
+    font-size: clamp(15px, 1.02vw, 19.6px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+
+    &:where([dir="rtl"] *) {
+      letter-spacing: normal;
+      line-height: 1.5;
+    }
+  }
+
+  .tender-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px clamp(10px, 0.8vw, 15px);
+    margin-top: 6px;
+    font-size: clamp(12px, 0.68vw, 13px);
+  }
+
+  .tender-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.18em 0.7em;
+    border-radius: 99px;
+    background: rgb(255 255 255 / 0.16);
+    font-weight: 600;
+
+    [data-status="closed"] & {
+      background: rgb(18 41 79 / 0.1);
+    }
+  }
+
+  .tender-toggle {
+    display: grid;
+    place-items: center;
+    width: clamp(30px, 1.85vw, 35px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-orange);
+    color: #fff;
+    transition:
+      rotate 0.6s var(--ease-out-expo),
+      background-color 0.3s;
+
+    [data-status="closed"] & {
+      background: var(--color-navy);
+    }
+
+    [data-open] & {
+      rotate: 135deg;
+    }
+  }
+
+  /* Folds open to its own height; closed, its links leave the tab order too. */
+  .tender-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows 0.6s var(--ease-out-expo),
+      visibility 0.6s;
+
+    [data-open] > & {
+      grid-template-rows: 1fr;
+      visibility: visible;
+    }
+  }
+
+  .tender-panel-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .tender-body {
+    padding: clamp(14px, 1.15vw, 22px);
+  }
+
+  .tender-deadline {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65em;
+    margin-bottom: clamp(12px, 0.95vw, 18px);
+    padding: 0.8em 1em;
+    border-inline-start: 3px solid var(--color-orange);
+    border-radius: 6px;
+    background: rgb(247 148 49 / 0.1);
+    color: var(--color-navy);
+    font-size: clamp(13px, 0.8vw, 15.4px);
+    font-weight: 500;
+
+    svg {
+      margin-top: 0.1em;
+      color: var(--color-orange-dark);
+    }
+  }
+
+  .tender-docs {
+    display: grid;
+    gap: clamp(8px, 0.63vw, 12px);
+
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      > li:only-child {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  .tender-doc {
+    --doc-tone: var(--color-navy);
+
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 0.8vw, 15px);
+    height: 100%;
+    padding: clamp(10px, 0.73vw, 14px);
+    border: 1px solid var(--color-media-rule);
+    border-radius: 8px;
+    color: var(--color-navy);
+    font-size: clamp(13px, 0.8vw, 15.4px);
+    font-weight: 500;
+    line-height: 1.35;
+    transition:
+      border-color 0.3s var(--ease-soft),
+      background-color 0.3s var(--ease-soft),
+      translate 0.5s var(--ease-out-expo);
+
+    &[data-type="xlsx"] {
+      --doc-tone: #1d7a4a;
+    }
+
+    &:hover {
+      border-color: var(--doc-tone);
+      background: var(--color-page-tint);
+      translate: 0 -2px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-orange);
+      outline-offset: 2px;
+    }
+  }
+
+  .tender-doc-icon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: clamp(44px, 2.8vw, 54px);
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background: var(--doc-tone);
+    color: #fff;
+    font-size: clamp(14px, 0.84vw, 16px);
+
+    b {
+      margin-top: 1px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+  }
+
+  .tender-doc-arrow {
+    flex: none;
+    width: 1.3em;
+    height: 1.3em;
+    color: var(--color-orange-dark);
+    transition: translate 0.5s var(--ease-out-expo);
+
+    .tender-doc:hover & {
+      translate: 2px -2px;
+    }
+
+    &:where([dir="rtl"] *) {
+      .tender-doc:hover & {
+        translate: -2px -2px;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tender-pulse::after {
+      animation: none;
+    }
+  }
+
   /* ─── Our Company: world-to-Oman map ─────────────────────────────────────── */
   .oman-stage {
     background: radial-gradient(120% 90% at 50% 42%, #0f2a63 0%, #081a43 52%, #040e29 100%);

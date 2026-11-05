@@ -172,6 +172,47 @@ test.describe("msx discussion session", () => {
   });
 });
 
+test.describe("tenders", () => {
+  test("filters, unfolds and links documents, in both languages", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/tenders");
+    await waitForPreloader(page);
+    await page.locator("#tender-board").scrollIntoViewIfNeeded();
+
+    const cards = page.locator(".tender-card");
+    await expect(cards).toHaveCount(6);
+
+    // A single-file open tender starts unfolded; the rest are closed until picked.
+    const smnb = cards.filter({ hasText: "SMNB invitation" });
+    await expect(smnb.getByRole("link", { name: /Invitation to independent/ })).toBeVisible();
+    const spare = cards.filter({ hasText: "Sale of spare parts" });
+    const tenderDoc = spare.getByRole("link", { name: "PDF Tender document" });
+    await expect(tenderDoc).toBeHidden();
+    await spare.getByRole("button").click();
+    await expect(tenderDoc).toBeVisible();
+    await expect(spare).toContainText("30 November 2025");
+    await expect(spare.getByRole("link")).toHaveCount(4);
+
+    // The filter narrows the board and says what it's showing.
+    await page.getByRole("button", { name: /^02\s*Closed/ }).click();
+    await expect(cards).toHaveCount(2);
+    await page.getByRole("button", { name: /^04\s*Open/ }).click();
+    await expect(cards).toHaveCount(4);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    // Arabic gets its own edition of a file where one exists.
+    await page.goto("/ar/tenders");
+    await waitForPreloader(page);
+    await expect(page.locator(".tender-card").first()).toContainText("دعوة للترشح");
+    await expect(page.locator(".tender-card").first().locator("a")).toHaveAttribute(
+      "href",
+      /SMNB-Arabic\.pdf$/,
+    );
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(errors).toEqual([]);
+  });
+});
+
 test.describe("our company map", () => {
   test("scrolls from the globe to a labelled Oman, then the explore cards", async ({ page }) => {
     const errors = trackErrors(page);

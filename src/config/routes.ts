@@ -47,7 +47,6 @@ export const innerPages = {
   "investors/annual-report": { label: "annualReport", related: null },
   "investors/share-price": { label: "sharePrice", related: null },
   csr: { label: "csr", related: null },
-  tenders: { label: "tenders", related: null },
   career: { label: "career", related: null },
   "media/opal-mou": { label: "newsOpalMou", related: "media" },
   "media/csr-solar-power-initiative": { label: "newsCsrSolar", related: "media" },
@@ -62,6 +61,7 @@ export const contentPages = [
   "corporate-governance/board-of-directors",
   "investors/dividends-disclosures",
   "investors/msx-discussion-session",
+  "tenders",
 ] as const;
 
 export type PageSlug = PlaceholderSlug | (typeof contentPages)[number];
