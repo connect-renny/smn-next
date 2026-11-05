@@ -127,6 +127,51 @@ test.describe("dividends disclosures", () => {
   });
 });
 
+test.describe("msx discussion session", () => {
+  test("picks and plays sessions, in both languages", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/investors/msx-discussion-session");
+    await waitForPreloader(page);
+
+    const tiles = page.locator(".msx-tile");
+    await expect(tiles).toHaveCount(9);
+    await expect(page.locator(".msx-meta")).toContainText("30th June 2026");
+    await expect(tiles.first()).toHaveAttribute("aria-pressed", "true");
+
+    await page.locator("#sessions").scrollIntoViewIfNeeded();
+    // Five years fit, so the timeline has nothing to slide to.
+    await expect(page.locator(".msx-rail-arrow")).toHaveCount(0);
+
+    // A recording in the browser's own player. Stops the file from downloading in the test.
+    await page.route("**/*.mp4", (route) => route.abort());
+    const fy2023 = page.getByRole("button", { name: "MSX discussion for full year 2023" });
+    await fy2023.click();
+    await expect(fy2023).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator(".msx-stage video")).toHaveAttribute(
+      "src",
+      /Session-Financial2023-2024\.mp4$/,
+    );
+    await expect(page.locator(".msx-meta")).toContainText("full year 2023");
+
+    // A Vimeo one, stepping back to it. Vimeo itself isn't loaded in the test.
+    await page.route("**/player.vimeo.com/**", (route) => route.abort());
+    await page.getByRole("button", { name: "Previous session" }).click();
+    await page.getByRole("button", { name: "Previous session" }).click();
+    await expect(page.locator(".msx-stage iframe")).toHaveAttribute(
+      "src",
+      /player\.vimeo\.com\/video\/1067305142/,
+    );
+
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    await page.goto("/ar/investors/msx-discussion-session");
+    await waitForPreloader(page);
+    await expect(page.locator(".msx-meta")).toContainText("30 يونيو 2026");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(errors.filter((e) => !e.includes("vimeo"))).toEqual([]);
+  });
+});
+
 test.describe("our company map", () => {
   test("scrolls from the globe to a labelled Oman, then the explore cards", async ({ page }) => {
     const errors = trackErrors(page);

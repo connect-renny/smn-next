@@ -537,6 +537,30 @@
       "payment": "Payment Date"
     }
   },
+  "msxSessions": {
+    "titleLines": ["MSX Discussion", "**Session**"],
+    "play": "Watch session",
+    "previous": "Previous session",
+    "next": "Next session",
+    "newerYears": "Show newer years",
+    "olderYears": "Show older years",
+    "openVideo": "Open video in a new tab",
+    "periods": {
+      "fullYear": "Full Year",
+      "h1": "H1"
+    },
+    "sessions": {
+      "h1-2026": "MSX discussion for the Six Months Period Ended 30th June 2026",
+      "fy-2025": "MSX discussion for Full Year 2025",
+      "h1-2025": "MSX discussion for the Six-month period ended 30th June 2025",
+      "fy-2024": "MSX discussion for full year 2024",
+      "h1-2024": "MSX discussion for H1 2024",
+      "fy-2023": "MSX discussion for full year 2023",
+      "h1-2023": "MSX discussion for the Six-month period ended 30th June 2023",
+      "fy-2022": "MSX discussion for full year 2022",
+      "h1-2022": "MSX discussion for H1 2022"
+    }
+  },
   "comingSoon": {
     "eyebrow": "Coming soon",
     "text": "This page is being prepared and will be published shortly.",
