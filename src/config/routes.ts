@@ -30,7 +30,6 @@ export const innerPages = {
     label: "companysPhilosophy",
     related: "governance",
   },
-  "corporate-governance/board-of-directors": { label: "boardOfDirectors", related: "governance" },
   "corporate-governance/audit-committee": { label: "auditCommittee", related: "governance" },
   "corporate-governance/nomination-remuneration-committee": {
     label: "nominationCommittee",
@@ -60,7 +59,10 @@ export const innerPages = {
 type PlaceholderSlug = keyof typeof innerPages;
 
 /** Pages with real content: each has its own route folder under `app/[locale]`. */
-export const contentPages = ["about/our-company"] as const;
+export const contentPages = [
+  "about/our-company",
+  "corporate-governance/board-of-directors",
+] as const;
 
 export type PageSlug = PlaceholderSlug | (typeof contentPages)[number];
 

@@ -4,14 +4,17 @@ import { Plus } from "lucide-react";
 
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { Droplet } from "@/components/ui/droplet";
-import { resolveHref } from "@/config/routes";
-import { companyExploreLinks } from "@/content/our-company";
+import { resolveHref, type Href } from "@/config/routes";
 import type { Locale } from "@/i18n/config";
-import type { Dictionary } from "@/i18n/get-dictionary";
-import { entries } from "@/lib/utils";
 
-export function ExploreFurther({ locale, dict }: { locale: Locale; dict: Dictionary }) {
-  const t = dict.ourCompany.explore;
+type ExploreFurtherProps = {
+  locale: Locale;
+  title: string;
+  links: readonly { label: string; image: string; href: Href }[];
+};
+
+/** The numbered link cards that close an inner page. */
+export function ExploreFurther({ locale, title, links }: ExploreFurtherProps) {
   return (
     <AnimatedSection
       ink="dark"
@@ -23,11 +26,11 @@ export function ExploreFurther({ locale, dict }: { locale: Locale; dict: Diction
           data-animate="up"
           className="text-[clamp(20px,1.36vw,26px)] font-medium tracking-[-0.03em] rtl:tracking-normal"
         >
-          {t.title}
+          {title}
         </h2>
-        <ul className="mt-[clamp(20px,1.7vw,32px)] grid gap-4 md:grid-cols-2 md:gap-[clamp(20px,2.5vw,48px)]">
-          {entries(companyExploreLinks).map(([key, { image, href }], i) => (
-            <li key={key} data-animate="up">
+        <ul className="mt-[clamp(20px,1.7vw,32px)] grid gap-4 md:grid-cols-2 md:gap-x-[clamp(20px,2.5vw,48px)] md:gap-y-[clamp(16px,1.9vw,36px)]">
+          {links.map(({ label, image, href }, i) => (
+            <li key={label} data-animate="up">
               <Link
                 href={resolveHref(locale, href)}
                 className="group relative block h-[clamp(96px,5.75vw,110px)] overflow-hidden rounded-[12px] text-white"
@@ -43,9 +46,9 @@ export function ExploreFurther({ locale, dict }: { locale: Locale; dict: Diction
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="absolute inset-y-0 start-[clamp(40px,3.5vw,66px)] end-20 flex items-center gap-[clamp(12px,1vw,19px)]">
-                  <Droplet className="w-[clamp(18px,1.25vw,24px)] transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:scale-110" />
+                  <Droplet className="w-[clamp(18px,1.25vw,24px)] shrink-0 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:scale-110" />
                   <span className="text-[clamp(13px,0.84vw,16px)] font-semibold uppercase">
-                    {t.links[key]}
+                    {label}
                   </span>
                 </span>
                 <span className="absolute end-[clamp(16px,1.3vw,25px)] top-1/2 grid size-[clamp(30px,1.85vw,35px)] -translate-y-1/2 place-items-center rounded-full bg-orange text-white transition-transform duration-500 group-hover:rotate-90">

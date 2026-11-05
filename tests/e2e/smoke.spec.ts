@@ -65,6 +65,45 @@ test.describe("pages", () => {
   });
 });
 
+test.describe("board of directors", () => {
+  test("picking a tile swaps the bio, in both languages", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/corporate-governance/board-of-directors");
+    await waitForPreloader(page);
+
+    const tiles = page.locator(".board-tile");
+    const panel = page.locator(".board-panel");
+    await expect(tiles).toHaveCount(9);
+    await tiles.first().scrollIntoViewIfNeeded();
+    await expect(panel).toContainText("Chairman");
+    await expect(tiles.first()).toHaveAttribute("aria-pressed", "true");
+
+    const david = tiles.filter({ hasText: "David Beaufays" });
+    await david.click();
+    await expect(david).toHaveAttribute("aria-pressed", "true");
+    await expect(tiles.first()).toHaveAttribute("aria-pressed", "false");
+    await expect(panel).toContainText("Vice-Chairman");
+    await expect(panel).toContainText("ING Bank");
+    await expect(panel.locator("[data-panel-fade]").first()).toBeVisible();
+    // The flying copy of the portrait is gone once it lands.
+    await expect(page.locator(".board-ghost > *")).toHaveCount(0);
+
+    // Picking again mid-change must not leave the panel half hidden.
+    const imran = tiles.filter({ hasText: "Imran Sheikh" });
+    const ruben = tiles.filter({ hasText: "Ruben Ramalho" });
+    await imran.click();
+    await ruben.click();
+    await expect(panel).toContainText("Brookfield");
+    await expect(panel.locator("[data-panel-photo]")).toBeVisible();
+    await expect(page.locator(".board-ghost > *")).toHaveCount(0);
+
+    await page.goto("/ar/corporate-governance/board-of-directors");
+    await waitForPreloader(page);
+    await expect(page.locator(".board-panel")).toContainText("رئيس مجلس الإدارة");
+    expect(errors).toEqual([]);
+  });
+});
+
 test.describe("our company map", () => {
   test("scrolls from the globe to a labelled Oman, then the explore cards", async ({ page }) => {
     const errors = trackErrors(page);

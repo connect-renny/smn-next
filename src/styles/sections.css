@@ -99,6 +99,181 @@
     }
   }
 
+  /* ─── Board of Directors ────────────────────────────────────────────────── */
+  .board-band {
+    background: #3fa95e;
+  }
+
+  /* Sized from the 1920 comp: 732px tall, but always fits on screen beside the tiles. */
+  .board-panel {
+    --panel-pad: clamp(12px, 0.7vw, 14px);
+
+    padding: var(--panel-pad);
+    border: 1px solid rgb(255 255 255 / 0.28);
+    border-radius: 12px;
+    background: #32835a;
+    scroll-margin-top: calc(var(--header-h) + 12px);
+
+    @media (width >= 64rem) {
+      position: sticky;
+      top: calc(var(--header-h) + 16px);
+      display: flex;
+      flex-direction: column;
+      height: min(38.1vw, calc(100svh - var(--header-h) - 32px));
+      min-height: 480px;
+    }
+  }
+
+  .board-panel-body {
+    display: grid;
+    align-content: start;
+    gap: 1.15em;
+    margin-top: clamp(18px, 1.35vw, 26px);
+    padding-bottom: clamp(8px, 1vw, 20px);
+    font-size: clamp(14px, 0.875vw, 16.8px);
+    line-height: 1.5;
+    scrollbar-color: #fff rgb(255 255 255 / 0.16);
+    scrollbar-width: thin;
+
+    @media (width >= 64rem) {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding-inline: clamp(6px, 0.85vw, 17px) clamp(6px, 0.8vw, 15px);
+    }
+
+    /* Arabic needs room for its marks above and below the line. */
+    &:where([dir="rtl"] *) {
+      line-height: 1.6;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-orange);
+      outline-offset: 2px;
+    }
+  }
+
+  /* The cut-out sits on a navy field with the brand's swoosh behind it. */
+  .board-portrait {
+    position: relative;
+    display: block;
+    aspect-ratio: 230 / 235;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 0.4);
+    border-radius: 6px;
+    /* Oversized so the tile's depth effect has room to slide it. */
+    background: #0b1e5a url("/images/board-of-directors/portrait-backdrop.svg") center / 112%;
+  }
+
+  .board-panel-portrait {
+    flex: none;
+    width: clamp(150px, 10.45vw, 200px);
+    overflow: visible;
+
+    > img {
+      border-radius: 5px;
+    }
+  }
+
+  .board-panel-ring {
+    position: absolute;
+    inset: -1px;
+    border: 2px solid var(--color-orange);
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .board-tile {
+    --mx: 0;
+    --my: 0;
+
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: clamp(5px, 0.36vw, 7px);
+    padding-bottom: 0;
+    border: 1px solid rgb(255 255 255 / 0.32);
+    border-radius: 6px;
+    background: rgb(255 255 255 / 0.05);
+    cursor: pointer;
+    transition:
+      background-color 0.45s var(--ease-soft),
+      border-color 0.45s var(--ease-soft),
+      translate 0.5s var(--ease-out-expo);
+
+    .board-portrait {
+      background-position: calc(50% - var(--mx) * 5%) calc(50% - var(--my) * 5%);
+      transition: background-position 0.6s var(--ease-out-expo);
+    }
+
+    &:hover {
+      border-color: rgb(255 255 255 / 0.75);
+      translate: 0 -3px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    &[data-active] {
+      border-color: var(--color-orange);
+      background: #1a6450;
+      translate: none;
+    }
+  }
+
+  /* Depth: the figure leans toward the cursor as the backdrop slides the other way. */
+  .board-tile-photo {
+    transform-origin: 50% 100%;
+    translate: calc(var(--mx) * 3%) calc(var(--my) * 1.5%);
+    transition:
+      translate 0.6s var(--ease-out-expo),
+      scale 0.6s var(--ease-out-expo);
+
+    .board-tile:hover & {
+      scale: 1.05;
+    }
+  }
+
+  .board-tile-check {
+    position: absolute;
+    inset-block-start: clamp(11px, 0.85vw, 16px);
+    inset-inline-end: clamp(11px, 0.85vw, 16px);
+    display: grid;
+    place-items: center;
+    width: clamp(22px, 1.4vw, 27px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #fbb12f;
+    color: #fff;
+    opacity: 0;
+    scale: 0.3;
+    transition:
+      opacity 0.2s,
+      scale 0.5s cubic-bezier(0.34, 1.7, 0.64, 1);
+
+    [data-active] > & {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  .board-ghost {
+    position: fixed;
+    z-index: 30;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    filter: drop-shadow(0 18px 28px rgb(4 20 40 / 0.45));
+
+    > .board-portrait {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   /* ─── Our Company: world-to-Oman map ─────────────────────────────────────── */
   .oman-stage {
     background: radial-gradient(120% 90% at 50% 42%, #0f2a63 0%, #081a43 52%, #040e29 100%);
