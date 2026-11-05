@@ -483,7 +483,7 @@
 
     /* The stage is as wide as the screen's height allows, so the timeline stays in view. */
     @media (width >= 64rem) {
-      --msx-stage-w: min(68%, max(42%, calc((100svh - var(--header-h) - 200px - 8.8vw) * 16 / 9)));
+      --msx-stage-w: min(68%, max(42%, calc((100svh - var(--header-h) - 250px - 9.5vw) * 16 / 9)));
 
       grid-template-columns: var(--msx-stage-w) minmax(0, 1fr);
       align-items: stretch;
@@ -811,11 +811,20 @@
   }
 
   .msx-rail-inner {
-    --msx-gap: clamp(8px, 0.73vw, 14px);
+    --msx-gap: clamp(16px, 1.46vw, 28px);
+    /* Years in view: tablets show fewer, so the full titles stay readable, and slide. */
+    --msx-visible: 3;
+
+    @media (width >= 64rem) {
+      --msx-visible: 5;
+    }
 
     @media (width >= 48rem) {
       min-width: 100%;
-      width: calc((var(--msx-years) / 5) * 100% + (var(--msx-years) - 5) / 5 * var(--msx-gap));
+      width: calc(
+        (var(--msx-years) / var(--msx-visible)) * 100% + (var(--msx-years) - var(--msx-visible)) /
+          var(--msx-visible) * var(--msx-gap)
+      );
     }
   }
 
@@ -917,22 +926,45 @@
 
   .msx-years {
     display: grid;
-    gap: var(--msx-gap);
+    gap: 18px;
 
+    /* Three shared rows (year, Full Year, half year), so tiles line up across the years
+       and each row takes the height of its longest title. */
     @media (width >= 48rem) {
       grid-template-columns: repeat(var(--msx-years), minmax(0, 1fr));
+      grid-template-rows: repeat(3, auto);
+      gap: clamp(6px, 0.42vw, 8px) var(--msx-gap);
     }
   }
 
   .msx-year {
+    position: relative;
     display: grid;
-    gap: clamp(6px, 0.42vw, 8px);
+    gap: 8px;
     scroll-snap-align: center;
 
-    /* Phones: one line per year, its two sessions side by side. */
+    @media (width >= 48rem) {
+      grid-row: span 3;
+      grid-template-rows: subgrid;
+      gap: inherit;
+
+      /* A dotted divider centred in the gap before each year, like the timeline's line. */
+      & + &::before {
+        content: "";
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: calc(var(--msx-gap) / -2 - 1px);
+        border-inline-start: 2px dotted rgb(255 255 255 / 0.38);
+        pointer-events: none;
+      }
+    }
+
+    /* Phones: each year is its own block, opened by a dotted line. */
     @media (width < 48rem) {
-      grid-template-columns: 56px repeat(2, minmax(0, 1fr));
-      align-items: center;
+      & + & {
+        padding-top: 18px;
+        border-top: 2px dotted rgb(255 255 255 / 0.38);
+      }
     }
   }
 
@@ -951,10 +983,12 @@
     position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
+    align-content: center;
     align-items: center;
-    column-gap: 8px;
+    gap: 4px 8px;
+    width: 100%;
     min-height: clamp(52px, 3.3vw, 62px);
-    padding: 8px clamp(10px, 0.8vw, 15px);
+    padding: clamp(9px, 0.63vw, 12px) clamp(10px, 0.8vw, 15px);
     border: 1px solid rgb(255 255 255 / 0.18);
     border-radius: 8px;
     background: rgb(255 255 255 / 0.05);
@@ -984,11 +1018,16 @@
     }
   }
 
-  .msx-tile-period {
+  .msx-tile-title {
     grid-column: 1;
-    font-size: var(--text-label);
-    font-weight: 600;
-    line-height: 1.3;
+    font-size: clamp(12.5px, 0.73vw, 14px);
+    font-weight: 500;
+    line-height: 1.32;
+    text-wrap: pretty;
+
+    &:where([dir="rtl"] *) {
+      line-height: 1.55;
+    }
   }
 
   .msx-tile-time {
@@ -1062,6 +1101,10 @@
     min-height: clamp(52px, 3.3vw, 62px);
     border: 1px dashed rgb(255 255 255 / 0.1);
     border-radius: 8px;
+
+    @media (width < 48rem) {
+      display: none;
+    }
   }
 
   @keyframes msx-glow-turn {

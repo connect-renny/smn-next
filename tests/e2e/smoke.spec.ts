@@ -142,6 +142,12 @@ test.describe("msx discussion session", () => {
     // Five years fit, so the timeline has nothing to slide to.
     await expect(page.locator(".msx-rail-arrow")).toHaveCount(0);
 
+    // Tiles carry the session's full title, free of the live site's CMS leftovers.
+    await expect(tiles.nth(4)).toContainText(
+      "MSX discussion for the Six-month period ended 30th June 2024",
+    );
+    await expect(page.locator("#sessions")).not.toContainText(/\bH1\b|<br/);
+
     // A recording in the browser's own player. Stops the file from downloading in the test.
     await page.route("**/*.mp4", (route) => route.abort());
     const fy2023 = page.getByRole("button", { name: "MSX discussion for full year 2023" });

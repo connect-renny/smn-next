@@ -346,12 +346,13 @@ export function MsxTheatre({ copy }: { copy: Copy }) {
                         type="button"
                         className="msx-tile"
                         aria-pressed={item.id === active}
-                        aria-label={copy.sessions[item.id]}
                         data-active={item.id === active || undefined}
                         data-playing={(item.id === shown.id && shown.playing) || undefined}
                         onClick={() => go(item.id, true)}
                       >
-                        <span className="msx-tile-period">{copy.periods[item.period]}</span>
+                        <span dir="auto" className="msx-tile-title">
+                          {copy.sessions[item.id]}
+                        </span>
                         <span dir="ltr" className="msx-tile-time">
                           {formatRunningTime(item.seconds)}
                         </span>
