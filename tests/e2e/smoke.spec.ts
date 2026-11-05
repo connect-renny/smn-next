@@ -219,6 +219,65 @@ test.describe("tenders", () => {
   });
 });
 
+test.describe("contact", () => {
+  test("offers the ways to reach SMN and the plant site maps, in both languages", async ({
+    page,
+  }) => {
+    const errors = trackErrors(page);
+    await page.route("**/www.google.com/maps/**", (route) => route.abort());
+
+    // The header's link now comes here rather than to the footer.
+    await page.goto("/en/contact");
+    await waitForPreloader(page);
+    const main = page.getByRole("main");
+    await expect(page.locator('a[href="/en/contact"]').first()).toBeAttached();
+
+    await expect(main.getByRole("link", { name: "Call" })).toHaveAttribute(
+      "href",
+      "tel:+96824935800",
+    );
+    await expect(main.getByRole("link", { name: "Write an email" })).toHaveAttribute(
+      "href",
+      "mailto:info@smnpower.com",
+    );
+    // Asked for specifically: no copy controls anywhere on the page.
+    await expect(main.getByRole("button", { name: /copy/i })).toHaveCount(0);
+    await main.locator(".contact-office").scrollIntoViewIfNeeded();
+    await expect(main).toContainText("E&Y Building, No. 1023");
+    await expect(main.getByRole("link", { name: "Open in Google Maps" })).toHaveAttribute(
+      "href",
+      /23\.6171229/,
+    );
+
+    // A plant's site map loads only when asked for, then closes again.
+    await expect(page.locator("iframe")).toHaveCount(0);
+    const rusail = main.getByRole("button", { name: /Al Rusail power plant/ });
+    await rusail.scrollIntoViewIfNeeded();
+    await rusail.click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.locator("iframe")).toHaveAttribute("src", /1hSw_ZcTSRhIEXDerhIFR3mK_UD4/);
+    // The map is the point of the dialog, so it has to be roomy and clear of the header.
+    const box = await dialog.boundingBox();
+    const viewport = page.viewportSize();
+    expect(box?.width).toBeGreaterThan((viewport?.width ?? 0) * 0.5);
+    const onTop = await dialog.evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      const hit = document.elementFromPoint(r.left + r.width / 2, r.top + 12);
+      return !!hit && el.contains(hit);
+    });
+    expect(onTop).toBe(true);
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    await page.goto("/ar/contact");
+    await waitForPreloader(page);
+    await expect(page.getByRole("main")).toContainText("بناية إرنست ويونج");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(errors).toEqual([]);
+  });
+});
+
 test.describe("our company map", () => {
   test("scrolls from the globe to a labelled Oman, then the explore cards", async ({ page }) => {
     const errors = trackErrors(page);

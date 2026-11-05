@@ -8,7 +8,7 @@ export type NavGroup = { label: LabelKey; href?: Href; children?: NavLink[] };
 export const utilityNav: NavLink[] = [
   { label: "career", href: { page: "career" } },
   { label: "media", href: { section: "media" } },
-  { label: "contact", href: { section: "contact" } },
+  { label: "contact", href: { page: "contact" } },
 ];
 
 /** Main navigation — same order, groups and labels as the approved demo. */

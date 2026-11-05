@@ -163,5 +163,5 @@ export const assistTargets: Record<keyof Dictionary["assist"]["index"], Href> = 
   opal: { page: "media/opal-mou" },
   oer: { page: "media/oer-top-20" },
   annualReport: { document: "annualReport" },
-  contact: { section: "contact" },
+  contact: { page: "contact" },
 };

@@ -62,6 +62,7 @@ export const contentPages = [
   "investors/dividends-disclosures",
   "investors/msx-discussion-session",
   "tenders",
+  "contact",
 ] as const;
 
 export type PageSlug = PlaceholderSlug | (typeof contentPages)[number];

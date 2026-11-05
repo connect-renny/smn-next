@@ -1574,6 +1574,516 @@
     }
   }
 
+  /* ─── Contact ───────────────────────────────────────────────────────────── */
+  .contact-page {
+    position: relative;
+  }
+
+  .contact-cards {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: clamp(12px, 1.05vw, 20px);
+    margin-top: clamp(-104px, -5.4vw, -40px);
+
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .contact-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(20px, 1.5vw, 29px);
+    overflow: hidden;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 18px 44px rgb(18 41 79 / 0.13);
+    color: var(--color-navy);
+    transition:
+      color 0.45s var(--ease-soft),
+      translate 0.6s var(--ease-out-expo),
+      box-shadow 0.6s var(--ease-soft);
+
+    /* On hover the page's navy-to-green rises up through the card. */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #0e3362 0%, #1b5f6c 58%, #3fa95e 100%);
+      clip-path: circle(0% at 12% 12%);
+      transition: clip-path 0.75s var(--ease-out-expo);
+    }
+
+    &:where([dir="rtl"] *)::before {
+      clip-path: circle(0% at 88% 12%);
+    }
+
+    > * {
+      position: relative;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: #fff;
+        box-shadow: 0 26px 56px rgb(18 41 79 / 0.24);
+        translate: 0 -5px;
+      }
+
+      &:hover::before {
+        clip-path: circle(150% at 12% 12%);
+      }
+
+      &:where([dir="rtl"] *):hover::before {
+        clip-path: circle(150% at 88% 12%);
+      }
+    }
+  }
+
+  .contact-card-icon {
+    display: grid;
+    place-items: center;
+    width: clamp(46px, 2.9vw, 56px);
+    aspect-ratio: 1;
+    border-radius: 12px;
+    background: var(--color-navy);
+    color: #fff;
+    transition:
+      background-color 0.45s var(--ease-soft),
+      rotate 0.7s var(--ease-out-expo);
+
+    .contact-card:hover & {
+      background: var(--color-orange);
+      rotate: -8deg;
+    }
+  }
+
+  .contact-card-label {
+    margin-top: clamp(16px, 1.15vw, 22px);
+    font-size: var(--text-eyebrow-md);
+    font-weight: 500;
+    opacity: 0.75;
+  }
+
+  .contact-card-body {
+    display: grid;
+    flex: 1;
+    align-content: start;
+    gap: 4px;
+    margin-top: 6px;
+    font-size: var(--text-page-body);
+    line-height: 1.4;
+
+    p {
+      opacity: 0.8;
+    }
+
+    /* The lead line itself carries full strength. */
+    p.contact-card-lead {
+      opacity: 1;
+    }
+  }
+
+  .contact-card-lead {
+    display: block;
+    font-size: clamp(17px, 1.15vw, 22px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+
+    &:where([dir="rtl"] *) {
+      letter-spacing: normal;
+    }
+  }
+
+  .contact-card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    margin-top: clamp(18px, 1.35vw, 26px);
+    padding: 0.72em 1.35em;
+    border-radius: 99px;
+    background: var(--color-orange);
+    color: #fff;
+    font-size: var(--text-eyebrow-md);
+    font-weight: 600;
+    transition:
+      background-color 0.3s var(--ease-soft),
+      border-color 0.3s var(--ease-soft),
+      color 0.3s var(--ease-soft),
+      translate 0.5s var(--ease-out-expo);
+
+    svg {
+      transition: translate 0.5s var(--ease-out-expo);
+    }
+
+    &:hover {
+      background: var(--color-orange-dark);
+      translate: 0 -2px;
+
+      svg {
+        translate: 2px -2px;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-navy);
+      outline-offset: 2px;
+    }
+
+    /* A way around the page rather than a way to reach us. */
+    &[data-quiet] {
+      background: transparent;
+      box-shadow: inset 0 0 0 1.5px currentcolor;
+      color: inherit;
+
+      &:hover {
+        background: var(--color-orange);
+        box-shadow: none;
+        color: #fff;
+
+        svg {
+          translate: 0 3px;
+        }
+      }
+    }
+  }
+
+  .contact-heading {
+    color: var(--color-navy);
+    font-size: var(--text-page-title);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+
+    strong {
+      color: var(--color-orange-dark);
+    }
+
+    &:where([dir="rtl"] *) {
+      letter-spacing: normal;
+    }
+  }
+
+  .contact-office {
+    display: grid;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 10px 34px rgb(18 41 79 / 0.08);
+    scroll-margin-top: calc(var(--header-h) + 16px);
+
+    @media (width >= 64rem) {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+  }
+
+  .contact-office-text {
+    display: grid;
+    align-content: center;
+    gap: clamp(18px, 1.5vw, 28px);
+    padding: clamp(22px, 2.3vw, 44px);
+  }
+
+  .contact-rows {
+    display: grid;
+    font-size: var(--text-page-body);
+
+    > div {
+      display: grid;
+      grid-template-columns: minmax(70px, 2fr) minmax(0, 5fr);
+      gap: 12px;
+      padding-block: clamp(8px, 0.63vw, 12px);
+      border-bottom: 1px dashed var(--color-media-rule);
+    }
+
+    dt {
+      color: var(--color-about-muted);
+    }
+
+    dd {
+      color: var(--color-navy);
+      font-weight: 500;
+    }
+  }
+
+  /* ─── The dotted map ─── */
+  .contact-map {
+    position: relative;
+    min-height: clamp(300px, 26vw, 500px);
+    overflow: hidden;
+    background: radial-gradient(90% 90% at 62% 44%, #143a78 0%, #0b2052 62%, #06153a 100%);
+    container-type: size;
+  }
+
+  /* Always the drawing's own shape, covering the panel from its centre. Plain left,
+     not logical: the map keeps its geography in Arabic. */
+  .contact-map-stage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100cqw, calc(100cqh * 700 / 460));
+    aspect-ratio: 700 / 460;
+    translate: -50% -50%;
+
+    > svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .contact-map-dots {
+    fill: none;
+    stroke: rgb(255 255 255 / 0.24);
+    stroke-linecap: round;
+    stroke-width: 4.4;
+    transition: opacity 0.8s var(--ease-soft);
+    transition-delay: calc(var(--ring) * 70ms);
+
+    &[data-coast] {
+      stroke: rgb(113 213 133 / 0.82);
+    }
+
+    [data-armed]:not([data-on]) & {
+      opacity: 0;
+    }
+  }
+
+  .contact-map-arc {
+    fill: none;
+    stroke: var(--color-orange);
+    stroke-dasharray: 1;
+    stroke-linecap: round;
+    stroke-width: 2.4;
+    transition:
+      stroke-dashoffset 1.3s var(--ease-soft) 1s,
+      stroke-width 0.3s;
+
+    [data-armed]:not([data-on]) & {
+      stroke-dashoffset: 1;
+    }
+
+    [data-focus="rusail"] &[data-arc="rusail"],
+    [data-focus="barka"] &[data-arc="barka"] {
+      stroke-width: 5;
+    }
+  }
+
+  .contact-pin {
+    position: absolute;
+    display: block;
+    color: #fff;
+    transition:
+      opacity 0.6s var(--ease-soft),
+      scale 0.8s cubic-bezier(0.34, 1.7, 0.64, 1);
+
+    > b {
+      position: absolute;
+      top: 50%;
+      width: max-content;
+      padding: 0.3em 0.7em;
+      border-radius: 6px;
+      background: rgb(6 21 58 / 0.78);
+      font-size: clamp(11px, 0.73vw, 14px);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    small {
+      display: block;
+      font-size: 0.86em;
+      font-weight: 400;
+      opacity: 0.85;
+    }
+  }
+
+  .contact-pin-plant {
+    width: 0;
+    height: 0;
+    transition-delay: 2s;
+
+    [data-armed]:not([data-on]) & {
+      opacity: 0;
+      scale: 0.2;
+    }
+
+    > i {
+      position: absolute;
+      inset: -7px;
+      border: 2.5px solid #fff;
+      border-radius: 50%;
+      background: var(--color-diagram-green);
+      transition: scale 0.5s cubic-bezier(0.34, 1.7, 0.64, 1);
+    }
+
+    /* Plain left and right here: the map keeps its geography in Arabic. */
+    &[data-pin="rusail"] > b {
+      top: 14px;
+      left: 50%;
+      translate: -50% 0;
+    }
+
+    &[data-pin="barka"] > b {
+      right: 14px;
+      translate: 0 -50%;
+    }
+
+    [data-focus="rusail"] &[data-pin="rusail"] > i,
+    [data-focus="barka"] &[data-pin="barka"] > i {
+      scale: 1.6;
+    }
+  }
+
+  .contact-pin-office {
+    display: grid;
+    place-items: center;
+    width: clamp(24px, 1.75vw, 34px);
+    translate: -50% -50%;
+    filter: drop-shadow(0 0 12px rgb(247 148 49 / 0.75));
+    transition-delay: 0.1s;
+
+    [data-armed]:not([data-on]) & {
+      opacity: 0;
+      scale: 0.2;
+    }
+
+    > :is(svg, img) {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+
+    > i {
+      position: absolute;
+      inset: -6px;
+      border: 2px solid var(--color-orange);
+      border-radius: 50%;
+      animation: var(--animate-pulse-ring);
+    }
+
+    > b {
+      bottom: calc(100% + 8px);
+      top: auto;
+      left: 50%;
+      translate: -50% 0;
+      text-align: center;
+    }
+  }
+
+  /* ─── The plants ─── */
+  .contact-plant {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    min-height: clamp(170px, 13vw, 250px);
+    padding: clamp(18px, 1.5vw, 28px);
+    overflow: hidden;
+    border-radius: 14px;
+    color: #fff;
+    cursor: pointer;
+    text-align: start;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgb(8 24 62 / 0.92) 8%,
+        rgb(8 24 62 / 0.28) 62%,
+        rgb(8 24 62 / 0.08)
+      );
+      transition: opacity 0.5s var(--ease-soft);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--color-orange);
+      outline-offset: 2px;
+    }
+
+    > :not(img) {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .contact-plant-photo {
+    transition: scale 1.2s var(--ease-out-expo);
+
+    .contact-plant:hover & {
+      scale: 1.07;
+    }
+  }
+
+  .contact-plant-text {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .contact-plant-title {
+    font-size: clamp(18px, 1.3vw, 25px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+
+    &:where([dir="rtl"] *) {
+      letter-spacing: normal;
+    }
+  }
+
+  .contact-plant-sub {
+    font-size: var(--text-eyebrow-md);
+    opacity: 0.88;
+  }
+
+  .contact-plant-button {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: clamp(44px, 2.8vw, 54px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-orange);
+    transition:
+      scale 0.6s var(--ease-out-expo),
+      rotate 0.6s var(--ease-out-expo);
+
+    .contact-plant:hover & {
+      rotate: -8deg;
+      scale: 1.12;
+    }
+  }
+
+  .contact-map-dialog {
+    background: #0b2052;
+    color: #fff;
+
+    [data-slot="dialog-close"] {
+      color: #fff;
+    }
+  }
+
+  .contact-map-frame {
+    width: 100%;
+    height: min(72svh, 640px);
+    border: 0;
+    border-radius: 8px;
+    background: #06153a;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-pin-office > i {
+      animation: none;
+    }
+  }
+
   /* ─── Our Company: world-to-Oman map ─────────────────────────────────────── */
   .oman-stage {
     background: radial-gradient(120% 90% at 50% 42%, #0f2a63 0%, #081a43 52%, #040e29 100%);
