@@ -595,6 +595,35 @@
       "hsePolicy": "RPC HSE policy"
     }
   },
+  "ethics": {
+    "titleLines": ["Our", "**Ethics**"],
+    "text": "In line with our values and the way we work, SMN Power Holding SAOG (SMN Power) has established fundamental principles that underpin the day-to-day strategic decisions, management and professional practices of the company: compliance with laws and regulations, integrity, fairness, honesty and respect for others.",
+    "principlesLabel": "Fundamental principles",
+    "railLabel": "Go to a principle",
+    "principles": {
+      "compliance": {
+        "title": "Compliance with laws & regulations",
+        "text": "The company's employees must in all circumstances observe international, national and local laws and the professional codes of practice applicable to their activities."
+      },
+      "integrity": {
+        "title": "Integrity",
+        "text": "Integrity is about avoiding any conflict between personal interests and the company's interests. It underpins an absolute belief in the obligation to respect certain values. It thereby creates a climate of trust and acts as a shield against corrupt practices."
+      },
+      "fairness": {
+        "title": "Fairness and honesty",
+        "text": "Employees fulfill their undertakings and engagements scrupulously. Whenever they communicate, within the company or externally, they do so in good faith and in a constructive spirit, with a concern for providing genuine, accurate and complete information. The aim of SMN Power is to establish long-term relations with its partners based on mutual trust."
+      },
+      "respect": {
+        "title": "Respect for others",
+        "text": "This principle particularly applies to the respect for the rights of individuals, for their dignity and their differences, as well as a respect for different cultures. It also applies to tangible and intangible goods that belong to others."
+      }
+    },
+    "charter": {
+      "sheetTitle": "Ethics Charter",
+      "title": "The Ethics Charter of SMN Power",
+      "action": "View the Ethics Charter"
+    }
+  },
   "contact": {
     "titleLines": ["Contact", "**Us**"],
     "text": "Reach SMN Power by phone or email, or visit our head office in Al Qurum, Muscat. You can also find our Al Rusail and Barka power plants on their site maps below. For directions to the head office, open its location in Google Maps.",

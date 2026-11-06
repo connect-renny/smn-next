@@ -40,7 +40,6 @@ export const innerPages = {
     label: "articlesOfAssociation",
     related: "governance",
   },
-  "corporate-governance/ethics": { label: "ethics", related: "governance" },
   investors: { label: "investors", related: null },
   "investors/disclosures": { label: "disclosures", related: null },
   "investors/financial-reports": { label: "financialReports", related: null },
@@ -59,6 +58,7 @@ type PlaceholderSlug = keyof typeof innerPages;
 export const contentPages = [
   "about/our-company",
   "corporate-governance/board-of-directors",
+  "corporate-governance/ethics",
   "investors/dividends-disclosures",
   "investors/msx-discussion-session",
   "tenders",

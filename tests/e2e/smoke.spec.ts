@@ -219,6 +219,46 @@ test.describe("tenders", () => {
   });
 });
 
+test.describe("ethics", () => {
+  test("shows all four principles and links the charter, in both languages", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/corporate-governance/ethics");
+    await waitForPreloader(page);
+    const main = page.getByRole("main");
+    await expect(main.getByRole("heading", { level: 3 })).toHaveText([
+      "Compliance with laws & regulations",
+      "Integrity",
+      "Fairness and honesty",
+      "Respect for others",
+    ]);
+    await expect(main.getByRole("link", { name: /View the Ethics Charter/ })).toHaveAttribute(
+      "href",
+      /ETHICS%20CHARTER.*\.pdf$/,
+    );
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    await page.goto("/ar/corporate-governance/ethics");
+    await waitForPreloader(page);
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await expect(page.getByRole("main")).toContainText("تتمحور النزاهة حول");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(errors).toEqual([]);
+  });
+
+  test("scrolling the stage moves through the principles", async ({ page, isMobile }) => {
+    test.skip(isMobile, "The stage only pins on large screens");
+    await page.goto("/en/corporate-governance/ethics");
+    await waitForPreloader(page);
+    await page.locator("#principles").scrollIntoViewIfNeeded();
+
+    const steps = page.locator(".ethics-rail-step");
+    await steps.nth(2).click();
+    await expect(steps.nth(2)).toHaveAttribute("aria-current", "step");
+    await expect(page.locator(".ethics-principle").nth(2)).toHaveCSS("opacity", "1");
+    await expect(page.locator(".ethics-principle").nth(0)).toHaveCSS("opacity", "0");
+  });
+});
+
 test.describe("contact", () => {
   test("offers the ways to reach SMN and the plant site maps, in both languages", async ({
     page,
