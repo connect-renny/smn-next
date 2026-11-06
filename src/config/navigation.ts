@@ -4,6 +4,9 @@ export type NavLink = { label: LabelKey; href: Href };
 /** A group without `href` is a plain label that only opens its menu. */
 export type NavGroup = { label: LabelKey; href?: Href; children?: NavLink[] };
 
+/** SMN's page on the Muscat Stock Exchange, which carries these three investor items. */
+const MSX_SNAPSHOT: Href = { external: "https://www.msx.om/snapshot.aspx?s=SMNP" };
+
 /** Top utility bar (above the main nav). Language switch is rendered separately. */
 export const utilityNav: NavLink[] = [
   { label: "career", href: { page: "career" } },
@@ -44,11 +47,11 @@ export const mainNav: NavGroup[] = [
     label: "investors",
     href: { page: "investors" },
     children: [
-      { label: "disclosures", href: { page: "investors/disclosures" } },
-      { label: "financialReports", href: { page: "investors/financial-reports" } },
+      { label: "disclosures", href: MSX_SNAPSHOT },
+      { label: "financialReports", href: MSX_SNAPSHOT },
       { label: "dividendsDisclosures", href: { page: "investors/dividends-disclosures" } },
       { label: "annualReport", href: { document: "annualReport" } },
-      { label: "sharePrice", href: { page: "investors/share-price" } },
+      { label: "sharePrice", href: MSX_SNAPSHOT },
       { label: "msxDiscussion", href: { page: "investors/msx-discussion-session" } },
     ],
   },

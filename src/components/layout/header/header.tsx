@@ -120,7 +120,7 @@ export function Header({ locale, dict, nav }: HeaderProps) {
                       {group.children.length > 0 && (
                         <ul className="invisible absolute -start-[18px] top-full min-w-66 translate-y-2.5 overflow-hidden rounded-2xl border-t-2 border-orange bg-navy-deep/96 py-2.5 opacity-0 shadow-2xl transition-[opacity,translate,visibility] duration-300 ease-out group-focus-within/nav:visible group-focus-within/nav:translate-y-0 group-focus-within/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:opacity-100">
                           {group.children.map((child) => (
-                            <li key={child.href}>
+                            <li key={child.label}>
                               <Link
                                 href={child.href}
                                 {...(child.external && newTab)}

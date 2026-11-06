@@ -219,6 +219,41 @@ test.describe("tenders", () => {
   });
 });
 
+test.describe("investor menu", () => {
+  test("sends Disclosures, Financial Reports and Share Price to MSX in a new tab", async ({
+    page,
+    isMobile,
+  }) => {
+    const errors = trackErrors(page);
+    // Three items share one address, which must not trip React's duplicate key check.
+    const consoleErrors: string[] = [];
+    page.on("console", (m) => {
+      if (m.type() === "error") consoleErrors.push(m.text());
+    });
+    await page.goto("/en");
+    await waitForPreloader(page);
+    const links = page.locator('header a[href="https://www.msx.om/snapshot.aspx?s=SMNP"]');
+    await expect(links).toHaveCount(3);
+    for (const name of ["Disclosures", "Financial Reports", "Share Price"]) {
+      await expect(links.filter({ hasText: new RegExp(`^${name}$`) })).toHaveCount(1);
+    }
+    for (const link of await links.all()) {
+      await expect(link).toHaveAttribute("target", "_blank");
+    }
+    if (isMobile) {
+      await page.getByRole("button", { name: "Open navigation menu" }).click();
+      const drawer = page.getByRole("dialog");
+      await drawer.getByRole("button", { name: /Investor/ }).click();
+      await expect(drawer.getByRole("link", { name: "Share Price" })).toHaveAttribute(
+        "href",
+        "https://www.msx.om/snapshot.aspx?s=SMNP",
+      );
+    }
+    expect(errors).toEqual([]);
+    expect(consoleErrors.filter((text) => text.includes("same key"))).toEqual([]);
+  });
+});
+
 test.describe("main shareholders", () => {
   test("tells both companies' stories without their logos, in both languages", async ({ page }) => {
     const errors = trackErrors(page);

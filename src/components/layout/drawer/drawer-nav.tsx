@@ -82,7 +82,7 @@ export function DrawerNav({ nav, home, label, onNavigate, className }: DrawerNav
               <div className="min-h-0 overflow-hidden">
                 <ul className="my-2 flex flex-col gap-2.5 border-s-2 border-[#f3f4f6] ps-4">
                   {group.children.map((child) => (
-                    <li key={child.href}>{renderLink(child, subLink)}</li>
+                    <li key={child.label}>{renderLink(child, subLink)}</li>
                   ))}
                 </ul>
               </div>
