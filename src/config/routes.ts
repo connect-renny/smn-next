@@ -34,7 +34,6 @@ export const innerPages = {
     label: "nominationCommittee",
     related: "governance",
   },
-  "corporate-governance/management": { label: "management", related: "governance" },
   "corporate-governance/articles-of-association": {
     label: "articlesOfAssociation",
     related: "governance",
@@ -56,6 +55,7 @@ export const contentPages = [
   "about/main-shareholders",
   "corporate-governance/board-of-directors",
   "corporate-governance/ethics",
+  "corporate-governance/management",
   "investors/dividends-disclosures",
   "investors/msx-discussion-session",
   "tenders",

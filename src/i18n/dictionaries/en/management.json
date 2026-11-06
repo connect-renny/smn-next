@@ -1,0 +1,41 @@
+{
+  "management": {
+    "titleLines": ["Our", "**Management**"],
+    "text": "SMN Power is led by a Management Team who is relying upon a team of professionals managing SMN Barka Power Company and Al Rusail Power Company. In addition to a team at SMN Power and Affiliates level, a team of qualified and experienced people within STOMO manage the operations and maintenance at both plants. The senior management team has been empowered by the Board of Directors of the Company to manage the day-to-day operations of the Company and its affiliates. The team benefits from the local and international support of its shareholders.",
+    "eyebrow": "Leadership",
+    "title": "Brief Profile of the Management Team",
+    "yearOfJoining": "Year of Joining",
+    "education": "Education",
+    "experience": "Experience",
+    "members": {
+      "boris": {
+        "name": "Boris Smondack",
+        "role": "Chief Executive Officer",
+        "year": "2026",
+        "education": "Master degree in Engineering and a Pre-Doctorate degree in Geophysics (France/New Zealand)",
+        "experience": [
+          "Mr. Smondack is a seasoned international leader with over 25 years of experience in power generation, water infrastructure, and energy transition across Europe, Africa, the Middle East, and Asia. Mr. Smondack has been recognized for shaping and optimizing large-scale assets, improving portfolio performance, and guiding cross-functional teams through complex environments."
+        ]
+      },
+      "khalifa": {
+        "name": "Khalifa Al Kalbani",
+        "role": "Chief Financial Officer",
+        "year": "2026",
+        "education": "Mr. Khalifa Al Kalbani holds a Bachelor’s degree in Accounting and Finance from Manchester Metropolitan University, UK, obtained in 1997",
+        "experience": [
+          "With over 29 years of professional experience across a diverse range of industries, Mr. Al Kalbani has held senior executive positions for more than 23 years in both the public and private sectors. His extensive experience spans oil and gas, refining, petrochemicals, metals, energy and postal & logistics services.",
+          "Throughout his career, Mr. Al Kalbani has held Chief Financial Officer (CFO) positions at Oman Polypropylene, Oman Aluminium, Oman Post, and Sohar Power. He has also held key roles in several prominent organizations, including ORPIC, Oman Aromatics, Oman Gas Company, and the Ministry of Commerce and Industry. His broad industry exposure and senior leadership experience reflect a strong background in financial management and executive leadership across multiple sectors."
+        ]
+      },
+      "anupam": {
+        "name": "Anupam Kunwar",
+        "role": "Chief Technical Officer",
+        "year": "2016",
+        "education": "Bachelor’s Degree in Electrical Engineering, Maulana Azad National Institute of Technology, Bhopal, India. Level 3 certificate in First Line Management, ILM, UK.",
+        "experience": [
+          "Mr. Anupam Kunwar joined SMN Power and its subsidiaries in June 2016 and has worked within ENGIE Group of companies since 2007. He worked with ENGIE STOMO from 2007 until May 2016 as Maintenance Manager for Rusail Power Plant and then Barka 2 Power and Desalination Plant. Previously, he worked for Enron Corporation and Tata Chemicals in India. Mr. Anupam has over 25 years of professional experience in O&M, construction and commissioning of Power and desalination plants In India and the Middle East."
+        ]
+      }
+    }
+  }
+}

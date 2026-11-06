@@ -5,6 +5,7 @@ import dividends from "./dividends.json";
 import ethics from "./ethics.json";
 import home from "./home.json";
 import mainShareholders from "./main-shareholders.json";
+import management from "./management.json";
 import msxSessions from "./msx-sessions.json";
 import ourCompany from "./our-company.json";
 import tenders from "./tenders.json";
@@ -16,6 +17,7 @@ const en = {
   ...ourCompany,
   ...mainShareholders,
   ...boardOfDirectors,
+  ...management,
   ...ethics,
   ...dividends,
   ...msxSessions,

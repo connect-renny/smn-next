@@ -1,12 +1,18 @@
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import type { Dictionary } from "@/i18n/get-dictionary";
 
-import { BoardExplorer } from "./board-explorer";
+import { BoardExplorer, type ExplorerCopy, type ExplorerMember } from "./board-explorer";
 
-export function BoardMembers({ dict, id }: { dict: Dictionary; id: string }) {
-  const t = dict.boardOfDirectors;
-
+/** The green leadership band, shared by the Board of Directors and Management pages. */
+export function BoardMembers({
+  copy,
+  members,
+  id,
+}: {
+  copy: ExplorerCopy & { eyebrow: string; title: string };
+  members: readonly ExplorerMember[];
+  id: string;
+}) {
   return (
     <AnimatedSection
       id={id}
@@ -17,17 +23,17 @@ export function BoardMembers({ dict, id }: { dict: Dictionary; id: string }) {
       <div className="company-column">
         <div data-animate="up">
           <Eyebrow className="text-eyebrow-md">
-            <span dir="auto">{t.eyebrow}</span>
+            <span dir="auto">{copy.eyebrow}</span>
           </Eyebrow>
         </div>
         <h2
           data-animate="up"
           className="mt-[clamp(18px,1.9vw,36px)] text-page-title leading-[1.2] font-medium tracking-[-0.05em] rtl:tracking-normal"
         >
-          {t.title}
+          {copy.title}
         </h2>
 
-        <BoardExplorer copy={t} />
+        <BoardExplorer copy={copy} members={members} />
       </div>
     </AnimatedSection>
   );

@@ -5,8 +5,6 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 
 import { useSmoothScroll } from "@/components/animations/smooth-scroll-provider";
-import { boardMembers, type BoardMemberId } from "@/content/board-of-directors";
-import type { Dictionary } from "@/i18n/get-dictionary";
 import { gsap, MOTION_OK, prefersReducedMotion, useGSAP } from "@/lib/gsap";
 
 const DESKTOP = "(min-width: 64rem)";
@@ -16,10 +14,35 @@ const PHOTO_SIZES = "(min-width: 64rem) 240px, 45vw";
 const TEXT_OUT = 0.2;
 const FLIGHT = 0.8;
 
-type Copy = Dictionary["boardOfDirectors"];
+export type ExplorerCopy = {
+  yearOfJoining: string;
+  education: string;
+  experience: string;
+  members: Record<
+    string,
+    {
+      name: string;
+      role: string;
+      year: string;
+      education: string;
+      experience: string | string[];
+    }
+  >;
+};
 
-/** Two-column explorer: pick a tile and that portrait flies across into the bio panel. */
-export function BoardExplorer({ copy }: { copy: Copy }) {
+export type ExplorerMember = { id: string; photo: string };
+
+/**
+ * Two-column explorer: pick a tile and that portrait flies across into the bio panel.
+ * Shared by the Board of Directors and Management pages.
+ */
+export function BoardExplorer({
+  copy,
+  members,
+}: {
+  copy: ExplorerCopy;
+  members: readonly ExplorerMember[];
+}) {
   const scope = useRef<HTMLDivElement>(null);
   const ghost = useRef<HTMLDivElement>(null);
   const panel = useRef<HTMLDivElement>(null);
@@ -27,12 +50,12 @@ export function BoardExplorer({ copy }: { copy: Copy }) {
   const flying = useRef(false);
   const { scrollTo } = useSmoothScroll();
 
-  const [selected, setSelected] = useState<BoardMemberId>(boardMembers[0].id);
+  const [selected, setSelected] = useState(members[0].id);
   // `version` remounts the panel content, so re-picking mid-change never leaves it half-hidden.
-  const [shown, setShown] = useState({ id: boardMembers[0].id, version: 0 });
+  const [shown, setShown] = useState({ id: members[0].id, version: 0 });
 
   const member = copy.members[shown.id];
-  const shownPhoto = boardMembers.find((m) => m.id === shown.id)!.photo;
+  const shownPhoto = members.find((m) => m.id === shown.id)!.photo;
 
   // ─── Entrance: tiles rise into place, each figure lifting out of its backdrop ───
   useGSAP(
@@ -148,7 +171,7 @@ export function BoardExplorer({ copy }: { copy: Copy }) {
       }, FLIGHT);
   };
 
-  const select = (id: BoardMemberId, tile: HTMLElement) => {
+  const select = (id: string, tile: HTMLElement) => {
     if (id === selected) return;
     setSelected(id);
 
@@ -243,28 +266,26 @@ export function BoardExplorer({ copy }: { copy: Copy }) {
           tabIndex={0}
           className="board-panel-body lg:tracking-[-0.05em] rtl:tracking-normal"
         >
-          {member.experience ? (
-            <>
-              <p data-panel-fade className="font-medium">
-                {copy.yearOfJoining} : <span dir="ltr">{member.year}</span>
-              </p>
-              <p data-panel-fade>
-                {copy.education} : {member.education}
-              </p>
-              <p data-panel-fade className="font-medium">
-                {copy.experience} :
-              </p>
-              <p data-panel-fade>{member.experience}</p>
-            </>
-          ) : (
-            <p data-panel-fade>{copy.profilePending}</p>
-          )}
+          <p data-panel-fade className="font-medium">
+            {copy.yearOfJoining} : <span dir="ltr">{member.year}</span>
+          </p>
+          <p data-panel-fade>
+            {copy.education} : {member.education}
+          </p>
+          <p data-panel-fade className="font-medium">
+            {copy.experience} :
+          </p>
+          {[member.experience].flat().map((paragraph) => (
+            <p key={paragraph} data-panel-fade dir="auto">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </div>
 
       {/* The tiles */}
       <ul className="grid grid-cols-2 gap-[clamp(10px,0.74vw,14px)] sm:grid-cols-3">
-        {boardMembers.map(({ id, photo }) => {
+        {members.map(({ id, photo }) => {
           const active = id === selected;
           return (
             <li key={id} data-board-tile>
@@ -272,7 +293,7 @@ export function BoardExplorer({ copy }: { copy: Copy }) {
                 type="button"
                 aria-pressed={active}
                 data-active={active || undefined}
-                className="board-tile"
+                className="board-tile flex h-full flex-col"
                 onClick={(event) => select(id, event.currentTarget)}
                 onPointerMove={onTilePointerMove}
                 onPointerLeave={onTilePointerLeave}

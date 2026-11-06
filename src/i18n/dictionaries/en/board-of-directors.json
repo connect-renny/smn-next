@@ -7,7 +7,6 @@
     "yearOfJoining": "Year of Joining",
     "education": "Education",
     "experience": "Experience",
-    "profilePending": "Profile coming soon.",
     "members": {
       "abdullah": {
         "name": "Dr. Abdullah Al Yahya'ey",
@@ -18,31 +17,17 @@
       },
       "david": {
         "name": "David Beaufays",
-        "role": "Vice-Chairman",
+        "role": "Vice Chairman",
         "year": "2024",
         "education": "Mr. David Beaufays holds an MSc in Engineering and Business Management from Louvain School of Management, Belgium, an Executive Master’s in Finance from Solvay Business School, Belgium, and a Financial Engineering degree from City University, Hong Kong.",
         "experience": "Mr. Beaufays began his career as a trader at ING Bank before joining ENGIE, where he has dedicated over 17 years. He started as a Trader in Structured Products within the Global Energy Management department in France. Throughout his tenure at ENGIE, he has excelled in various operational, technical, and leadership roles across Europe and internationally. Notably, he served as Head of Investments and Acquisitions for Indonesia and China for over 8 years, before being promoted to Head of Business Development for KSA & GCC."
       },
-      "mohammed": {
-        "name": "Mohammed Al-Husseini",
+      "ahmed": {
+        "name": "Ahmed Saud Said Al Zakwany",
         "role": "Director",
-        "year": "2026",
-        "education": "MBA - Corporate Finance from University of Dallas-USA and Bachelor’s Degree in Money and Banking from Yarmouk University- Jordan.",
-        "experience": "Mr. Mohammed Al Husseini has over 23 years of work experience. He has extensive experience in local and regional markets. Currently he is working with the Investment Unit - SPF. In addition, he was the Deputy Investment Director in Ministry of defense Pension Fund Muscat, Oman. He worked as the head of Credit Analysis Division in SSC Amman, Jordan."
-      },
-      "imran": {
-        "name": "Imran Sheikh",
-        "role": "Director",
-        "year": "2015",
-        "education": "Mr. Imran Sheikh holds an MBA from Manchester Business School, UK. He is a qualified accountant with fellow memberships of UK chartered accountancy bodies of CIMA and ACCA and holds the designation of Chartered Financial Analyst from the CFA Institute, USA.",
-        "experience": "Mr. Imran Sheikh has worked for twenty-four years, as a senior Financial Officer in the power and water industry in the GCC and Pakistan. He started his career in the IWPP/IPP in 1996 with International Power group at Hub O&M, Pakistan. He moved to Shuweihat CMS International Power Company in Abu Dhabi in December 2002, where he served for three years. He then joined Qatar Power Company, Qatar, in January 2006 firstly as a Business Manager and later on as Chief Financial Officer."
-      },
-      "boris": {
-        "name": "Boris Smondack",
-        "role": "",
-        "year": "",
-        "education": "",
-        "experience": ""
+        "year": "2014",
+        "education": "Mr. Ahmed Al Zakwany is a Fellow Chartered Accountant (FCCA) – UK coupled with Executive Education from London Business School.",
+        "experience": "He started his career in Oman’s Ministry of Defence where he joined as a Junior Auditor before becoming the Head of Internal Audit. He subsequently moved to the private sector and joined Oman LNG in 2006 and occupied several positions before being appointed as Chief Financial Officer in February 2016 until his retirement at the end of 2020. Ahmed has over 35 years of experience covering Audit, Finance, Corporate Governance, Control Framework, and possesses solid leadership, professional excellence, boosted by robust people management skills. His strong qualities both technically and professionally, enabled him to be appointed as the Oman LNG and Qalhat LNG Integration Director in 2013 ushering a new era of Oman’s LNG industry. In 2014, Ahmed was awarded the ‘Best Finance Executive of the year 2014’ by the CFO Strategies Forum for MENA. Ahmed is currently a Board Member of SMN Power Holding Company as an Independent Director."
       },
       "ruben": {
         "name": "Ruben Ramalho",
@@ -51,13 +36,6 @@
         "education": "Mr. Ruben Ramalho holds a Master in Environmental Engineering from the University of Lisbon and a Post-Graduation in Sustainable Energy Systems from MIT and University of Lisbon.",
         "experience": "Mr. Ruben Ramalho has over fifteen years of investment experience in Infrastructure and is currently a Senior Principal in Mubadala Infrastructure Investment team responsible for sourcing, executing, and managing investments in the EMEA region. Prior to joining Mubadala, Ruben worked as an M&A Investment Professional in Brookfield Asset Management predominantly focused on Renewables, Power, and Utilities across Europe. Prior to that, Ruben was a Commercial and Corporate Advisor to Department of Energy of the UK Government and a Business Development and Strategy Manager for Engie in Portugal/Spain."
       },
-      "nujayma": {
-        "name": "Nujayma Al Maqbali",
-        "role": "Director",
-        "year": "2026",
-        "education": "Mrs. Nujayma Al Maqbali holds an MBA in Fintech from Muscat University and bachelor’s in accounting and finance from College of Banking and Financial Studies.",
-        "experience": "Mrs. Nujayma Al Maqbali has more than 12 years of experience in the field of investment, finance and accounting. Currently, she is part of the investment operations at the investment unit of the Social Protection Fund. As a board member of a prominent commercial and financial entity, she has contributed to strategic oversight and governance, enhancing operational frameworks and supporting long-term growth and development of the organizations."
-      },
       "mahinder": {
         "name": "Mahinder Nath",
         "role": "Director",
@@ -65,9 +43,23 @@
         "education": "Mechanical Engineer with specialisation in power technology, Delhi University, India, 1979.",
         "experience": "Mr. Mahinder Nath joined Mubadala Investment Company on 22nd January 2020 and worked with Mubadala as Senior Advisor – Utilities. He brings varied and in-depth experience in the fields of green and brownfield project development, operating asset acquisition and divestment, financing, asset management and EPC contracting. A good part of his long experience has been in the Middle East based out of the UAE, developing to financial close and asset managing the projects, in the GCC and wider ME region. Prior to joining Mubadala, Mahinder has worked, as executive Vice President with Marubeni Middle East and Africa Power Limited for two and a half years. He has previously worked for twelve years with Engie in the Middle East, India and the UK in business development, asset management, setting up business in India and supporting investment approvals for multiple business units of Engie. As an asset manager, Mahinder had the privilege of serving the Boards of various project companies in the region, including SMN Power Holding in the past. During his earlier tenure as a Board member, Mahinder has served as the Chairman of the Board of SMN Power Holding Company and hence, he is in a unique position to provide his valuable inputs for the high performance and growth of SMN."
       },
+      "khamis": {
+        "name": "Khamis Al Balushi",
+        "role": "Director",
+        "year": "2019",
+        "education": "Diploma in Banking Studies from Institute of Banking and Financial Studies, Muscat, Oman, 1987, Advanced Diploma in Marine Military Sciences from Britannia Royal Naval College, Dartmouth, UK, 1991, and Bachelor of Military Sciences from the Command and Staff College at Bait Al Falaj, Muscat, Sultanate of Oman, 2009.",
+        "experience": "Mr. Khamis Albalushi is a former Naval Officer with the rank of Captain in the Ministry of Defence, Sultanate of Oman. He was Director of Finance of the Royal Navy of Oman (2018-2020), also he was a member of the following: Executive Committee of the Ministry of Defence Pension Fund, Audit Team MOD Pension Fund, Defence Pay and Condition of Service Committee, Finance Military Review Committee, the Omani MOD Team in the Joint GCC Military Finance Committee, the MOD Team in the Joint Military Omani-American Finance Administration Review Committee (2018-2020). He has been working in the Ministry of Defence for 32 years, in which he held various positions in the various Ministry of Defense formations. In addition, he has completed many different courses and programs in administration, supply and procurement, strategic studies and analysis, and finance from prestigious institutes and colleges in the UK, USA, Pakistan, Malaysia and Turkey."
+      },
+      "imran": {
+        "name": "Imran Sheikh",
+        "role": "Director",
+        "year": "2015",
+        "education": "Mr. Imran Sheikh holds an MBA from Manchester Business School, UK. He is a qualified accountant with fellow memberships of UK chartered accountancy bodies of CIMA and ACCA and holds the designation of Chartered Financial Analyst from the CFA Institute, USA.",
+        "experience": "Mr. Imran Sheikh has worked for twenty-four years, as a senior Financial Officer in the power and water industry in the GCC and Pakistan. He started his career in the IWPP/IPP in 1996 with International Power group at Hub O&M, Pakistan. He moved to Shuweihat CMS International Power Company in Abu Dhabi in December 2002, where he served for three years. He then joined Qatar Power Company, Qatar, in January 2006 firstly as a Business Manager and later on as Chief Financial Officer."
+      },
       "zoher": {
         "name": "Zoher Karachiwala",
-        "role": "Corporate Secretary",
+        "role": "Company Secretary",
         "year": "2007",
         "education": "Bachelor’s Degree in Commerce, Chartered Accountant.",
         "experience": "Mr. Zoher Karachiwala is the Company Secretary. He was the Chief Executive Officer of United Power Company SAOG for 24 years and the Company Secretary of Sohar Power Company till 2024. He has over 44 years of experience in the field of Statutory Audit, Accounting and Finance. He was KPMG Audit Partner in Pakistan before joining United Power Company in 1995. Acted as Honorary Chairman of Audit Committee and the Board of Directors for a public Company in Oman."

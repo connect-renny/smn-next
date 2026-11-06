@@ -73,7 +73,7 @@ test.describe("board of directors", () => {
 
     const tiles = page.locator(".board-tile");
     const panel = page.locator(".board-panel");
-    await expect(tiles).toHaveCount(9);
+    await expect(tiles).toHaveCount(8);
     await tiles.first().scrollIntoViewIfNeeded();
     await expect(panel).toContainText("Chairman");
     await expect(tiles.first()).toHaveAttribute("aria-pressed", "true");
@@ -82,7 +82,7 @@ test.describe("board of directors", () => {
     await david.click();
     await expect(david).toHaveAttribute("aria-pressed", "true");
     await expect(tiles.first()).toHaveAttribute("aria-pressed", "false");
-    await expect(panel).toContainText("Vice-Chairman");
+    await expect(panel).toContainText("Vice Chairman");
     await expect(panel).toContainText("ING Bank");
     await expect(panel.locator("[data-panel-fade]").first()).toBeVisible();
     // The flying copy of the portrait is gone once it lands.
@@ -100,6 +100,39 @@ test.describe("board of directors", () => {
     await page.goto("/ar/corporate-governance/board-of-directors");
     await waitForPreloader(page);
     await expect(page.locator(".board-panel")).toContainText("رئيس مجلس الإدارة");
+    expect(errors).toEqual([]);
+  });
+});
+
+test.describe("management", () => {
+  test("picking a tile swaps the bio, in both languages", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/corporate-governance/management");
+    await waitForPreloader(page);
+
+    const tiles = page.locator(".board-tile");
+    const panel = page.locator(".board-panel");
+    await expect(tiles).toHaveText(["Boris Smondack", "Khalifa Al Kalbani", "Anupam Kunwar"]);
+    await tiles.first().scrollIntoViewIfNeeded();
+    await expect(panel).toContainText("Chief Executive Officer");
+
+    await tiles.nth(1).click();
+    await expect(tiles.nth(1)).toHaveAttribute("aria-pressed", "true");
+    await expect(panel).toContainText("Chief Financial Officer");
+    // Both of the CFO's experience paragraphs.
+    await expect(panel).toContainText("spans oil and gas");
+    await expect(panel).toContainText("Oman Polypropylene");
+    await expect(page.locator(".board-ghost > *")).toHaveCount(0);
+    await expect(page.getByText("Coming soon")).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    await page.goto("/ar/corporate-governance/management");
+    await waitForPreloader(page);
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await page.locator(".board-tile").nth(2).scrollIntoViewIfNeeded();
+    await page.locator(".board-tile").nth(2).click();
+    await expect(page.locator(".board-panel")).toContainText("الرئيس الفني");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
     expect(errors).toEqual([]);
   });
 });
