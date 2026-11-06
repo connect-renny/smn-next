@@ -31,7 +31,7 @@ export function Breadcrumbs({ label, items, className, ...props }: BreadcrumbsPr
                   {item.label}
                 </Link>
               ) : (
-                <span aria-current="page">{item.label}</span>
+                <span aria-current={i === items.length - 1 ? "page" : undefined}>{item.label}</span>
               )}
             </li>
           </Fragment>

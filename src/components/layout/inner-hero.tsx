@@ -12,7 +12,7 @@ type InnerHeroProps = {
   locale: Locale;
   dict: Dictionary;
   /** The menu group this page sits under, if any; the page itself closes the trail. */
-  parent?: { label: string; href: string };
+  parent?: { label: string; href?: string };
   current: string;
   titleLines: readonly string[];
   text?: string;

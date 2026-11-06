@@ -18,7 +18,7 @@ export const mainNav: NavGroup[] = [
     children: [
       { label: "ourCompany", href: { page: "about/our-company" } },
       { label: "visionMission", href: { page: "about/vision-mission" } },
-      { label: "mainShareholders", href: { section: "shareholders" } },
+      { label: "mainShareholders", href: { page: "about/main-shareholders" } },
     ],
   },
   {
@@ -60,7 +60,7 @@ export const mainNav: NavGroup[] = [
 export const footerAboutLinks: NavLink[] = [
   { label: "ourCompany", href: { page: "about/our-company" } },
   { label: "visionMission", href: { page: "about/vision-mission" } },
-  { label: "mainShareholders", href: { section: "shareholders" } },
+  { label: "mainShareholders", href: { page: "about/main-shareholders" } },
   { label: "barkaPlant", href: { page: "plants/barka-ii" } },
   { label: "rusailPlant", href: { page: "plants/al-rusail" } },
 ];

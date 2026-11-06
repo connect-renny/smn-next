@@ -219,6 +219,49 @@ test.describe("tenders", () => {
   });
 });
 
+test.describe("main shareholders", () => {
+  test("tells both companies' stories without their logos, in both languages", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/about/main-shareholders");
+    await waitForPreloader(page);
+    const main = page.getByRole("main");
+    await expect(main.getByRole("heading", { level: 2 })).toContainText([
+      "Kahrabel F.Z.E.",
+      "Mubadala Power Holding Company Limited",
+    ]);
+    await expect(main.locator("#kahrabel")).toContainText("International Power Ltd.");
+    await expect(main.locator("#mubadala")).toContainText("Government of Abu Dhabi");
+    // Not by role: the link stays hidden until it animates in.
+    await expect(main.locator('#kahrabel a[href="https://www.engie.com"]')).toContainText(
+      "www.engie.com",
+    );
+    // The client asked for no shareholder logos, on this page or in its photos.
+    const sources = await main
+      .locator("img")
+      .evaluateAll((imgs) => imgs.map((img) => (img as HTMLImageElement).src).join(" "));
+    expect(sources).not.toMatch(/engie|shareholder-kahrabel|images%2Flinks|images\/links/i);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    // The ownership line reaches the last owner by the end of the chapter.
+    const lastOwner = main.locator("#kahrabel [data-chain-owner]").last();
+    await page.evaluate(() => {
+      const chapter = document.querySelector("#kahrabel") as HTMLElement;
+      window.scrollTo(0, chapter.offsetTop + chapter.offsetHeight - innerHeight);
+    });
+    await expect(lastOwner).toHaveAttribute("data-lit", "");
+
+    await page.goto("/ar/about/main-shareholders");
+    await waitForPreloader(page);
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await expect(page.getByRole("main")).toContainText("تشرف شركة كهربيل");
+    // Arabic arrays fall back to English item by item, so nothing English may leak in.
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("المؤسسون");
+    await expect(page.locator("#mubadala .holder-figure-feature")).not.toContainText("US $");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(errors).toEqual([]);
+  });
+});
+
 test.describe("ethics", () => {
   test("shows all four principles and links the charter, in both languages", async ({ page }) => {
     const errors = trackErrors(page);
@@ -432,7 +475,7 @@ test.describe("hamburger drawer", () => {
     await drawer.getByRole("button", { name: "About Us" }).click();
     await drawer.getByRole("link", { name: "Main Shareholders" }).click();
 
+    await expect(page).toHaveURL(/\/en\/about\/main-shareholders$/);
     await expect(page.getByRole("dialog")).toHaveCount(0);
-    await expect(page.locator("#shareholders")).toBeInViewport();
   });
 });

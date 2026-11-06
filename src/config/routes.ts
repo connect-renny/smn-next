@@ -23,7 +23,6 @@ export type LabelKey = keyof Dictionary["labels"];
  */
 export const innerPages = {
   "about/vision-mission": { label: "visionMission", related: "about" },
-  "about/main-shareholders": { label: "mainShareholders", related: "shareholders" },
   "plants/barka-ii": { label: "barkaPlant", related: "about" },
   "plants/al-rusail": { label: "rusailPlant", related: "about" },
   "corporate-governance/companys-philosophy": {
@@ -57,6 +56,7 @@ type PlaceholderSlug = keyof typeof innerPages;
 /** Pages with real content: each has its own route folder under `app/[locale]`. */
 export const contentPages = [
   "about/our-company",
+  "about/main-shareholders",
   "corporate-governance/board-of-directors",
   "corporate-governance/ethics",
   "investors/dividends-disclosures",
