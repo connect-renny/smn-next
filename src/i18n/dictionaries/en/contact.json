@@ -1,0 +1,49 @@
+{
+  "contact": {
+    "titleLines": ["Contact", "**Us**"],
+    "text": "Reach SMN Power by phone or email, or visit our head office in Al Qurum, Muscat. You can also find our Al Rusail and Barka power plants on their site maps below. For directions to the head office, open its location in Google Maps.",
+    "telephone": "Office telephone",
+    "fax": "Fax",
+    "call": "Call",
+    "email": "Email",
+    "writeEmail": "Write an email",
+    "postal": "Postal address",
+    "postalLines": ["PO Box 121, Jawharat A’Shatti", "Postal Code: 134, Sultanate of Oman"],
+    "seeOffice": "See our head office",
+    "office": {
+      "title": "Visit our head office",
+      "area": "Al Qurum, Muscat",
+      "openMaps": "Open in Google Maps",
+      "rows": [
+        {
+          "label": "Company",
+          "value": "SMN Power Holding SAOG"
+        },
+        {
+          "label": "Building",
+          "value": "E&Y Building, No. 1023"
+        },
+        {
+          "label": "Floor",
+          "value": "First floor, office 16"
+        },
+        {
+          "label": "Street",
+          "value": "Way No. 1013, Al Qurum, Muscat"
+        }
+      ]
+    },
+    "map": {
+      "office": "Head office",
+      "rusail": "Al Rusail",
+      "barka": "Barka"
+    },
+    "plantsTitle": "Our **power plants**",
+    "plants": {
+      "rusail": "Al Rusail power plant",
+      "barka": "SMN Barka power plant"
+    },
+    "viewMap": "View the site map",
+    "close": "Close"
+  }
+}

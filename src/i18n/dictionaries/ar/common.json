@@ -1,0 +1,228 @@
+{
+  "meta": {
+    "siteName": "إس إم إن باور القابضة ش.م.ع.ع",
+    "title": "إس إم إن باور القابضة ش.م.ع.ع",
+    "tagline": "Powering Lives. Powering the Future.",
+    "description": "SMN Power Holding SAOG — Powering Lives. Powering the Future. A publicly listed Omani utility holding company operating within the power generation and water desalination sectors."
+  },
+  "a11y": {
+    "skipToContent": "انتقل إلى المحتوى",
+    "home": "الرئيسية",
+    "breadcrumb": "مسار التنقل",
+    "openMenu": "فتح قائمة الموقع",
+    "closeMenu": "إغلاق قائمة الموقع",
+    "openNav": "فتح قائمة التنقل",
+    "siteMenu": "قائمة الموقع",
+    "primaryNav": "القائمة الرئيسية",
+    "utilityNav": "روابط مساعدة",
+    "language": "تغيير اللغة",
+    "backToTop": "العودة إلى الأعلى",
+    "scrollDown": "مرر للأسفل",
+    "sectionShortcuts": "اختصارات الأقسام",
+    "previousUpdates": "الأخبار السابقة",
+    "nextUpdates": "الأخبار التالية",
+    "opensInNewTab": "(يفتح في علامة تبويب جديدة)",
+    "social": "وسائل التواصل الاجتماعي"
+  },
+  "labels": {
+    "career": "الوظائف",
+    "media": "وسائل الإعلام",
+    "contact": "اتصل بنا",
+    "aboutUs": "معلومات عنا",
+    "ourCompany": "شركتنا",
+    "visionMission": "الرسالة والرؤية",
+    "mainShareholders": "المؤسسون",
+    "governance": "حوكمة الشركات",
+    "companysPhilosophy": "فلسفة الشركة",
+    "boardOfDirectors": "مجلس الإدارة",
+    "auditCommittee": "لجنة التدقيق",
+    "nominationCommittee": "لجنة التعيين والمكافآت",
+    "management": "Management",
+    "articlesOfAssociation": "Articles of Association",
+    "ethics": "أخلاقيات العمل",
+    "investors": "تاريخ المستثمر والأخبار",
+    "disclosures": "الافصاح",
+    "financialReports": "التقارير المالية",
+    "dividendsDisclosures": "الإفصاح عن الأرباح",
+    "annualReport": "التقرير السنوي",
+    "sharePrice": "سعر السهم",
+    "msxDiscussion": "جلسة مناقشة MSX",
+    "csr": "المسؤولية الاجتماعية",
+    "tenders": "المناقصات",
+    "barkaPlant": "محطة بركاء 2",
+    "rusailPlant": "محطة الرسيل",
+    "mediaCentre": "Media Centre",
+    "newsOpalMou": "توقيع مذكرة تفاهم مع أوبال لرعاية عدد من مبادرات المسؤولية الاجتماعية",
+    "newsCsrSolar": "التربية توقع اتفاقية مع مجموعة من الشركات لتجهيز إحدى المدارس بنظام الطاقة الشمسية",
+    "newsOerTop20": "شركة إس إم إن باور القابضة تحصل على المركز سابع عشر بين عشرين ضمن أفضل شركات OER لعام 2016"
+  },
+  "quicklinks": {
+    "about": "معلومات عنا",
+    "shareholders": "المؤسسون",
+    "governance": "حوكمة الشركات",
+    "links": "روابط مفيدة",
+    "media": "وسائل الإعلام"
+  },
+  "menu": {
+    "title": "القائمة",
+    "close": "إغلاق",
+    "getInTouch": "تواصل معنا",
+    "officeTel": "هاتف المكتب:",
+    "fax": "رقم الفاكس:",
+    "email": "البريد الإلكتروني:"
+  },
+  "footer": {
+    "office": "Office",
+    "addressLines": ["ص.ب 121، جوهرة الشاطي،", "الرمز البريدي: 134،", "سلطنة عمان"],
+    "contact": "اتصل بنا",
+    "phonePrefix": "هاتف :",
+    "faxPrefix": "فاكس :",
+    "email": "البريد الإلكتروني",
+    "aboutUs": "معلومات عنا",
+    "downloadAnnualReport": "تحميل التقرير السنوي",
+    "creditLines": ["Website Design", "and Development"],
+    "credit": "Adventz",
+    "copyright": "© 2026– 2027  www.smnpower.com",
+    "siteLockAlt": "شعار SiteLock للأمان"
+  },
+  "assist": {
+    "title": "اسأل SMN",
+    "subtitle": "اكتب أو تحدث أو اختر موضوعًا",
+    "inputLabel": "عمّ تبحث؟",
+    "placeholder": "أبحث عن...",
+    "listening": "جارٍ الاستماع...",
+    "speak": "قل طلبك",
+    "open": "اسأل SMN — ابحث أو تحدث",
+    "close": "إغلاق المساعد",
+    "more": "المزيد",
+    "less": "أقل",
+    "resultsLabel": "SMN AI :",
+    "found": "بالتأكيد، إليك بعض الاقتراحات بناءً على طلبك.",
+    "notFound": "لم أجد ذلك في هذه الصفحة. يسعد فريقنا مساعدتك — تواصل معنا أدناه.",
+    "tags": [
+      "عن SMN",
+      "محطة بركاء 2",
+      "المساهمون",
+      "التقرير السنوي",
+      "محطة الرسيل",
+      "الحوكمة",
+      "مجلس الإدارة",
+      "آخر الأخبار",
+      "روابط مفيدة",
+      "اتصل بنا"
+    ],
+    "stopWords": "من ما ماذا أين اين متى كيف هل هو هي في على عن إلى الى ل و أو او أريد اريد ابحث أبحث أبحث عن اعرض أرني ارني أخبرني اخبرني أحتاج احتاج أجد اجد لو سمحت من فضلك لي لكم لنا the an who what where when how is are do does can me my to for of in on and want looking look see show tell need find get about please your our",
+    "softWords": "شركة الشركة smn إس إم إن باور طاقة الطاقة محطة المحطة القابضة company power plant holding",
+    "index": {
+      "about": {
+        "title": "عن إس إم إن باور",
+        "path": "معلومات عنا",
+        "keywords": "عن من نحن الشركة شركة نبذة تعريف تاريخ لمحة شركتنا إس إم إن باور القابضة about company overview who we are smn power holding saog history profile"
+      },
+      "vision": {
+        "title": "الرسالة والرؤية",
+        "path": "معلومات عنا",
+        "keywords": "رؤية الرؤية رسالة الرسالة قيم القيم هدف أهداف غاية استراتيجية vision mission values goal purpose strategy"
+      },
+      "barka": {
+        "title": "محطة بركاء 2",
+        "path": "معلومات عنا / المحطات",
+        "keywords": "بركاء بركا محطة المحطة مياه المياه تحلية كهرباء الكهرباء قدرة إنتاج barka ii 2 plant iwpp water desalination power station capacity"
+      },
+      "rusail": {
+        "title": "محطة الرسيل",
+        "path": "معلومات عنا / المحطات",
+        "keywords": "الرسيل رسيل محطة المحطة كهرباء الكهرباء غاز الغاز قدرة al rusail plant ipp power station capacity gas"
+      },
+      "facts": {
+        "title": "إس إم إن باور بالأرقام",
+        "path": "معلومات عنا / حقائق",
+        "keywords": "أرقام الأرقام حقائق إحصائيات احصائيات قدرة ميجاواط مياه numbers facts figures capacity megawatt mw water statistics"
+      },
+      "shareholders": {
+        "title": "المؤسسون",
+        "path": "المساهمون",
+        "keywords": "المؤسسون مؤسسين مساهمين المساهمين مساهمون المساهمون ملاك الملاك ملكية مالك مستثمرين حصة أسهم shareholders owners ownership investors share stake"
+      },
+      "kahrabel": {
+        "title": "كهربيل م.م.ح",
+        "path": "المساهمون",
+        "keywords": "كهربيل كهربل إنجي انجي مساهم kahrabel engie mena shareholder"
+      },
+      "mubadala": {
+        "title": "شركة مبادلة للطاقة القابضة",
+        "path": "المساهمون",
+        "keywords": "مبادلة أبوظبي ابوظبي مساهم mubadala abu dhabi power holding shareholder"
+      },
+      "governance": {
+        "title": "حوكمة الشركات",
+        "path": "الحوكمة",
+        "keywords": "حوكمة الحوكمة سياسة امتثال الامتثال أخلاقيات الأخلاقيات النظام الأساسي corporate governance policy compliance ethics articles association"
+      },
+      "board": {
+        "title": "مجلس الإدارة",
+        "path": "الحوكمة",
+        "keywords": "مجلس الإدارة إدارة رئيس أعضاء الأعضاء القيادة board directors chairman members leadership"
+      },
+      "philosophy": {
+        "title": "فلسفة الشركة",
+        "path": "الحوكمة",
+        "keywords": "فلسفة الفلسفة مبادئ المبادئ ثقافة قيم philosophy principles culture values"
+      },
+      "management": {
+        "title": "الإدارة التنفيذية",
+        "path": "الحوكمة",
+        "keywords": "الإدارة إدارة فريق التنفيذيين الرئيس التنفيذي القيادة management team executives ceo leadership people"
+      },
+      "links": {
+        "title": "روابط مفيدة",
+        "path": "روابط مفيدة",
+        "keywords": "روابط الروابط مواقع وزارة الوزارة هيئة الهيئة نماء البورصة شركاء useful links ministry authority apsr opwp regulator partners websites"
+      },
+      "media": {
+        "title": "وسائل الإعلام",
+        "path": "وسائل الإعلام",
+        "keywords": "إعلام الإعلام أخبار الأخبار خبر صحافة جديد فعاليات صور media news press latest updates events gallery"
+      },
+      "csrSolar": {
+        "title": "مبادرة الطاقة الشمسية للمسؤولية الاجتماعية",
+        "path": "وسائل الإعلام / الأخبار",
+        "keywords": "شمسية الشمسية مدرسة المسؤولية الاجتماعية مجتمع المجتمع مبادرة csr solar school social responsibility community initiative"
+      },
+      "opal": {
+        "title": "مذكرة تفاهم مع أوبال",
+        "path": "وسائل الإعلام / الأخبار",
+        "keywords": "أوبال اوبال مذكرة تفاهم رعاية المسؤولية الاجتماعية opal mou memorandum understanding csr sponsor"
+      },
+      "oer": {
+        "title": "تصنيف OER لأفضل 20 شركة",
+        "path": "وسائل الإعلام / الأخبار",
+        "keywords": "تصنيف ترتيب أفضل جائزة المرتبة 17 oer top 20 ranking award 17th"
+      },
+      "annualReport": {
+        "title": "تحميل التقرير السنوي",
+        "path": "المستثمرون / التقرير السنوي",
+        "keywords": "التقرير السنوي تقرير تحميل نتائج مالية المستثمرين إفصاح annual report pdf download financial results investors disclosure"
+      },
+      "contact": {
+        "title": "اتصل بنا",
+        "path": "اتصل بنا",
+        "keywords": "اتصال تواصل اتصل هاتف رقم جوال واتساب فاكس بريد إيميل عنوان المكتب الموقع contact phone number mobile whatsapp telephone fax email address office location reach call"
+      }
+    }
+  },
+  "language": {
+    "switchShort": "EN"
+  },
+  "comingSoon": {
+    "eyebrow": "قريبًا",
+    "text": "يجري إعداد هذه الصفحة وسيتم نشرها قريبًا.",
+    "related": "في الأثناء، تفضل بزيارة",
+    "backHome": "العودة إلى الرئيسية"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "text": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "backHome": "العودة إلى الرئيسية"
+  }
+}

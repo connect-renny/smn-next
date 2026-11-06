@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import ar from "@/i18n/dictionaries/ar.json";
-import en from "@/i18n/dictionaries/en.json";
+import ar from "@/i18n/dictionaries/ar";
+import en from "@/i18n/dictionaries/en";
 
 /**
  * Every key path in a dictionary ("about.facts.barka.label", …). Array items

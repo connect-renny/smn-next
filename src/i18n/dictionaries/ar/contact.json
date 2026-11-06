@@ -1,0 +1,49 @@
+{
+  "contact": {
+    "titleLines": ["اتصل", "**بنا**"],
+    "text": "Reach SMN Power by phone or email, or visit our head office in Al Qurum, Muscat. You can also find our Al Rusail and Barka power plants on their site maps below. For directions to the head office, open its location in Google Maps.",
+    "telephone": "هاتف المكتب",
+    "fax": "رقم الفاكس",
+    "call": "اتصل الآن",
+    "email": "البريد الإلكتروني",
+    "writeEmail": "اكتب رسالة",
+    "postal": "العنوان البريدي",
+    "postalLines": ["ص.ب 121، جوهرة الشاطي", "الرمز البريدي: 134، سلطنة عمان"],
+    "seeOffice": "شاهد مقرنا الرئيسي",
+    "office": {
+      "title": "زيارة مقرنا الرئيسي",
+      "area": "القرم، مسقط",
+      "openMaps": "فتح في خرائط جوجل",
+      "rows": [
+        {
+          "label": "الشركة",
+          "value": "شركة إس إم إن باور القابضة ش م ع ع"
+        },
+        {
+          "label": "المبنى",
+          "value": "بناية إرنست ويونج - رقم 1023"
+        },
+        {
+          "label": "الطابق",
+          "value": "الطابق الأول، مكتب رقم 16"
+        },
+        {
+          "label": "الشارع",
+          "value": "السكة رقم 1013، القرم - مسقط"
+        }
+      ]
+    },
+    "map": {
+      "office": "المقر الرئيسي",
+      "rusail": "الرسيل",
+      "barka": "بركاء"
+    },
+    "plantsTitle": "محطات **الطاقة** لدينا",
+    "plants": {
+      "rusail": "محطة الرسيل",
+      "barka": "محطة بركاء"
+    },
+    "viewMap": "عرض خريطة الموقع",
+    "close": "إغلاق"
+  }
+}

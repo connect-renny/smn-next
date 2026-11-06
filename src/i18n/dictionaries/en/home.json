@@ -1,0 +1,121 @@
+{
+  "hero": {
+    "titleLines": ["Powering **Lives**.", "Powering the **Future**."],
+    "playVideo": "Play Video",
+    "explore": "Explore",
+    "tabs": {
+      "barka": {
+        "title": "Barka II Plant",
+        "text": "SMN Barka is an IWPP plant situated at Barka. The site is approximately 50 km northwest of Muscat, Oman."
+      },
+      "rusail": {
+        "title": "Al Rusail Plant",
+        "text": "Al Rusail is a gas-fired power plant in the Rusail Industrial Estate, approximately 45 km from Muscat, Oman."
+      },
+      "news": {
+        "title": "Latest News",
+        "items": [
+          {
+            "title": "Board of Directors Resolutions’ Disclosure",
+            "date": "7 May 2026"
+          },
+          {
+            "title": "Initial Unaudited Preliminary Financials for the Period ended on 30 Jun 2026",
+            "date": ""
+          }
+        ]
+      }
+    }
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "titleLines": [
+      "SMN Power Holding SAOG is a publicly listed",
+      "Omani utility holding company established in May",
+      "2011 that operates within the power generation and",
+      "water desalination sectors."
+    ],
+    "text": "As the holding company of two power entities, SMN Barka and Al Rusail, the holding combines about 864.2 MW of power and 120,000 m3/day potable water capacity.",
+    "moreLabel": "Read more about SMN Power Holding",
+    "facts": {
+      "established": {
+        "label": "Established in",
+        "value": "2011",
+        "unit": "",
+        "sub": "as a holding company"
+      },
+      "barka": {
+        "label": "SMN Barka has",
+        "value": "864.2",
+        "unit": "MW",
+        "sub": "of power capacity"
+      },
+      "rusail": {
+        "label": "Al Rusail has",
+        "value": "120,000",
+        "unit": "m3/day",
+        "sub": "potable water capacity"
+      }
+    }
+  },
+  "shareholders": {
+    "eyebrow": "Shareholders",
+    "items": {
+      "kahrabel": {
+        "titleLines": ["Kahrabel", "F.Z.E."],
+        "text": "Kahrabel oversees and manages the development, construction and operation of the electricity and water production business of ENGIE in the MENA region.",
+        "imageAlt": "Kahrabel F.Z.E.",
+        "moreLabel": "More about Kahrabel F.Z.E."
+      },
+      "mubadala": {
+        "titleLines": ["Mubadala Power", "Holding Company", "Limited"],
+        "text": "Mubadala Power Holding Company Limited is a wholly owned subsidiary of Mubadala Investment Company (‘MCD’), a registered public joint stock company in the Emirate of Abu Dhabi.",
+        "imageAlt": "Mubadala Power Holding Company Limited",
+        "moreLabel": "More about Mubadala Power Holding Company Limited"
+      }
+    }
+  },
+  "governance": {
+    "eyebrow": "Leadership",
+    "title": "Corporate Governance",
+    "cells": {
+      "board": {
+        "imageAlt": "Boardroom",
+        "titleLines": ["Board of", "Directors"],
+        "moreLabel": "More about the Board of Directors"
+      },
+      "philosophy": {
+        "imageAlt": "Manager at work",
+        "titleLines": ["Company’s", "Philosophy"],
+        "moreLabel": "More about the company's philosophy"
+      },
+      "management": {
+        "imageAlt": "Handshake",
+        "titleLines": ["Our", "Management"],
+        "moreLabel": "More about our management team"
+      }
+    }
+  },
+  "links": {
+    "eyebrow": "Useful Links",
+    "title": "Our Subsidiaries",
+    "items": {
+      "nama": "Nama Power & Water Procurement",
+      "apsr": "Authority for Public Services Regulation",
+      "mubadala": "Mubadala",
+      "engie": "ENGIE",
+      "stomo": "ENGIE STOMO",
+      "mem": "Ministry of Energy and Minerals",
+      "msx": "Muscat Stock Exchange"
+    }
+  },
+  "media": {
+    "eyebrow": "Media Centre",
+    "title": "Latest Updates from our company",
+    "dates": {
+      "newsOpalMou": "31 August 2022",
+      "newsCsrSolar": "",
+      "newsOerTop20": ""
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import "server-only";
 
-import en from "./dictionaries/en.json";
+import en from "./dictionaries/en";
 import type { Locale } from "./config";
 
 export type Dictionary = typeof en;
@@ -29,7 +29,7 @@ function withFallback<T>(base: T, override: unknown): T {
 
 const loaders: Record<Locale, () => Promise<Dictionary>> = {
   en: async () => en,
-  ar: async () => withFallback(en, (await import("./dictionaries/ar.json")).default),
+  ar: async () => withFallback(en, (await import("./dictionaries/ar")).default),
 };
 
 export async function getDictionary(locale: Locale): Promise<Dictionary> {

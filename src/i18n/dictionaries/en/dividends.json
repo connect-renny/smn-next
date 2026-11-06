@@ -1,0 +1,14 @@
+{
+  "dividends": {
+    "titleLines": ["Dividends", "**Disclosures**"],
+    "text": "A record of the dividends SMN Power Holding has paid to its shareholders since 2011. Each entry lists the cash and bonus share percentages, with the cut-off and payment dates. Payments are grouped by year, starting with the most recent.",
+    "latest": "Latest dividend",
+    "table": {
+      "year": "Year",
+      "cash": "Cash",
+      "bonus": "Bonus Share",
+      "cutOff": "Cut Off Date",
+      "payment": "Payment Date"
+    }
+  }
+}

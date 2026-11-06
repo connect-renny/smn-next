@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 
 import { createAssistSearch, type AssistEntry } from "@/components/assist/assist-search";
 import { assistTargets } from "@/content/home";
-import ar from "@/i18n/dictionaries/ar.json";
-import en from "@/i18n/dictionaries/en.json";
+import ar from "@/i18n/dictionaries/ar";
+import en from "@/i18n/dictionaries/en";
 
 /** Same shape the layout builds for the Ask SMN panel (hrefs don't matter here). */
 function searchFor(dict: typeof en) {

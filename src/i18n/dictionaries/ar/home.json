@@ -1,0 +1,121 @@
+{
+  "hero": {
+    "titleLines": ["Powering **Lives**.", "Powering the **Future**."],
+    "playVideo": "تشغيل الفيديو",
+    "explore": "استكشف",
+    "tabs": {
+      "barka": {
+        "title": "محطة بركاء 2",
+        "text": "تعدّ محطة اس ام ان بركاء محطة مستقلة تنتج المياه والكهرباء وتقع في بركاء. ويبعد الموقع عن مسقط، عُمان بحوالى 50 كلم إلى الشمال الغربي."
+      },
+      "rusail": {
+        "title": "محطة الرسيل",
+        "text": "الرسيل هي محطة لتوليد الكهرباء تعمل بالغاز الطبيعي. تقع المحطة في المنطقة الصناعية على بعد حوالي 40 كلم غرب مسقط."
+      },
+      "news": {
+        "title": "احدث الأخبار",
+        "items": [
+          {
+            "title": "إفصاح قرارات مجلس الإدارة",
+            "date": "7 مايو 2026"
+          },
+          {
+            "title": "النتائج المالية الموحدة غير المدققة لفترة الستة أشهر المنتهية في 30 يونيو 2026م",
+            "date": ""
+          }
+        ]
+      }
+    }
+  },
+  "about": {
+    "eyebrow": "معلومات عنا",
+    "titleLines": [
+      "SMN Power Holding SAOG is a publicly listed",
+      "Omani utility holding company established in May",
+      "2011 that operates within the power generation and",
+      "water desalination sectors."
+    ],
+    "text": "ولكونها الشركة القابضة لاثنتين من شركات الطاقة، هما \"اس ام ان بركاء\" و\"الرسيل\"، فإنها توفر 864.2 ميجا وات من الكهرباء و120,000 متر مكعب/يومياً من مياه الشرب.",
+    "moreLabel": "اقرأ المزيد عن إس إم إن باور القابضة",
+    "facts": {
+      "established": {
+        "label": "Established in",
+        "value": "2011",
+        "unit": "",
+        "sub": "as a holding company"
+      },
+      "barka": {
+        "label": "SMN Barka has",
+        "value": "864.2",
+        "unit": "MW",
+        "sub": "of power capacity"
+      },
+      "rusail": {
+        "label": "Al Rusail has",
+        "value": "120,000",
+        "unit": "m3/day",
+        "sub": "potable water capacity"
+      }
+    }
+  },
+  "shareholders": {
+    "eyebrow": "المؤسسون",
+    "items": {
+      "kahrabel": {
+        "titleLines": ["كهربيل", "م.م.ح"],
+        "text": "تشرف شركة كهربيل و تدير عمليات تطوير وبناء وتشغيل أعمال توليد الكهرباء وإنتاج المياه ضمن مجموعة “إنجي” (“جي دي إف سويز” سابقا) في منطقة الشرق الأوسط وشمال إفريقيا.",
+        "imageAlt": "كهربيل م.م.ح",
+        "moreLabel": "المزيد عن كهربيل م.م.ح"
+      },
+      "mubadala": {
+        "titleLines": ["شركة مبادلة", "للطاقة القابضة", "المحدودة"],
+        "text": "شركة مبادلة للطاقة القابضة المحدودة هي شركة تابعة مملوكة بالكامل لشركة مبادلة للاستثمار (“مبادلة”)، وهي شركة مساهمة عامة مسجلة في إمارة أبوظبي.",
+        "imageAlt": "شركة مبادلة للطاقة القابضة المحدودة",
+        "moreLabel": "المزيد عن شركة مبادلة للطاقة القابضة المحدودة"
+      }
+    }
+  },
+  "governance": {
+    "eyebrow": "Leadership",
+    "title": "حوكمة الشركات",
+    "cells": {
+      "board": {
+        "imageAlt": "قاعة مجلس الإدارة",
+        "titleLines": ["مجلس", "الإدارة"],
+        "moreLabel": "المزيد عن مجلس الإدارة"
+      },
+      "philosophy": {
+        "imageAlt": "مدير أثناء العمل",
+        "titleLines": ["فلسفة", "الشركة"],
+        "moreLabel": "المزيد عن فلسفة الشركة"
+      },
+      "management": {
+        "imageAlt": "مصافحة",
+        "titleLines": ["Our", "Management"],
+        "moreLabel": "المزيد عن فريق الإدارة"
+      }
+    }
+  },
+  "links": {
+    "eyebrow": "روابط مفيدة",
+    "title": "Our Subsidiaries",
+    "items": {
+      "nama": "نماء لشراء الطاقة والمياه",
+      "apsr": "هيئة تنظيم الخدمات العامة",
+      "mubadala": "مبادلة",
+      "engie": "إنجي",
+      "stomo": "ستومو",
+      "mem": "وزارة الطاقة والمعادن",
+      "msx": "بورصة مسقط"
+    }
+  },
+  "media": {
+    "eyebrow": "Media Centre",
+    "title": "Latest Updates from our company",
+    "dates": {
+      "newsOpalMou": "31 أغسطس 2022",
+      "newsCsrSolar": "",
+      "newsOerTop20": ""
+    }
+  }
+}

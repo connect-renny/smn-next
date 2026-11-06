@@ -1,0 +1,113 @@
+{
+  "mainShareholders": {
+    "titleLines": ["Main **Shareholders**"],
+    "text": "SMN Power's main shareholders are Kahrabel F.Z.E., which manages the electricity and water production business of ENGIE in the MENA region, and Mubadala Power Holding Company Limited, a wholly owned subsidiary of Mubadala Investment Company.",
+    "chaptersLabel": "Main shareholders",
+    "companyName": "SMN Power Holding SAOG",
+    "ownershipLabel": "Ownership",
+    "items": {
+      "kahrabel": {
+        "name": "Kahrabel F.Z.E.",
+        "paragraphs": [
+          "Kahrabel oversees and manages the development, construction and operation of the electricity and water production business of ENGIE in the MENA region. It is an entity 100% owned directly by International Power S.A., which is itself indirectly wholly owned by International Power Ltd. International Power Ltd. is owned indirectly by ENGIE, global Energy and Services Group active in low-carbon power generation, global energy networks and customer solutions.",
+          "ENGIE employs 101,504 people worldwide and achieved revenues of 57.9 billion euros in 2020. Listed in Paris and Brussels (ENGI), the Group is represented in the main indices, both financial and CSR.",
+          "In the GCC, ENGIE is the leading independent power & water producer with 30 GW power production and 5.9 million m³/day potable water production to support the regional economies. It is the GCC’s leading Facility Management provider and develops solutions to improve the energy performance & efficiency of buildings, industry, infrastructure and cities in the region.",
+          "From its regional HQ in Dubai, ENGIE continues to develop its three key businesses in a geographical scope that includes the Middle East, South & Central Asia and Turkey."
+        ],
+        "chain": [
+          {
+            "link": "",
+            "name": "Kahrabel F.Z.E."
+          },
+          {
+            "link": "100% owned directly by",
+            "name": "International Power S.A."
+          },
+          {
+            "link": "indirectly wholly owned by",
+            "name": "International Power Ltd."
+          },
+          {
+            "link": "owned indirectly by",
+            "name": "ENGIE"
+          }
+        ],
+        "stats": [
+          {
+            "value": "101,504",
+            "unit": "",
+            "label": "People employed by ENGIE worldwide"
+          },
+          {
+            "value": "57.9",
+            "unit": "billion euros",
+            "label": "Revenues in 2020"
+          },
+          {
+            "value": "30",
+            "unit": "GW",
+            "label": "Power production in the GCC"
+          },
+          {
+            "value": "5.9",
+            "unit": "million m³/day",
+            "label": "Potable water production in the GCC"
+          }
+        ],
+        "sectors": [],
+        "visit": "For more information about ENGIE, please visit:"
+      },
+      "mubadala": {
+        "name": "Mubadala Power Holding Company Limited",
+        "paragraphs": [
+          "Mubadala Power Holding Company Limited is a wholly owned subsidiary of Mubadala Investment Company (‘MCD’), a registered public joint stock company in the Emirate of Abu Dhabi.",
+          "Mubadala Investment Company actively manages a worldwide portfolio supporting the vision of a globally integrated and diversified economy, through sustainable returns to its shareholder, the Government of Abu Dhabi. In March 2018, Abu Dhabi Investment Council (ADIC) joined the Group.",
+          "Mubadala’s US $232 billion portfolio spans five continents with interests in aerospace, ICT, semiconductors, metals and mining, renewable energy, oil and gas, petrochemicals, utilities, healthcare, real estate, defense services, pharmaceuticals and medical technology, agribusiness and a global portfolio of financial holdings. Mubadala is a trusted partner, an engaged shareholder and a responsible global company that is committed to ethics and world-class standards."
+        ],
+        "chain": [
+          {
+            "link": "",
+            "name": "Mubadala Power Holding Company Limited"
+          },
+          {
+            "link": "wholly owned subsidiary of",
+            "name": "Mubadala Investment Company"
+          },
+          {
+            "link": "its shareholder",
+            "name": "Government of Abu Dhabi"
+          }
+        ],
+        "stats": [
+          {
+            "value": "232",
+            "unit": "billion US dollars",
+            "label": "Mubadala’s portfolio"
+          },
+          {
+            "value": "Five",
+            "unit": "",
+            "label": "Continents"
+          }
+        ],
+        "sectors": [
+          "Aerospace",
+          "ICT",
+          "Semiconductors",
+          "Metals and mining",
+          "Renewable energy",
+          "Oil and gas",
+          "Petrochemicals",
+          "Utilities",
+          "Healthcare",
+          "Real estate",
+          "Defense services",
+          "Pharmaceuticals and medical technology",
+          "Agribusiness",
+          "Global portfolio of financial holdings"
+        ],
+        "visit": "For more information about Mubadala please visit:"
+      }
+    }
+  }
+}

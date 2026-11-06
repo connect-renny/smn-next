@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { PageBanner } from "@/components/layout/page-banner";
-import en from "@/i18n/dictionaries/en.json";
+import en from "@/i18n/dictionaries/en";
 
 // not-found receives no params, so it renders in the default language.
 export default function NotFound() {
