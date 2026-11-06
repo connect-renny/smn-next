@@ -92,7 +92,7 @@
       "2011 that operates within the power generation and",
       "water desalination sectors."
     ],
-    "text": "As the holding company of two power entities, SMN Barka and Al Rusail, the holding combines about 864.2 MW of power and 120,000 m3/day potable water capacity.",
+    "text": "As the holding company of two power entities, SMN Barka and Al Rusail, the holding combines about 887.6 MW of power and 120,000 m3/day potable water capacity.",
     "moreLabel": "Read more about SMN Power Holding",
     "facts": {
       "established": {
@@ -103,7 +103,7 @@
       },
       "barka": {
         "label": "SMN Barka has",
-        "value": "864.2",
+        "value": "887.6",
         "unit": "MW",
         "sub": "of power capacity"
       },
@@ -335,11 +335,11 @@
   },
   "ourCompany": {
     "titleLines": ["Powering **Lives**.", "Powering the **Future**."],
-    "text": "SMN Power Holding SAOG (the “Company”) was incorporated on 7 May 2011. As the holding company of two power entities, SMN Barka and Al Rusail, the holding combines about 864.2 MW of power and 120,000 m3/day potable water capacity.",
+    "text": "SMN Power Holding SAOG (the “Company”) was incorporated on 7 May 2011. As the holding company of two power entities, SMN Barka and Al Rusail, the holding combines about 887.6 MW of power and 120,000 m3/day potable water capacity.",
     "businessModel": {
       "eyebrow": "Our Model",
       "title": "The Business Model",
-      "intro": "The Sector Law, promulgated by Royal Decree 78/2004, provides the regulatory framework for Oman’s power and water industry. It stipulates the establishment of a regulatory authority, the Authority for Public Services Regulation (“APSR”), the Electricity Holding Company (“EHC”) / NAMA Holding, owned by the Oman Investment Authority, and the owner of Nama Power and Water Procurement Company (“PWP”) which is the single buyer of water and power from all IPP/ IWPP projects in Oman.",
+      "intro": "The Sector Law, promulgated by Royal Decree 78/2004, provides the regulatory framework for Oman’s power and water industry. It stipulates the establishment of a regulatory authority, the Authority for Public Services Regulation (“APSR”), the Electricity Holding Company (“EHC”) / NAMA Holding, owned by the Oman Investment Authority, and the owner of Nama Power and Water Procurement (“PWP”) which is the single buyer of water and power from all IPP/IWPP projects in Oman.",
       "structureTitle": "Operational & Commercial Relationship Structure",
       "diagram": {
         "hub": ["SMN BARKA", "& Al Rusail"],
@@ -349,7 +349,7 @@
             "Operation and Maintenance",
             "costs contracted over the life of",
             "the PPA & WPA and",
-            "back-to-back with OPWP",
+            "back-to-back with PWP",
             "off-take agreement"
           ]
         },
@@ -358,13 +358,13 @@
           "note": ["back-to-back"]
         },
         "opwp": {
-          "party": ["OPWP"],
+          "party": ["PWP"],
           "note": [
             "Long term contracted",
             "revenues based on availability",
             "of power & water, on the back",
             "of the strong credit worthiness",
-            "of OPWP"
+            "of PWP"
           ]
         },
         "lenders": {
@@ -373,7 +373,7 @@
         }
       },
       "paragraphs": [
-        "The business model of both project companies held by SMN Power Holding SAOG, i.e., SMN Barka and Al Rusail, is based on a strong contractual framework, with solid and reliable partners. Back-to-back contracts significantly reduce the risks over a long-term period. The supply of the output to the off-taker PWP, the gas supply from the Integrated Gas Company (“IGC”), the operation and maintenance of the plants by the operator Suez-Tractebel Operation and Maintenance Oman LLC (“STOMO” or the “O&M contractor”) and the financing of the project (in case of SMN Barka), is guaranteed over a period of 8.75 years. Over this period (ending in January 2030 for Al Rusail and in March 2033 for SMN Barka), the project companies are remunerated for their capacity and availability.",
+        "The business model of both project Companies held by SMN Power Holding SAOG, i.e., SMN Barka Power Company SAOC (“SMN Barka”) and Al Rusail Power Company SAOC (“Al Rusail”), is based on a strong contractual framework, with solid and reliable partners. Back-to-back contracts significantly reduce the risks over a long-term period. The supply of the output to the off-taker PWP, the gas supply from the Integrated Gas Company (“IGC”), the operation and maintenance of the plants by the operator Suez-Tractebel Operation and Maintenance Oman L.L.C (“STOMO” or the “O&M contractor”) and the financing of the project (in case of SMN Barka), is guaranteed over a period of 8.75 years. Over this period (ending in January 2030 for Al Rusail and in March 2033 for SMN Barka), the project Companies are remunerated for their capacity and availability.",
         "Their profitability and ability to generate cashflows are independent of market fluctuation, commodity prices and market demand throughout the new PPAs and new WPA terms.",
         "The plants are operated and maintained under the terms of the O&M agreement with STOMO. The highest standards in terms of health, safety and operational excellence are applied, to ensure availability and efficiency. Interest rates volatility and impact on the financing expenses are mitigated through adequate hedging policies, in line with the requirements defined by the lenders in the Facilities Agreement. Furthermore, the Company is benefiting from the strong track record of its original founders, reflected in the high level of experience of the Board of Directors, which brings significant value to both projects."
       ]
@@ -382,8 +382,8 @@
       "barka": {
         "title": "SMN Barka (Barka II Plant)",
         "paragraphs": [
-          "SMN Barka is an IWPP plant situated at Barka. The site is approximately 50 km northwest of Muscat, Oman. Also popularly known as Barka II / Barka Phase 2, the design net rated power output of the facility in a combined cycle mode is 673.5 MW and 363 MW in open cycle. The water production capacity is about 26.4 MIGD or 120,000 m³/day.",
-          "The facility entered into full commercial operation on 15 November 2009 and commenced the fifteen-year PWPA, guaranteeing the sale of its electricity and potable water capacity and production to OPWP."
+          "SMN Barka is an IWPP plant situated at Barka. The site is approximately 50 km northwest of Muscat, Oman. Also popularly known as Barka II / Barka Phase 2, the design net rated power output of the facility in a combined cycle mode is 703 MW and 405 MW in open cycle. The water production capacity is about 26.4 MIGD or 120,000 m³/day.",
+          "The facility entered into full commercial operation on 15th November 2009 and commenced the fifteen-year PWPA, guaranteeing the sale of its electricity and potable water capacity and production to PWP."
         ],
         "more": "For more information on Barka II Plant,",
         "moreLink": "click here"
@@ -392,7 +392,7 @@
         "title": "Al Rusail Plant",
         "paragraphs": [
           "Al Rusail is a natural gas-fired power plant, the first state-owned power generation company to be privatized in the Sultanate of Oman. In December 2006, the shareholders acquired the shares of Al Rusail from the Government (through acquisition of 99% of the shares in Al Rusail by SMN Jafza).",
-          "The plant is located inland, approximately 40 km west of Muscat in an industrial area. It consists of eight Frame 9E gas turbines installed in four phases between 1984 and 2000. Al Rusail’s primary fuel is natural gas supplied by MEM, but diesel oil is also stored on site to serve as a backup fuel. Power capacity and production are sold to OPWP under the 17-year PPA which ended in September 2021 for 6 gas turbines and March 2022 for 2 gas turbines (Units 7&8). The PPA was extended initially upto 31st October 2022 and again extended upto 31st December 2023. The power plant capacity was initially 665MW (until September 2021), however, after expiration of the PPA for 6 gas turbines, the power capacity is reduced to 186.2 MW."
+          "The plant is located inland, approximately 40 km west of Muscat in an industrial area. It consists of eight Frame 9E gas turbines installed in four phases between 1984 and 2000. Al Rusail’s primary fuel is natural gas supplied by IGC, but diesel oil is also stored on site to serve as a backup fuel. Power capacity and production are sold to OPWP under the 17-year PPA which ended in September 2021 for 6 gas turbines and March 2022 for 2 gas turbines (Units 7&8)."
         ],
         "more": "For more information on Al Rusail Plant,",
         "moreLink": "click here"
@@ -405,7 +405,7 @@
           "text": "On 2 November 2005, the Government invited proposals for the development of an Independent Water and Power Producer (‘IWPP’) at Barka and the privatization of Al Rusail (Tender No 210 / 2005)."
         },
         "award": {
-          "text": "In 2006, the Founders (Suez Tractebel S.A., Mubadala Development Company PJSC and National Trading Company LLC) won the OPWP award via competitive bidding to establish the project under a BOO (Build, Own, Operate) framework. This structure allows the plants to operate beyond the initial 15-year PPA horizon through off-take extensions or spot-market sales.",
+          "text": "In 2006, the Founders (Suez Tractebel S.A., Mubadala Development Company PJSC and National Trading Company LLC) won the PWP award via competitive bidding to establish the project under a BOO (Build, Own, Operate) framework. This structure allows the plants to operate beyond the initial 15-year PPA horizon through off-take extensions or spot-market sales.",
           "note": "Further details are available in the Board of Directors’ Report."
         },
         "holding": {
