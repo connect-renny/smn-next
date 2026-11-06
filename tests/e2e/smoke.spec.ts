@@ -137,6 +137,57 @@ test.describe("management", () => {
   });
 });
 
+test.describe("annual report", () => {
+  test("links the latest edition and tags samples, in both languages", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/investors/annual-report");
+    await waitForPreloader(page);
+
+    // The band's links stay hidden until it animates in.
+    const latest = page.locator(".report-latest");
+    await latest.scrollIntoViewIfNeeded();
+    await expect(latest.getByRole("link", { name: /View the report/ })).toHaveAttribute(
+      "href",
+      /233399-Annual%20Report%202025_SMN_English%20final\.pdf$/,
+    );
+    await expect(latest.getByRole("link", { name: /Arabic edition/ })).toHaveAttribute(
+      "href",
+      /4326762-Annual%20Report%202025_SMN_Arabic%20final\.pdf$/,
+    );
+    await expect(latest).toContainText("112");
+
+    // Samples are marked and go nowhere until a real PDF is added.
+    const shelf = page.locator(".report-shelf-item");
+    await expect(shelf).toHaveCount(6);
+    await expect(page.locator(".report-shelf-sample")).toHaveCount(6);
+    await expect(page.locator(".report-shelf a")).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    await page.goto("/ar/investors/annual-report");
+    await waitForPreloader(page);
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await page.locator(".report-latest").scrollIntoViewIfNeeded();
+    await expect(
+      page.locator(".report-latest").getByRole("link", { name: /عرض التقرير/ }),
+    ).toHaveAttribute("href", /4326762-Annual%20Report%202025_SMN_Arabic%20final\.pdf$/);
+    await expect(page.locator(".report-latest")).toContainText("104");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(errors).toEqual([]);
+  });
+
+  test("the investor menu opens the page, the footer card still opens the PDF", async ({
+    page,
+  }) => {
+    await page.goto("/en");
+    await waitForPreloader(page);
+    await expect(page.locator('header a[href="/en/investors/annual-report"]')).toHaveCount(1);
+    await expect(page.locator("footer a", { hasText: /annual report/i })).toHaveAttribute(
+      "href",
+      /233399-Annual%20Report%202025_SMN_English%20final\.pdf$/,
+    );
+  });
+});
+
 test.describe("dividends disclosures", () => {
   test("lists every payment, in both languages, without sideways scroll", async ({ page }) => {
     const errors = trackErrors(page);

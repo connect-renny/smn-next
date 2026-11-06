@@ -274,6 +274,356 @@
     }
   }
 
+  /* ─── Annual Report: books in CSS 3D ────────────────────────────────────── */
+  .report-book {
+    --sign: 1;
+    --angle: 27deg;
+    --depth: 7cqw;
+
+    display: block;
+    width: 100%;
+    container-type: inline-size;
+    perspective: 1500px;
+
+    /* Arabic books bind on the right, so they turn the other way. */
+    &:where([dir="rtl"] *) {
+      --sign: -1;
+    }
+  }
+
+  .report-book-body {
+    position: relative;
+    display: block;
+    aspect-ratio: 595 / 842;
+    transform-style: preserve-3d;
+    transform: rotateX(calc(var(--my, 0) * -5deg))
+      rotateY(calc(var(--sign) * var(--angle) + var(--mx, 0) * 13deg));
+    transition: transform 0.8s var(--ease-out-expo);
+
+    > * {
+      position: absolute;
+      display: block;
+    }
+  }
+
+  .report-book-front {
+    inset: 0;
+    overflow: hidden;
+    border-radius: 1px 3px 3px 1px;
+    background: var(--color-navy);
+    transform: translateZ(calc(var(--depth) / 2));
+
+    &:where([dir="rtl"] *) {
+      border-radius: 3px 1px 1px 3px;
+    }
+
+    /* The crease along the binding, and a sheen across the board. */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to right,
+          rgb(0 0 0 / 0.28),
+          rgb(255 255 255 / 0.16) 1.4%,
+          rgb(0 0 0 / 0.16) 3.4%,
+          transparent 6%
+        ),
+        linear-gradient(115deg, rgb(255 255 255 / 0.07) 0%, transparent 28%);
+      pointer-events: none;
+    }
+
+    &:where([dir="rtl"] *)::after {
+      scale: -1 1;
+    }
+  }
+
+  .report-book-back {
+    inset: 0;
+    background: var(--color-navy-deep);
+    transform: translateZ(calc(var(--depth) / -2)) rotateY(180deg);
+  }
+
+  .report-book-spine {
+    display: grid !important;
+    place-items: center;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: var(--depth);
+    overflow: hidden;
+    background: linear-gradient(to bottom, #1f3a84, var(--color-navy-deep));
+    box-shadow: inset 0 0 6px rgb(0 0 0 / 0.5);
+    color: rgb(255 255 255 / 0.85);
+    font-size: 3.4cqw;
+    font-weight: 600;
+    transform: translateX(calc(var(--sign) * -50%)) rotateY(calc(var(--sign) * -90deg));
+    writing-mode: vertical-rl;
+  }
+
+  .report-book-pages {
+    inset-block: 0.7%;
+    inset-inline-end: 0.8%;
+    width: var(--depth);
+    background: repeating-linear-gradient(to right, #fbfaf6 0 1px, #d9d6cc 1px 2px);
+    transform: translateX(calc(var(--sign) * 50%)) rotateY(calc(var(--sign) * 90deg));
+  }
+
+  .report-book-link {
+    display: block;
+    outline-offset: 12px;
+
+    &:hover .report-book {
+      --angle: 12deg;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-orange);
+    }
+  }
+
+  .report-book-shadow {
+    display: block;
+    width: 82%;
+    height: clamp(14px, 1.6vw, 30px);
+    margin: clamp(14px, 1.5vw, 28px) auto 0;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgb(0 0 0 / 0.55), transparent);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .report-book-float {
+      display: block;
+      animation: report-float 7s ease-in-out infinite;
+    }
+  }
+
+  @keyframes report-float {
+    50% {
+      translate: 0 -10px;
+    }
+  }
+
+  .report-latest {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(64px, 7vw, 134px);
+    background: linear-gradient(160deg, #0a1e51 0%, #12294f 55%, #0b1c39 100%);
+  }
+
+  .report-latest-numeral {
+    position: absolute;
+    top: 50%;
+    inset-inline-end: -2vw;
+    margin-top: -0.62em;
+    color: transparent;
+    font-size: clamp(150px, 29vw, 560px);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1.2;
+    pointer-events: none;
+    -webkit-text-stroke: 1px rgb(255 255 255 / 0.06);
+    user-select: none;
+  }
+
+  .report-latest-grid {
+    position: relative;
+    display: grid;
+    gap: clamp(36px, 5vw, 96px);
+    align-items: center;
+
+    @media (width >= 56rem) {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+  }
+
+  .report-latest-book {
+    width: min(68%, 300px);
+    margin-inline: auto;
+
+    @media (width >= 56rem) {
+      width: min(100%, 420px);
+    }
+  }
+
+  .report-latest-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: clamp(20px, 1.9vw, 36px);
+
+    li {
+      padding: 0.45em 1em;
+      border: 1px solid rgb(255 255 255 / 0.3);
+      border-radius: 999px;
+      font-size: var(--text-eyebrow);
+      font-weight: 500;
+    }
+  }
+
+  .report-latest-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(16px, 1.7vw, 32px);
+    margin-top: clamp(24px, 2.3vw, 44px);
+  }
+
+  .report-latest-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.85em 1.5em;
+    border-radius: 999px;
+    background: var(--color-orange);
+    color: var(--color-navy-deep);
+    font-size: clamp(15px, 1vw, 19px);
+    font-weight: 600;
+    transition: background-color 0.35s var(--ease-soft);
+
+    &:hover {
+      background: #fff;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+  }
+
+  .report-latest-other {
+    font-size: clamp(14px, 0.94vw, 18px);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    transition: color 0.3s var(--ease-soft);
+
+    &:hover {
+      color: var(--color-orange);
+    }
+  }
+
+  /* The archive: books standing on a continuous shelf. */
+  .report-shelf {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: clamp(36px, 3.6vw, 70px);
+    margin-top: clamp(28px, 3vw, 58px);
+
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .report-shelf-card {
+    display: block;
+
+    /* Picked out: it turns to face the reader and lifts off the shelf. */
+    &:hover .report-book,
+    &:focus-visible .report-book {
+      --angle: 4deg;
+    }
+
+    &:hover .report-book-body,
+    &:focus-visible .report-book-body {
+      translate: 0 -10px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-orange);
+      outline-offset: 2px;
+    }
+  }
+
+  .report-shelf-stage {
+    display: block;
+    width: clamp(92px, 12.5vw, 220px);
+    margin-inline: auto;
+  }
+
+  .report-shelf-card .report-book-body {
+    transition:
+      transform 0.8s var(--ease-out-expo),
+      translate 0.8s var(--ease-out-expo);
+  }
+
+  .report-shelf-ledge {
+    display: block;
+    height: clamp(8px, 0.7vw, 13px);
+    background: linear-gradient(to bottom, #fff, #d8dbe2);
+    box-shadow:
+      0 1px 0 #b9bdc7,
+      0 12px 18px -8px rgb(11 28 57 / 0.35);
+  }
+
+  .report-shelf-caption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 12px;
+    margin-top: clamp(12px, 1.1vw, 20px);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+  }
+
+  .report-shelf-year {
+    color: var(--color-navy);
+    font-size: clamp(20px, 1.5vw, 29px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .report-shelf-sample {
+    padding: 0.2em 0.75em;
+    border: 1px dashed var(--color-about-muted);
+    border-radius: 999px;
+    color: var(--color-page-copy);
+  }
+
+  .report-cover-generated {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8cqw;
+    padding: 9cqw 9cqw 0;
+    overflow: hidden;
+    color: #fff;
+
+    img {
+      width: 14cqw;
+      height: auto;
+    }
+  }
+
+  .report-cover-title {
+    position: relative;
+    z-index: 1;
+    font-size: 8.5cqw;
+    font-weight: 300;
+    line-height: 1.12;
+
+    > span {
+      font-size: 20cqw;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+
+      /* A left-to-right number, kept under its Arabic label. */
+      &:where([dir="rtl"] *) {
+        text-align: right;
+      }
+    }
+  }
+
+  .report-cover-weave {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    width: 100%;
+    height: 62%;
+  }
+
   /* ─── Dividends Disclosures ─────────────────────────────────────────────── */
   .dividend-latest {
     position: relative;

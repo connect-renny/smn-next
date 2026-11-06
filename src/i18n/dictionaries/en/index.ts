@@ -1,3 +1,4 @@
+import annualReport from "./annual-report.json";
 import boardOfDirectors from "./board-of-directors.json";
 import common from "./common.json";
 import contact from "./contact.json";
@@ -20,6 +21,7 @@ const en = {
   ...management,
   ...ethics,
   ...dividends,
+  ...annualReport,
   ...msxSessions,
   ...tenders,
   ...contact,

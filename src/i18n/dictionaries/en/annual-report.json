@@ -1,0 +1,15 @@
+{
+  "annualReports": {
+    "titleLines": ["Annual", "**Report**"],
+    "text": "SMN Power’s annual report gives shareholders and investors a full account of the Company’s year. The latest edition brings together the Board of Directors’ Report, the Management Discussion & Analysis Report, the Corporate Governance Report and the Consolidated Financial Statements. Read it below, or browse the reports from earlier years.",
+    "latestEyebrow": "Latest report",
+    "bookLabel": "Annual Report",
+    "tagline": ["Powering Lives.", "Powering the Future."],
+    "pages": "pages",
+    "view": "View the report",
+    "otherEdition": "Arabic edition",
+    "archiveEyebrow": "Archive",
+    "archiveTitle": "Previous Reports",
+    "sample": "Sample"
+  }
+}
