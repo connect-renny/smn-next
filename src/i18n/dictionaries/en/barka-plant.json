@@ -1,0 +1,61 @@
+{
+  "barkaPlant": {
+    "hero": {
+      "current": "SMN Barka Plant",
+      "titleLines": ["SMN **Barka Plant**"],
+      "text": [
+        "SMN Barka is an IWPP plant situated at Barka. The site is approximately 50 km northwest of Muscat, Oman.",
+        "Also popularly known as Barka II / Barka Phase 2, the design net rated power output of the facility in a combined cycle mode is 703 MW and 405 MW in open cycle. The water production capacity is about 26.4 MIGD or 120,000 m³/day."
+      ],
+      "stats": {
+        "location": {
+          "label": "Situated approximately",
+          "value": "50km",
+          "sub": "northwest of Muscat, Oman."
+        },
+        "power": {
+          "label": "Capacity of",
+          "value": "864.2 MW",
+          "sub": "Power Production"
+        },
+        "water": {
+          "label": "Capacity of",
+          "value": "120,000 m³/day",
+          "sub": "Water Production"
+        }
+      }
+    },
+    "milestones": {
+      "title": "SMN Barka Milestones",
+      "items": [
+        { "date": "16 May 2024", "label": "New PPA & WPA" },
+        { "date": "31 Mar 2024", "label": "Expiry of PWPA term" },
+        { "date": "15 Nov 2009", "label": "Final COD achieved" },
+        { "date": "30 Sep 2008", "label": "End of Early Power period" },
+        { "date": "28 Jul 2008", "label": "Early Power COD" },
+        { "date": "20 Feb 2007", "label": "Financial Close" },
+        { "date": "6 Dec 2006", "label": "Execution of Project Documents" },
+        { "date": "26 Jun 2006", "label": "Bid Submission" },
+        { "date": "2 Nov 2005", "label": "Request for Proposal issued by Tender Board" }
+      ]
+    },
+    "description": {
+      "eyebrow": "Description",
+      "title": "Description of SMN Barka Plant",
+      "imageAlt": "SMN Barka Plant",
+      "diagramAlt": "Process diagram of SMN Barka Plant, from the gas turbines and seawater intake to power output and potable water.",
+      "intro": [
+        "The facility entered into full commercial operation on 15th November 2009 and commenced the fifteen-year PWPA, guaranteeing the sale of its electricity and potable water capacity and production to OPWP. SMN Barka entered into a new PPA & WPA on 16th May 2024 for a period of 8.75 years.",
+        "The power plant comprises of three V 94.2 Rev 6 dual fuel combustion turbines (Siemens design manufactured by Ansaldo Energia, Italy), three supplementary fuel fired heat recovery steam generators and two Siemens condensing steam turbines, along with ancillary equipment required for operation of the power plant.",
+        "The SMN Barka power plant is designed as a three + two configuration with three combustion turbines, three supplementary fired HRSGs and two steam turbines forming one combined cycle power block. The arrangement allows for operational flexibility as high and low pressure steam from any boiler can be supplied to either steam turbine."
+      ],
+      "details": [
+        "The individual V94.2 gas turbines hot exhaust gases directly flow into naturally circulated heat recovery steam generators, generating steam at two pressure levels: high pressure steam at 85 bar and low pressure steam at 7 bar. The high pressure steam from each of the heat recovery steam generators is combined in a common header and passes to one of the two steam turbines as does the low pressure steam.",
+        "The facility is equipped with bypass stacks allowing operation of each combustion turbine in open cycle if a boiler or steam turbine failure occurs and steam dumping direct to the steam turbine condensers is also provided. The SMN Barka Plant is designed for black start operation by means of diesel generators which are capable of starting the plant via connections to at least two gas turbines.",
+        "Desalination for water production involves a sea water reverse osmosis desalination plant with a contracted capacity of 26.4 MIGD or 5,000 m³/hour of water. The reverse osmosis system comprises of 14 trains in the first pass and 7 trains in the second pass. Unlike “natural” osmosis, which facilitates solvent migration so that concentrations are even on both sides of a membrane, reverse osmosis involves forcing seawater at high pressure through a membrane that is almost impervious to suspended minerals. In the end pure water is left on one side and highly concentrated brine on the other.\nReverse osmosis provides SMN Barka the flexibility, in certain cases, to produce desalinated water even when the power production is not operational, using power from the electricity grid.",
+        "The power plant operates on natural gas as primary fuel with fuel oil as back-up. The plant is connected to the gas transmission infrastructure owned by Integrated Gas Company (IGC), to the existing water transmission system owned and operated by Oman Water and Waste Water Services Co. (OWWSC) and finally to the main interconnected transmission system at 220 kV which is owned by Oman Electricity Transmission Company.",
+        "The auxiliary power for the Plant is derived from the Plant’s internal electrical system with back up from the grid. The equipment and facilities required for the operation, testing, maintenance and repair of the equipment (for example control room, laboratory, stores, workshop, etc.) are available at site.\nSMN Barka has contracted all operations and maintenance activities (‘O&M’) of the power station to Suez Tractebel Operations and Maintenance Oman (‘STOMO’)."
+      ]
+    }
+  }
+}

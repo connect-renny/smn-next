@@ -158,6 +158,38 @@ test.describe("csr", () => {
   });
 });
 
+test.describe("barka plant", () => {
+  test("shows the hero and its stats, in both languages", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/plants/barka-ii");
+    await waitForPreloader(page);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Barka Plant");
+    await expect(page.getByText("Coming soon")).toHaveCount(0);
+    await expect(page.getByText("864.2 MW")).toBeVisible();
+    await expect(page.locator("main h2")).toHaveText([
+      "Description of SMN Barka Plant",
+      "SMN Barka Milestones",
+      "Explore Further",
+    ]);
+    await expect(page.locator('img[src*="plant-diagram"]')).toHaveCount(1);
+    await expect(page.locator("[data-mile-item]")).toHaveCount(9);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    await page.goto("/ar/plants/barka-ii");
+    await waitForPreloader(page);
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("بركاء");
+    await expect(page.locator("main h2")).toHaveText([
+      "وصف لمحطة اس ام ان بركاء",
+      "شركة اس ام ان بركاء",
+      "استكشف المزيد",
+    ]);
+    await expect(page.locator("[data-mile-item]").first()).toContainText("16 مايو 2024");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(errors).toEqual([]);
+  });
+});
+
 test.describe("annual report", () => {
   test("links the latest edition and tags samples, in both languages", async ({ page }) => {
     const errors = trackErrors(page);

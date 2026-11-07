@@ -4451,4 +4451,370 @@
       transition: none;
     }
   }
+
+  /* ─── Barka Plant: milestones ───────────────────────────────────────────────
+     Stacked below 1024px, one line across above it. The defaults are the
+     finished timeline; milestones.tsx sets the start of the run when motion is on.
+     The pinned media query must match PINNED in milestones.tsx. */
+  .mile-stage {
+    --mile-drop: clamp(20px, 1.46vw, 28px);
+    --mile-node: clamp(11px, 0.68vw, 13px);
+    --mile-line: 3px;
+    --mile-node-top: 0.72rem;
+
+    position: relative;
+    overflow: clip;
+    padding-block: clamp(56px, 8vw, 96px);
+    padding-inline: 1.25rem;
+
+    @media (width >= 40rem) {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .mile-art {
+    position: absolute;
+    top: -20%;
+    inset-inline-start: 0;
+    width: auto;
+    height: 140%;
+    max-width: none;
+    opacity: 0.32;
+    translate: -52% 0;
+    pointer-events: none;
+
+    &:where([dir="rtl"] *) {
+      translate: 52% 0;
+    }
+
+    @media (width < 64rem) {
+      display: none;
+    }
+  }
+
+  .mile-title {
+    position: relative;
+    font-size: var(--text-page-title);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    text-align: center;
+
+    @media (width >= 64rem) {
+      letter-spacing: -0.05em;
+    }
+
+    &:where([dir="rtl"] *) {
+      letter-spacing: normal;
+      line-height: 1.4;
+    }
+  }
+
+  /* The outlined year behind the line, which turns like an odometer. */
+  .mile-year {
+    position: sticky;
+    top: 42svh;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    height: 0;
+    color: transparent;
+    font-size: 32vw;
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+    visibility: hidden;
+    -webkit-text-stroke: 1px rgb(255 255 255 / 0.2);
+
+    @media (width >= 64rem) {
+      position: absolute;
+      top: 50%;
+      inset-inline: 0;
+      height: 1em;
+      font-size: min(17vw, 326px);
+      translate: 0 -50%;
+    }
+  }
+
+  .mile-reel-window {
+    display: block;
+    height: 1em;
+    overflow: hidden;
+  }
+
+  .mile-reel {
+    display: flex;
+    flex-direction: column;
+
+    & > span {
+      display: block;
+      height: 1em;
+    }
+  }
+
+  .mile-track {
+    position: relative;
+    margin-top: clamp(32px, 2.2vw, 42px);
+  }
+
+  .mile-rail {
+    position: absolute;
+    inset-block: var(--mile-node-top) calc(100% / 9 - var(--mile-node-top));
+    inset-inline-start: calc(var(--mile-node) / 2 - var(--mile-line) / 2);
+    width: var(--mile-line);
+    border-radius: 2px;
+    background: rgb(255 255 255 / 0.3);
+
+    @media (width >= 64rem) {
+      inset-block: calc(50% - var(--mile-line) / 2) auto;
+      inset-inline: 0 calc(100% / 9);
+      width: auto;
+      height: var(--mile-line);
+    }
+  }
+
+  .mile-fill {
+    background: #fff;
+    box-shadow: 0 0 12px rgb(255 255 255 / 0.45);
+    transform-origin: top;
+
+    @media (width >= 64rem) {
+      transform-origin: left;
+
+      &:where([dir="rtl"] *) {
+        transform-origin: right;
+      }
+    }
+  }
+
+  /* Same box as the rail, so its transforms are shares of the line at any size. */
+  .mile-rider {
+    z-index: 3;
+    background: none;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .mile-drop-wrap {
+    position: absolute;
+    top: 0;
+    inset-inline-start: calc(var(--mile-line) / 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0;
+    height: 0;
+
+    @media (width >= 64rem) {
+      top: calc(var(--mile-line) / 2);
+      inset-inline-start: 0;
+    }
+  }
+
+  /* Centred on the head of the line, then moved so its round belly sits there; the tip trails. */
+  .mile-drop {
+    translate: 0 -16%;
+    filter: drop-shadow(0 0 10px rgb(247 148 49 / 0.95));
+
+    @media (width >= 64rem) {
+      rotate: -90deg;
+      translate: -21% 0;
+
+      &:where([dir="rtl"] *) {
+        rotate: 90deg;
+        translate: 21% 0;
+      }
+    }
+  }
+
+  /* The current behind the drop. */
+  .mile-trail {
+    position: absolute;
+    bottom: 0;
+    left: calc(var(--mile-line) / -2);
+    width: var(--mile-line);
+    height: clamp(60px, 7vw, 134px);
+    background: linear-gradient(to top, var(--color-orange), transparent);
+
+    @media (width >= 64rem) {
+      top: calc(var(--mile-line) / -2);
+      right: 0;
+      bottom: auto;
+      left: auto;
+      width: clamp(60px, 7vw, 134px);
+      height: var(--mile-line);
+      background: linear-gradient(to left, var(--color-orange), transparent);
+
+      &:where([dir="rtl"] *) {
+        right: auto;
+        left: 0;
+        background: linear-gradient(to right, var(--color-orange), transparent);
+      }
+    }
+  }
+
+  .mile-list {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: 0;
+  }
+
+  .mile-item {
+    position: relative;
+    padding-block-end: clamp(28px, 6vw, 40px);
+    padding-inline-start: calc(var(--mile-node) + 22px);
+  }
+
+  .mile-node,
+  .mile-ripple {
+    position: absolute;
+    top: var(--mile-node-top);
+    border-radius: 50%;
+  }
+
+  .mile-node {
+    inset-inline-start: 0;
+    width: var(--mile-node);
+    height: var(--mile-node);
+    margin-top: calc(var(--mile-node) / -2);
+    border: 2px solid #fff;
+  }
+
+  .mile-ripple {
+    --mile-ripple: clamp(64px, 5.2vw, 100px);
+
+    inset-inline-start: calc(var(--mile-node) / 2 - var(--mile-ripple) / 2);
+    width: var(--mile-ripple);
+    height: var(--mile-ripple);
+    margin-top: calc(var(--mile-ripple) / -2);
+    border: 2px solid rgb(255 255 255 / 0.9);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mile-stem {
+    display: none;
+  }
+
+  .mile-date-mask {
+    overflow: hidden;
+    padding-bottom: 0.1em;
+  }
+
+  .mile-date {
+    display: block;
+    font-size: clamp(15px, 1.04vw, 20px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.4;
+
+    &:where([dir="rtl"] *) {
+      letter-spacing: normal;
+    }
+  }
+
+  .mile-label {
+    margin-top: 0.3em;
+    font-size: clamp(14px, 0.99vw, 19px);
+    letter-spacing: -0.04em;
+    line-height: 1.28;
+
+    &:where([dir="rtl"] *) {
+      letter-spacing: normal;
+      line-height: 1.5;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .mile-stage {
+      --mile-stem: clamp(58px, 4.8vw, 92px);
+
+      padding-inline: 0;
+    }
+
+    /* Nine equal steps from the comp's 275px, the last one holding only its text. */
+    .mile-track {
+      width: 71.6vw;
+      height: clamp(340px, 23vw, 440px);
+      margin-inline-start: 14.32vw;
+
+      @media (width >= 1920px) {
+        width: 1375px;
+        margin-inline-start: calc(50vw - 685px);
+      }
+    }
+
+    .mile-list {
+      height: 100%;
+      grid-auto-rows: auto;
+      grid-template-columns: repeat(9, 1fr);
+    }
+
+    .mile-item {
+      padding: 0;
+    }
+
+    .mile-node,
+    .mile-ripple {
+      top: 50%;
+    }
+
+    .mile-node {
+      inset-inline-start: calc(var(--mile-node) / -2);
+    }
+
+    .mile-ripple {
+      inset-inline-start: calc(var(--mile-ripple) / -2);
+    }
+
+    .mile-stem {
+      position: absolute;
+      inset-inline-start: 0;
+      display: block;
+      width: 1px;
+      height: var(--mile-stem);
+      background: rgb(255 255 255 / 0.55);
+    }
+
+    .mile-text {
+      position: absolute;
+      inset-inline-start: 0;
+      width: calc(200% - 1.6vw);
+    }
+
+    .mile-item:nth-child(odd) {
+      .mile-stem {
+        bottom: 50%;
+        transform-origin: bottom;
+      }
+
+      .mile-text {
+        bottom: calc(50% + var(--mile-stem) + clamp(8px, 0.6vw, 12px));
+      }
+    }
+
+    .mile-item:nth-child(even) {
+      .mile-stem {
+        top: 50%;
+        transform-origin: top;
+      }
+
+      .mile-text {
+        top: calc(50% + var(--mile-stem) + clamp(8px, 0.9vw, 18px));
+      }
+    }
+  }
+
+  /* Pinned, the section fills the screen below the fixed header. */
+  @media (min-width: 64rem) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
+    .mile-stage {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100svh;
+      padding-block: calc(var(--header-h) + 16px) 16px;
+    }
+  }
 }

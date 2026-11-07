@@ -1,4 +1,5 @@
 import annualReport from "./annual-report.json";
+import barkaPlant from "./barka-plant.json";
 import boardOfDirectors from "./board-of-directors.json";
 import common from "./common.json";
 import contact from "./contact.json";
@@ -18,6 +19,7 @@ const ar = {
   ...home,
   ...ourCompany,
   ...mainShareholders,
+  ...barkaPlant,
   ...boardOfDirectors,
   ...management,
   ...ethics,

@@ -23,7 +23,6 @@ export type LabelKey = keyof Dictionary["labels"];
  */
 export const innerPages = {
   "about/vision-mission": { label: "visionMission", related: "about" },
-  "plants/barka-ii": { label: "barkaPlant", related: "about" },
   "plants/al-rusail": { label: "rusailPlant", related: "about" },
   "corporate-governance/companys-philosophy": {
     label: "companysPhilosophy",
@@ -51,6 +50,7 @@ type PlaceholderSlug = keyof typeof innerPages;
 export const contentPages = [
   "about/our-company",
   "about/main-shareholders",
+  "plants/barka-ii",
   "corporate-governance/board-of-directors",
   "corporate-governance/ethics",
   "corporate-governance/management",

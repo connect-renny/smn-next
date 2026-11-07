@@ -20,6 +20,8 @@ type InnerHeroProps = {
   text?: string | readonly string[];
   textClassName?: string;
   nextSectionId: string;
+  /** Anything the comp adds under the text, such as a row of stats. */
+  children?: React.ReactNode;
 };
 
 /** The navy-to-green opening of an inner page, with the SMN mark cropped by the end edge. */
@@ -32,6 +34,7 @@ export function InnerHero({
   text,
   textClassName,
   nextSectionId,
+  children,
 }: InnerHeroProps) {
   const paragraphs = text === undefined ? [] : typeof text === "string" ? [text] : text;
 
@@ -74,6 +77,8 @@ export function InnerHero({
               <Lines lines={[paragraph]} />
             </p>
           ))}
+
+          {children}
         </div>
 
         <a
