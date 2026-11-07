@@ -7,6 +7,7 @@ import { Lines } from "@/components/ui/lines";
 import { resolveHref } from "@/config/routes";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
+import { cn } from "@/lib/utils";
 
 type InnerHeroProps = {
   locale: Locale;
@@ -15,7 +16,9 @@ type InnerHeroProps = {
   parent?: { label: string; href?: string };
   current: string;
   titleLines: readonly string[];
-  text?: string;
+  /** One paragraph, or several. */
+  text?: string | readonly string[];
+  textClassName?: string;
   nextSectionId: string;
 };
 
@@ -27,8 +30,11 @@ export function InnerHero({
   current,
   titleLines,
   text,
+  textClassName,
   nextSectionId,
 }: InnerHeroProps) {
+  const paragraphs = text === undefined ? [] : typeof text === "string" ? [text] : text;
+
   return (
     <section className="company-hero section-fit text-white">
       <CompanyHeroMark />
@@ -55,14 +61,19 @@ export function InnerHero({
             ))}
           </h1>
 
-          {text && (
+          {paragraphs.map((paragraph, i) => (
             <p
+              key={i}
               data-hero-fade
-              className="mt-title max-w-[840px] text-[clamp(14px,0.94vw,18px)] leading-[1.34] tracking-[-0.045em] max-lg:tracking-[-0.02em] lg:max-w-[42vw] rtl:tracking-normal"
+              className={cn(
+                "max-w-[840px] text-[clamp(14px,0.94vw,18px)] leading-[1.34] tracking-[-0.045em] max-lg:tracking-[-0.02em] lg:max-w-[42vw] rtl:tracking-normal",
+                i === 0 ? "mt-title" : "mt-[1.34em]",
+                textClassName,
+              )}
             >
-              <Lines lines={[text]} />
+              <Lines lines={[paragraph]} />
             </p>
-          )}
+          ))}
         </div>
 
         <a

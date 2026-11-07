@@ -137,6 +137,27 @@ test.describe("management", () => {
   });
 });
 
+test.describe("csr", () => {
+  test("shows every section, in both languages", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en/csr");
+    await waitForPreloader(page);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Commitment");
+    await expect(page.getByText("Coming soon")).toHaveCount(0);
+    await expect(page.locator("main h2")).toHaveCount(3);
+    await expect(page.locator(".csr-component")).toHaveCount(4);
+    await expect(page.locator(".csr-scroll")).toContainText("second edition of the forum");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+
+    await page.goto("/ar/csr");
+    await waitForPreloader(page);
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await expect(page.locator(".csr-scroll")).toContainText("النسخة الثانية من المنتدى");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(errors).toEqual([]);
+  });
+});
+
 test.describe("annual report", () => {
   test("links the latest edition and tags samples, in both languages", async ({ page }) => {
     const errors = trackErrors(page);

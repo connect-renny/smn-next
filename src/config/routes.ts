@@ -39,7 +39,6 @@ export const innerPages = {
     related: "governance",
   },
   investors: { label: "investors", related: null },
-  csr: { label: "csr", related: null },
   career: { label: "career", related: null },
   "media/opal-mou": { label: "newsOpalMou", related: "media" },
   "media/csr-solar-power-initiative": { label: "newsCsrSolar", related: "media" },
@@ -58,6 +57,7 @@ export const contentPages = [
   "investors/annual-report",
   "investors/dividends-disclosures",
   "investors/msx-discussion-session",
+  "csr",
   "tenders",
   "contact",
 ] as const;
