@@ -24,7 +24,7 @@ export function BackgroundMotion({
         const rtl = document.documentElement.dir === "rtl";
         const wide = window.matchMedia("(min-width: 64rem)").matches;
 
-        gsap.utils.toArray<HTMLElement>("[data-bg-column]").forEach((column, i) => {
+        gsap.utils.toArray<HTMLElement>("[data-bg-column]", scope.current).forEach((column, i) => {
           const tl = gsap.timeline({
             delay: wide ? i * 0.22 : 0,
             scrollTrigger: { trigger: column, start: "top 85%", once: true },

@@ -38,16 +38,17 @@ export function CompanyHeroMark() {
       const mm = gsap.matchMedia();
       mm.add(MOTION_OK, () => {
         const svg = scope.current?.querySelector("svg");
-        const blades = gsap.utils.toArray<SVGGElement>("[data-mark-blade]");
-        const shell = gsap.utils.toArray<SVGPathElement>("[data-mark-shell]");
+        const blades = gsap.utils.toArray<SVGGElement>("[data-mark-blade]", scope.current);
+        const shell = gsap.utils.toArray<SVGPathElement>("[data-mark-shell]", scope.current);
 
         gsap.set([...blades, ...shell], { svgOrigin: SWIRL_ORIGIN });
-        gsap.set(svg ?? [], { xPercent: 9 });
+        // `x` is pinned for the same reason as the title lines in HeroIntro.
+        gsap.set(svg ?? [], { x: 0, xPercent: 9 });
         gsap.set(blades, { rotation: -150, scale: 0.3, autoAlpha: 0 });
         gsap.set(shell, { rotation: 42, scale: 1.14, autoAlpha: 0 });
 
         const tl = gsap.timeline({ paused: true, defaults: { ease: "expo.out" } });
-        tl.to(svg ?? [], { xPercent: 0, duration: 2.2 }, 0)
+        tl.to(svg ?? [], { x: 0, xPercent: 0, duration: 2.2 }, 0)
           .to(shell, { rotation: 0, scale: 1, duration: 2, stagger: 0.08 }, 0)
           .to(shell, { autoAlpha: 1, duration: 0.7, ease: "power1.out", stagger: 0.08 }, 0)
           .to(blades, { rotation: 0, scale: 1, duration: 2.1, stagger: 0.12 }, 0.15)

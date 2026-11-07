@@ -158,6 +158,44 @@ test.describe("csr", () => {
   });
 });
 
+test.describe("hero title", () => {
+  /** How far the shown title's lines sit below their masks; 0 once they have risen. */
+  const titleOffsets = (page: Page) =>
+    page.evaluate(() =>
+      [...document.querySelectorAll("h1 [data-hero-line]")]
+        .filter((line) => line.getClientRects().length > 0)
+        .map((line) => {
+          const mask = line.parentElement!.getBoundingClientRect();
+          return Math.round(line.getBoundingClientRect().top - mask.top);
+        }),
+    );
+
+  test("rises on every in-app navigation, including return visits", async ({ page }) => {
+    const errors = trackErrors(page);
+    await page.goto("/en");
+    await waitForPreloader(page);
+
+    for (const path of ["/en/csr", "/en/tenders", "/en", "/en/csr"]) {
+      await page.evaluate((href) => {
+        const links = [...document.querySelectorAll("a")].filter(
+          (link) => link.getAttribute("href") === href,
+        );
+        (links.find((link) => link.getClientRects().length > 0) ?? links[0])?.click();
+      }, path);
+      await page.waitForURL(`**${path}`);
+      await expect
+        .poll(() => titleOffsets(page), { message: path })
+        .toEqual(expect.arrayContaining([0]));
+      await expect
+        .poll(async () => (await titleOffsets(page)).every((offset) => offset === 0), {
+          message: path,
+        })
+        .toBe(true);
+    }
+    expect(errors).toEqual([]);
+  });
+});
+
 test.describe("barka plant", () => {
   test("shows the hero and its stats, in both languages", async ({ page }) => {
     const errors = trackErrors(page);

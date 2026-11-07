@@ -23,15 +23,18 @@ export function HeroIntro({
     () => {
       const mm = gsap.matchMedia();
       mm.add(MOTION_OK, () => {
-        const lines = gsap.utils.toArray<HTMLElement>("[data-hero-line]");
-        const rest = gsap.utils.toArray<HTMLElement>("[data-hero-fade]");
+        const lines = gsap.utils.toArray<HTMLElement>("[data-hero-line]", scope.current);
+        const rest = gsap.utils.toArray<HTMLElement>("[data-hero-fade]", scope.current);
 
         // Start far enough down to stay hidden behind the mask's deeper bottom padding.
-        gsap.set(lines, { yPercent: 135 });
+        // `y` is pinned to 0 at both ends: when this effect re-runs mid-flight (React can run
+        // it twice on a client navigation), GSAP re-reads the shifted line as a pixel `y`,
+        // which would otherwise stay on top of the percent and leave the title below its mask.
+        gsap.set(lines, { y: 0, yPercent: 135 });
         gsap.set(rest, { autoAlpha: 0, y: 24 });
 
         const tl = gsap.timeline({ paused: true, defaults: { ease: "expo.out" } });
-        tl.to(lines, { yPercent: 0, duration: 1.2, stagger: 0.14 }).to(
+        tl.to(lines, { y: 0, yPercent: 0, duration: 1.2, stagger: 0.14 }).to(
           rest,
           {
             autoAlpha: 1,

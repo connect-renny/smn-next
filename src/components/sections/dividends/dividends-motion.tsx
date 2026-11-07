@@ -18,7 +18,7 @@ export function DividendsMotion({
     () => {
       const mm = gsap.matchMedia();
       mm.add(MOTION_OK, () => {
-        const bars = gsap.utils.toArray<HTMLElement>("[data-dividend-bar]");
+        const bars = gsap.utils.toArray<HTMLElement>("[data-dividend-bar]", scope.current);
         gsap.set(bars, { scaleX: 0 });
         ScrollTrigger.batch(bars, {
           start: "top 92%",

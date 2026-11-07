@@ -63,9 +63,9 @@ export function BoardExplorer({
       const mm = gsap.matchMedia();
       mm.add(MOTION_OK, () => {
         const rtl = document.documentElement.dir === "rtl";
-        const tiles = gsap.utils.toArray<HTMLElement>("[data-board-tile]");
-        const figures = gsap.utils.toArray<HTMLElement>("[data-board-figure]");
-        const names = gsap.utils.toArray<HTMLElement>("[data-board-name]");
+        const tiles = gsap.utils.toArray<HTMLElement>("[data-board-tile]", scope.current);
+        const figures = gsap.utils.toArray<HTMLElement>("[data-board-figure]", scope.current);
+        const names = gsap.utils.toArray<HTMLElement>("[data-board-name]", scope.current);
         const stagger = { amount: 0.55, grid: "auto", from: "start" } as const;
 
         gsap.set(panel.current, { autoAlpha: 0, x: rtl ? 48 : -48 });
