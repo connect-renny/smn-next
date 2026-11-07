@@ -14,14 +14,14 @@ export function BarkaPlantStats({ dict }: { dict: Dictionary }) {
         <li
           key={key}
           data-hero-fade
-          className="border-white/35 not-first:border-s max-sm:not-first:border-s-0 max-sm:not-first:border-t max-sm:not-first:pt-6 sm:pe-[clamp(16px,3.6vw,69px)] sm:not-first:ps-[clamp(16px,1.95vw,37px)]"
+          className="barka-stat border-white/35 not-first:border-s max-sm:not-first:border-s-0 max-sm:not-first:border-t max-sm:not-first:pt-6 sm:pe-[clamp(16px,3.6vw,69px)] sm:not-first:ps-[clamp(16px,1.95vw,37px)]"
         >
           <Image
             src={icon}
             alt=""
             width={90}
             height={90}
-            className="size-[clamp(60px,4.69vw,90px)] object-contain"
+            className="barka-stat-icon size-[clamp(60px,4.69vw,90px)] object-contain"
           />
           <p className="mt-[clamp(14px,1.4vw,27px)] text-[clamp(14px,1.04vw,20px)] leading-[1.3]">
             <Lines lines={[t[key].label]} />

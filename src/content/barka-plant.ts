@@ -18,6 +18,6 @@ export const barkaExploreLinks = {
 } as const;
 
 export const barkaImages = {
-  plant: { src: "/images/our-company/barka-plant.jpg", width: 525, height: 575 },
+  plant: { src: "/images/barka-plant/plant-photo.jpg", width: 525, height: 575 },
   diagram: { src: "/images/barka-plant/plant-diagram.png", width: 1022, height: 724 },
 } as const;
