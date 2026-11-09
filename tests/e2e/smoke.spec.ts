@@ -245,13 +245,17 @@ test.describe("annual report", () => {
       "href",
       /4326762-Annual%20Report%202025_SMN_Arabic%20final\.pdf$/,
     );
-    await expect(latest).toContainText("112");
+    // No page count or file size on the page any more.
+    await expect(latest).not.toContainText("112");
+    await expect(latest).not.toContainText("MB");
 
-    // Samples are marked and go nowhere until a real PDF is added.
+    // Every year has a cover link and a View button; samples open the latest report.
     const shelf = page.locator(".report-shelf-item");
     await expect(shelf).toHaveCount(6);
-    await expect(page.locator(".report-shelf-sample")).toHaveCount(6);
-    await expect(page.locator(".report-shelf a")).toHaveCount(0);
+    const views = page.locator(".report-shelf").getByRole("link", { name: /^View/ });
+    await expect(views).toHaveCount(6);
+    await expect(views.first()).toHaveAttribute("href", /233399-Annual%20Report%202025/);
+    await expect(page.locator(".report-shelf a.report-shelf-stage")).toHaveCount(6);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
 
     await page.goto("/ar/investors/annual-report");

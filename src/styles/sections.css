@@ -441,21 +441,6 @@
     }
   }
 
-  .report-latest-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: clamp(20px, 1.9vw, 36px);
-
-    li {
-      padding: 0.45em 1em;
-      border: 1px solid rgb(255 255 255 / 0.3);
-      border-radius: 999px;
-      font-size: var(--text-eyebrow);
-      font-weight: 500;
-    }
-  }
-
   .report-latest-actions {
     display: flex;
     flex-wrap: wrap;
@@ -515,19 +500,19 @@
 
     /* Picked out: it turns to face the reader and lifts off the shelf. */
     &:hover .report-book,
-    &:focus-visible .report-book {
+    &:has(:focus-visible) .report-book {
       --angle: 4deg;
     }
 
     &:hover .report-book-body,
-    &:focus-visible .report-book-body {
+    &:has(:focus-visible) .report-book-body {
       translate: 0 -10px;
     }
+  }
 
-    &:focus-visible {
-      outline: 2px solid var(--color-orange);
-      outline-offset: 2px;
-    }
+  .report-shelf-view:focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 3px;
   }
 
   .report-shelf-stage {
@@ -562,18 +547,30 @@
     font-weight: 500;
   }
 
+  .report-shelf-view {
+    padding: 0.45em 1.4em;
+    border: 1px solid var(--color-navy);
+    border-radius: 999px;
+    color: var(--color-navy);
+    font-weight: 600;
+    transition:
+      background-color 0.3s var(--ease-soft),
+      border-color 0.3s var(--ease-soft),
+      color 0.3s var(--ease-soft);
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--color-orange);
+      background: var(--color-orange);
+      color: var(--color-navy-deep);
+    }
+  }
+
   .report-shelf-year {
     color: var(--color-navy);
     font-size: clamp(20px, 1.5vw, 29px);
     font-weight: 700;
     letter-spacing: -0.02em;
-  }
-
-  .report-shelf-sample {
-    padding: 0.2em 0.75em;
-    border: 1px dashed var(--color-about-muted);
-    border-radius: 999px;
-    color: var(--color-page-copy);
   }
 
   .report-cover-generated {

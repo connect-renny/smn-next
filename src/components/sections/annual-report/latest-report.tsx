@@ -15,15 +15,12 @@ type LatestReportProps = {
   year: string;
   cover: string;
   href: string;
-  meta?: string;
   otherHref?: string;
-  pages: number;
   opensInNewTab: string;
   copy: {
     latestEyebrow: string;
     bookLabel: string;
     tagline: string[];
-    pages: string;
     view: string;
     otherEdition: string;
   };
@@ -35,9 +32,7 @@ export function LatestReport({
   year,
   cover,
   href,
-  meta,
   otherHref,
-  pages,
   opensInNewTab,
   copy,
 }: LatestReportProps) {
@@ -172,13 +167,6 @@ export function LatestReport({
               </span>
             ))}
           </p>
-
-          <ul data-reveal className="report-latest-meta">
-            <li>
-              <span dir="ltr">{pages}</span> {copy.pages}
-            </li>
-            {meta && <li dir="ltr">{meta}</li>}
-          </ul>
 
           <div data-reveal className="report-latest-actions">
             <a href={href} {...newTab} className="report-latest-cta group">

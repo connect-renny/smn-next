@@ -34,10 +34,13 @@ export function ReportShelf({
   locale,
   dict,
   id,
+  fallbackHref,
 }: {
   locale: Locale;
   dict: Dictionary;
   id: string;
+  /** Where a sample year (no PDF of its own yet) points: the latest report. */
+  fallbackHref: string;
 }) {
   const t = dict.annualReports;
 
@@ -63,41 +66,36 @@ export function ReportShelf({
 
         <ul className="report-shelf">
           {archivedReports.map((report) => {
-            const content = (
-              <>
-                <span className="report-shelf-stage">
-                  <ReportBook year={report.year} spineTone={report.tones[1]}>
-                    <GeneratedCover report={report} label={t.bookLabel} />
-                  </ReportBook>
-                </span>
-                <span aria-hidden className="report-shelf-ledge" />
-                <span className="report-shelf-caption">
-                  <span dir="ltr" className="report-shelf-year">
-                    {report.year}
-                  </span>
-                  {report.href ? (
-                    <span>{t.view}</span>
-                  ) : (
-                    <span className="report-shelf-sample">{t.sample}</span>
-                  )}
-                </span>
-              </>
-            );
-
+            const href = report.href?.[locale] ?? fallbackHref;
             return (
               <li key={report.year} data-animate="up" className="report-shelf-item">
-                {report.href ? (
+                <div className="report-shelf-card">
+                  {/* The cover is a second way in; the View button is the one in the tab order. */}
                   <a
-                    href={report.href[locale]}
+                    href={href}
                     {...newTab}
-                    aria-label={`${t.bookLabel} ${report.year} ${dict.a11y.opensInNewTab}`}
-                    className="report-shelf-card"
+                    tabIndex={-1}
+                    aria-hidden
+                    className="report-shelf-stage"
                   >
-                    {content}
+                    <ReportBook year={report.year} spineTone={report.tones[1]}>
+                      <GeneratedCover report={report} label={t.bookLabel} />
+                    </ReportBook>
                   </a>
-                ) : (
-                  <div className="report-shelf-card">{content}</div>
-                )}
+                  <span aria-hidden className="report-shelf-ledge" />
+                  <span className="report-shelf-caption">
+                    <span dir="ltr" className="report-shelf-year">
+                      {report.year}
+                    </span>
+                    <a href={href} {...newTab} className="report-shelf-view">
+                      {t.viewShort}
+                      <span className="sr-only">
+                        {" "}
+                        {t.bookLabel} {report.year} {dict.a11y.opensInNewTab}
+                      </span>
+                    </a>
+                  </span>
+                </div>
               </li>
             );
           })}

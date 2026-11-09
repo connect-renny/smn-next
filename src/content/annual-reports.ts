@@ -3,11 +3,9 @@ import type { Locale } from "@/i18n/config";
 /** The latest edition. Its PDF links live in `siteConfig.annualReport`. */
 export const latestReport: {
   year: string;
-  pages: Record<Locale, number>;
   cover: Record<Locale, string>;
 } = {
   year: "2025",
-  pages: { en: 112, ar: 104 },
   cover: {
     en: "/images/annual-report/cover-2025-en.jpg",
     ar: "/images/annual-report/cover-2025-ar.jpg",
@@ -18,13 +16,13 @@ export type ArchivedReport = {
   year: string;
   /** Cover colours for a generated cover. */
   tones: readonly [string, string];
-  /** The real PDF per language. Null marks a sample: tagged, and not a link. */
+  /** The real PDF per language. Null: a sample, which opens the latest report until its PDF arrives. */
   href: Record<Locale, string> | null;
 };
 
 /**
- * DUMMY DATA: placeholders until the client supplies the real reports. Give an
- * entry its `href` and it becomes a real link and loses its "Sample" tag.
+ * DUMMY DATA: placeholders until the client supplies the real reports. Until an
+ * entry has its own `href`, its cover and View button open the latest report.
  */
 export const archivedReports: readonly ArchivedReport[] = [
   { year: "2024", tones: ["#0f5f6e", "#0a1e51"], href: null },

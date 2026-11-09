@@ -5,11 +5,10 @@
     "latestEyebrow": "Latest report",
     "bookLabel": "Annual Report",
     "tagline": ["Powering Lives.", "Powering the Future."],
-    "pages": "pages",
     "view": "View the report",
+    "viewShort": "View Report",
     "otherEdition": "Arabic edition",
     "archiveEyebrow": "Archive",
-    "archiveTitle": "Previous Reports",
-    "sample": "Sample"
+    "archiveTitle": "Previous Reports"
   }
 }

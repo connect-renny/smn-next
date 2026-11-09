@@ -55,14 +55,17 @@ export default async function AnnualReportPage({
         id={AFTER_HERO_ID}
         year={latestReport.year}
         cover={latestReport.cover[locale]}
-        pages={latestReport.pages[locale]}
         href={resolveHref(locale, { document: "annualReport" })}
-        meta={editions?.[locale].meta}
         otherHref={editions?.[locale === "en" ? "ar" : "en"].href}
         opensInNewTab={dict.a11y.opensInNewTab}
         copy={t}
       />
-      <ReportShelf locale={locale} dict={dict} id="previous-reports" />
+      <ReportShelf
+        locale={locale}
+        dict={dict}
+        id="previous-reports"
+        fallbackHref={resolveHref(locale, { document: "annualReport" })}
+      />
     </main>
   );
 }

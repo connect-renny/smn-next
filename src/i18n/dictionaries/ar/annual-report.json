@@ -5,11 +5,10 @@
     "latestEyebrow": "أحدث تقرير",
     "bookLabel": "التقرير السنوي",
     "tagline": ["تعزز حياتكم", "تعزز مستقبلكم"],
-    "pages": "صفحة",
     "view": "عرض التقرير",
+    "viewShort": "عرض التقرير",
     "otherEdition": "النسخة الإنجليزية",
     "archiveEyebrow": "الأرشيف",
-    "archiveTitle": "التقارير السابقة",
-    "sample": "نموذج"
+    "archiveTitle": "التقارير السابقة"
   }
 }
