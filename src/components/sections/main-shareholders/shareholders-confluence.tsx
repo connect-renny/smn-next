@@ -5,9 +5,10 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 
 import { ConfluenceMotion } from "./shareholders-motion";
 
-const LINES = ["M100 0C100 112 200 62 200 172", "M300 0C300 112 200 62 200 172"] as const;
+/** Drawn from each logo (bottom) up to the SMN mark (top), so the flow still runs into SMN. */
+const LINES = ["M100 176C100 64 200 114 200 4", "M300 176C300 64 200 114 200 4"] as const;
 
-/** The page in one picture: two shareholders, flowing into one company. */
+/** The page in one picture: SMN on top, branching down to its two shareholders. */
 export function ShareholdersConfluence({
   copy,
   id,
@@ -18,21 +19,10 @@ export function ShareholdersConfluence({
   return (
     <section id={id} data-ql-ink="dark" className="confluence">
       <ConfluenceMotion className="confluence-inner">
-        <nav aria-label={copy.chaptersLabel} className="confluence-names">
-          {shareholderChapters.map(({ id: chapter, accent }, i) => (
-            <a
-              key={chapter}
-              href={`#${chapter}`}
-              className="confluence-name"
-              style={{ "--accent": accent } as React.CSSProperties}
-            >
-              <span dir="ltr" aria-hidden className="confluence-number">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              {copy.items[chapter].name}
-            </a>
-          ))}
-        </nav>
+        <div data-confluence-mark className="confluence-mark">
+          <Image src="/images/brand/smn-mark.svg" alt="" width={53} height={72} unoptimized />
+          <p>{copy.companyName}</p>
+        </div>
 
         <svg viewBox="0 0 400 176" aria-hidden className="confluence-lines">
           <defs>
@@ -42,9 +32,9 @@ export function ShareholdersConfluence({
                 id={`confluence-${chapter}`}
                 gradientUnits="userSpaceOnUse"
                 x1={i === 0 ? 100 : 300}
-                y1="0"
+                y1="176"
                 x2="200"
-                y2="172"
+                y2="4"
               >
                 <stop offset="0" stopColor={accent} />
                 <stop offset="1" stopColor={accentSoft} />
@@ -65,10 +55,26 @@ export function ShareholdersConfluence({
           ))}
         </svg>
 
-        <div data-confluence-mark className="confluence-mark">
-          <Image src="/images/brand/smn-mark.svg" alt="" width={53} height={72} unoptimized />
-          <p>{copy.companyName}</p>
-        </div>
+        <nav aria-label={copy.chaptersLabel} className="confluence-names">
+          {shareholderChapters.map(({ id: chapter, accent, logo }) => (
+            <a
+              key={chapter}
+              href={`#${chapter}`}
+              className="confluence-name"
+              style={{ "--accent": accent } as React.CSSProperties}
+            >
+              <Image
+                src={logo.onLight}
+                alt=""
+                width={logo.width}
+                height={logo.height}
+                unoptimized
+                className="confluence-logo"
+              />
+              <span className="sr-only">{copy.items[chapter].name}</span>
+            </a>
+          ))}
+        </nav>
       </ConfluenceMotion>
     </section>
   );

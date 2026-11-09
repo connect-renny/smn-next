@@ -46,8 +46,8 @@ export default async function MainShareholdersPage({
         nextSectionId={AFTER_HERO_ID}
       />
       <ShareholdersConfluence copy={dict.mainShareholders} id={AFTER_HERO_ID} />
-      {shareholderChapters.map((chapter, i) => (
-        <ShareholderChapter key={chapter.id} chapter={chapter} number={i + 1} dict={dict} />
+      {shareholderChapters.map((chapter) => (
+        <ShareholderChapter key={chapter.id} chapter={chapter} dict={dict} />
       ))}
       <ExploreFurther
         locale={locale}

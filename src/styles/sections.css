@@ -3997,27 +3997,23 @@
 
   .confluence-name {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    padding-bottom: clamp(12px, 1.2vw, 22px);
-    font-size: clamp(14px, 1.3vw, 25px);
-    font-weight: 500;
-    line-height: 1.25;
-    text-align: center;
-    transition: color 0.3s;
+    justify-content: center;
+    padding-top: clamp(14px, 1.4vw, 26px);
+    transition: translate 0.3s;
 
     &:hover,
     &:focus-visible {
-      color: var(--accent);
+      translate: 0 -4px;
     }
   }
 
-  .confluence-number {
-    color: var(--accent);
-    font-size: clamp(12px, 0.8vw, 15px);
-    font-weight: 600;
-    letter-spacing: 0.08em;
+  /* One box for both logos, so the tall ENGIE and the wide Mubadala read the same size. */
+  .confluence-logo {
+    width: auto;
+    max-width: min(100%, clamp(130px, 13vw, 250px));
+    height: auto;
+    max-height: clamp(36px, 3.6vw, 68px);
+    object-fit: contain;
   }
 
   .confluence-lines {
@@ -4052,7 +4048,7 @@
     flex-direction: column;
     align-items: center;
     gap: clamp(10px, 1vw, 18px);
-    margin-top: -2px;
+    margin-bottom: -2px;
     font-size: clamp(14px, 1.05vw, 20px);
     font-weight: 500;
     text-align: center;
@@ -4109,16 +4105,15 @@
     }
   }
 
-  .holder-number {
-    color: var(--accent);
-    font-size: clamp(56px, 6vw, 115px);
-    font-weight: 200;
-    line-height: 1;
-    letter-spacing: -0.04em;
-
-    &:where([dir="rtl"] *) {
-      text-align: end;
-    }
+  /* Same box as the confluence logos, a size up: ENGIE fills the height, Mubadala the width. */
+  .holder-logo {
+    display: block;
+    width: auto;
+    max-width: min(100%, clamp(170px, 15vw, 290px));
+    height: auto;
+    max-height: clamp(48px, 4.6vw, 88px);
+    margin-bottom: clamp(18px, 2vw, 36px);
+    object-fit: contain;
   }
 
   .holder-name {

@@ -12,14 +12,13 @@ import { ChapterMotion } from "./shareholders-motion";
 
 type ShareholderChapterProps = {
   chapter: (typeof shareholderChapters)[number];
-  number: number;
   dict: Dictionary;
 };
 
 /** After the lead paragraph (and, for Mubadala, its context) comes the wall of figures. */
 const paragraphsBeforeFigures = { kahrabel: 1, mubadala: 2 } as const;
 
-export function ShareholderChapter({ chapter, number, dict }: ShareholderChapterProps) {
+export function ShareholderChapter({ chapter, dict }: ShareholderChapterProps) {
   const copy = dict.mainShareholders;
   const item = copy.items[chapter.id];
   const website = shareholders[chapter.id].website;
@@ -43,9 +42,14 @@ export function ShareholderChapter({ chapter, number, dict }: ShareholderChapter
     >
       <ChapterMotion className="holder-grid">
         <div className="holder-aside">
-          <p dir="ltr" aria-hidden className="holder-number">
-            {String(number).padStart(2, "0")}
-          </p>
+          <Image
+            src={chapter.logo.onDark}
+            alt={chapter.logo.name}
+            width={chapter.logo.width}
+            height={chapter.logo.height}
+            unoptimized
+            className="holder-logo"
+          />
           <h2 className="holder-name">{item.name}</h2>
 
           <h3 className="holder-chain-label">{copy.ownershipLabel}</h3>
