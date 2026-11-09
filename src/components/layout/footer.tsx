@@ -168,15 +168,7 @@ export function Footer({ locale, dict, nav }: FooterProps) {
           </p>
         </div>
 
-        <div data-area="lock" className={`${bandCell} sm:justify-end lg:justify-center`}>
-          <Image
-            src="/images/footer/site-lock.png"
-            alt={f.siteLockAlt}
-            width={115}
-            height={68}
-            className="h-auto w-[clamp(96px,6vw,115px)]"
-          />
-        </div>
+        <div data-area="end" aria-hidden />
       </div>
     </footer>
   );
