@@ -36,10 +36,6 @@ export const mainNav: NavGroup[] = [
         href: { page: "corporate-governance/nomination-remuneration-committee" },
       },
       { label: "management", href: { page: "corporate-governance/management" } },
-      {
-        label: "articlesOfAssociation",
-        href: { page: "corporate-governance/articles-of-association" },
-      },
       { label: "ethics", href: { page: "corporate-governance/ethics" } },
     ],
   },

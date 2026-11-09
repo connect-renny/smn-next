@@ -1,6 +1,6 @@
 {
   "hero": {
-    "titleLines": ["Powering **Lives**.", "Powering the **Future**."],
+    "titleLines": ["تــعــزز **حـــيـــاتــكـــــم**", "تــعــــزز **مســتـقــبـــلـــكـــــم**"],
     "playVideo": "تشغيل الفيديو",
     "explore": "استكشف",
     "tabs": {
@@ -76,7 +76,7 @@
     }
   },
   "governance": {
-    "eyebrow": "Leadership",
+    "eyebrow": "القيادة",
     "title": "حوكمة الشركات",
     "cells": {
       "board": {
@@ -91,14 +91,14 @@
       },
       "management": {
         "imageAlt": "مصافحة",
-        "titleLines": ["Our", "Management"],
+        "titleLines": ["الإدارة"],
         "moreLabel": "المزيد عن فريق الإدارة"
       }
     }
   },
   "links": {
     "eyebrow": "روابط مفيدة",
-    "title": "Our Subsidiaries",
+    "title": "شركاتنا التابعة",
     "items": {
       "nama": "نماء لشراء الطاقة والمياه",
       "apsr": "هيئة تنظيم الخدمات العامة",
@@ -110,8 +110,8 @@
     }
   },
   "media": {
-    "eyebrow": "Media Centre",
-    "title": "Latest Updates from our company",
+    "eyebrow": "المركز الإعلامي",
+    "title": "أحدث أخبار الشركة",
     "dates": {
       "newsOpalMou": "31 أغسطس 2022",
       "newsCsrSolar": "",

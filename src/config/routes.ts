@@ -33,10 +33,6 @@ export const innerPages = {
     label: "nominationCommittee",
     related: "governance",
   },
-  "corporate-governance/articles-of-association": {
-    label: "articlesOfAssociation",
-    related: "governance",
-  },
   investors: { label: "investors", related: null },
   career: { label: "career", related: null },
   "media/opal-mou": { label: "newsOpalMou", related: "media" },
