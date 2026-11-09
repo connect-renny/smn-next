@@ -43,10 +43,7 @@ export function CompanyHero({ locale, dict, nextSectionId }: CompanyHeroProps) {
             ))}
           </h1>
 
-          <p
-            data-hero-fade
-            className="mt-title max-w-[840px] text-[clamp(14px,0.94vw,18px)] leading-[1.34] tracking-[-0.045em] max-lg:tracking-[-0.02em] lg:max-w-[44vw] rtl:tracking-normal"
-          >
+          <p data-hero-fade className="mt-title max-w-[840px] text-intro lg:max-w-[44vw]">
             <Lines lines={[t.text]} />
           </p>
 

@@ -53,7 +53,7 @@ export function Plants({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 >
                   <span dir="auto">{t.title}</span>
                 </h2>
-                <div className="mt-[clamp(20px,2.1vw,40px)] flex flex-col gap-[1.34em] text-page-body">
+                <div className="mt-[clamp(20px,2.1vw,40px)] flex flex-col gap-[1.34em] text-body">
                   {t.paragraphs.map((paragraph, i) => (
                     <p key={i} data-animate="up" className="company-copy">
                       <Lines lines={[paragraph]} />

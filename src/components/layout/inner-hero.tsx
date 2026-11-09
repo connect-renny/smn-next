@@ -69,7 +69,7 @@ export function InnerHero({
               key={i}
               data-hero-fade
               className={cn(
-                "max-w-[840px] text-[clamp(14px,0.94vw,18px)] leading-[1.34] tracking-[-0.045em] max-lg:tracking-[-0.02em] lg:max-w-[42vw] rtl:tracking-normal",
+                "max-w-[840px] text-intro lg:max-w-[42vw]",
                 i === 0 ? "mt-title" : "mt-[1.34em]",
                 textClassName,
               )}

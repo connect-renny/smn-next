@@ -41,10 +41,7 @@ export function About({ locale, dict }: AboutProps) {
             <Lines lines={t.titleLines} />
           </h2>
 
-          <p
-            data-animate="up"
-            className="mt-copy text-body leading-[1.4] text-about-muted lg:max-w-[48vw] lg:leading-[1.25]"
-          >
+          <p data-animate="up" className="mt-copy text-body text-about-muted lg:max-w-[48vw]">
             {t.text}
           </p>
 

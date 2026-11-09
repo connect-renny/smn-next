@@ -71,10 +71,7 @@ export function Shareholders({ locale, dict }: ShareholdersProps) {
               </h2>
               <p
                 data-animate="up"
-                className={cn(
-                  "mt-[clamp(15px,1.19vw,23px)] max-w-xl text-body leading-[1.46]",
-                  v.text,
-                )}
+                className={cn("mt-[clamp(15px,1.19vw,23px)] max-w-xl text-body", v.text)}
               >
                 {copy.text}
               </p>

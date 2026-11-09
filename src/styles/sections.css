@@ -130,8 +130,8 @@
     gap: 1.15em;
     margin-top: clamp(18px, 1.35vw, 26px);
     padding-bottom: clamp(8px, 1vw, 20px);
-    font-size: clamp(14px, 0.875vw, 16.8px);
-    line-height: 1.5;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
     scrollbar-color: #fff rgb(255 255 255 / 0.16);
     scrollbar-width: thin;
 
@@ -140,11 +140,6 @@
       min-height: 0;
       overflow-y: auto;
       padding-inline: clamp(6px, 0.85vw, 17px) clamp(6px, 0.8vw, 15px);
-    }
-
-    /* Arabic needs room for its marks above and below the line. */
-    &:where([dir="rtl"] *) {
-      line-height: 1.6;
     }
 
     &:focus-visible {
@@ -660,7 +655,7 @@
     width: 100%;
     /* Not collapsed: collapsed borders stay painted while a row waits to fade in. */
     border-spacing: 0;
-    font-size: var(--text-page-body);
+    font-size: var(--text-body);
     font-variant-numeric: tabular-nums;
 
     th,
@@ -1043,7 +1038,7 @@
   .msx-meta-time {
     margin-top: clamp(10px, 0.8vw, 15px);
     color: rgb(255 255 255 / 0.72);
-    font-size: var(--text-page-body);
+    font-size: var(--text-body);
     font-variant-numeric: tabular-nums;
   }
 
@@ -2023,7 +2018,7 @@
     align-content: start;
     gap: 4px;
     margin-top: 6px;
-    font-size: var(--text-page-body);
+    font-size: var(--text-body);
     line-height: 1.4;
 
     p {
@@ -2139,7 +2134,7 @@
 
   .contact-rows {
     display: grid;
-    font-size: var(--text-page-body);
+    font-size: var(--text-body);
 
     > div {
       display: grid;
@@ -2823,17 +2818,8 @@
 
   .company-copy {
     color: var(--color-page-copy);
-    font-size: var(--text-page-body);
-    line-height: 1.34;
-
-    @media (width >= 64rem) {
-      letter-spacing: -0.05em;
-    }
-
-    /* Letter-spacing would pull joined Arabic letters apart. */
-    &:where([dir="rtl"] *) {
-      letter-spacing: normal;
-    }
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
   }
 
   /* ─── CSR: shared title and image-beside-copy row ───────────────────────── */
@@ -3664,12 +3650,8 @@
     max-width: 62ch;
     margin-top: clamp(14px, 1.3vw, 25px);
     color: rgb(255 255 255 / 0.8);
-    font-size: clamp(15px, 1.02vw, 19.6px);
-    line-height: 1.55;
-
-    &:where([dir="rtl"] *) {
-      line-height: 1.9;
-    }
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
   }
 
   .ethics-rail {
@@ -3919,7 +3901,7 @@
     border-radius: 12px;
     background: var(--color-navy);
     color: #fff;
-    font-size: var(--text-page-body);
+    font-size: var(--text-body);
     font-weight: 500;
     transition: background-color 0.35s;
 
@@ -4234,27 +4216,17 @@
     line-height: var(--row);
   }
 
+  /* Body text, set apart only by being full white. */
   .holder-lead {
-    font-size: clamp(19px, 1.7vw, 32px);
-    font-weight: 300;
-    line-height: 1.38;
-    letter-spacing: -0.015em;
-
-    &:where([dir="rtl"] *) {
-      line-height: 1.8;
-      letter-spacing: normal;
-    }
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
   }
 
   .holder-text {
     margin-top: clamp(16px, 1.5vw, 28px);
     color: rgb(255 255 255 / 0.8);
-    font-size: clamp(15px, 1.02vw, 19.6px);
-    line-height: 1.6;
-
-    &:where([dir="rtl"] *) {
-      line-height: 1.9;
-    }
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
   }
 
   .holder-figures {
@@ -4390,7 +4362,7 @@
     padding-top: clamp(18px, 1.5vw, 28px);
     border-top: 1px solid rgb(255 255 255 / 0.16);
     color: rgb(255 255 255 / 0.72);
-    font-size: clamp(14px, 0.94vw, 18px);
+    font-size: var(--text-body);
 
     a {
       display: inline-flex;

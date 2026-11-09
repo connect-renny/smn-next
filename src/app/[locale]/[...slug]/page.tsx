@@ -58,9 +58,7 @@ export default async function InnerPage({ params }: PageProps<"/[locale]/[...slu
   return (
     <main id="main">
       <PageBanner eyebrow={dict.comingSoon.eyebrow} title={dict.labels[page.label]}>
-        <p className="mt-5 max-w-xl text-body leading-relaxed text-white/85">
-          {dict.comingSoon.text}
-        </p>
+        <p className="mt-5 max-w-xl text-body text-white/85">{dict.comingSoon.text}</p>
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
           {page.related && (

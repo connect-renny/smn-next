@@ -264,7 +264,7 @@ export function BoardExplorer({
           data-panel-body
           data-lenis-prevent
           tabIndex={0}
-          className="board-panel-body lg:tracking-[-0.05em] rtl:tracking-normal"
+          className="board-panel-body"
         >
           <p data-panel-fade className="font-medium">
             {copy.yearOfJoining} : <span dir="ltr">{member.year}</span>
