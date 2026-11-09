@@ -38,7 +38,6 @@
     "auditCommittee": "لجنة التدقيق",
     "nominationCommittee": "لجنة التعيين والمكافآت",
     "management": "الإدارة التنفيذية",
-    "articlesOfAssociation": "Articles of Association",
     "ethics": "أخلاقيات العمل",
     "investors": "تاريخ المستثمر والأخبار",
     "disclosures": "الافصاح",
@@ -51,7 +50,7 @@
     "tenders": "المناقصات",
     "barkaPlant": "محطة بركاء 2",
     "rusailPlant": "محطة الرسيل",
-    "mediaCentre": "Media Centre",
+    "mediaCentre": "المركز الإعلامي",
     "newsOpalMou": "توقيع مذكرة تفاهم مع أوبال لرعاية عدد من مبادرات المسؤولية الاجتماعية",
     "newsCsrSolar": "التربية توقع اتفاقية مع مجموعة من الشركات لتجهيز إحدى المدارس بنظام الطاقة الشمسية",
     "newsOerTop20": "شركة إس إم إن باور القابضة تحصل على المركز سابع عشر بين عشرين ضمن أفضل شركات OER لعام 2016"
@@ -157,7 +156,7 @@
       "governance": {
         "title": "حوكمة الشركات",
         "path": "الحوكمة",
-        "keywords": "حوكمة الحوكمة سياسة امتثال الامتثال أخلاقيات الأخلاقيات النظام الأساسي corporate governance policy compliance ethics articles association"
+        "keywords": "حوكمة الحوكمة سياسة امتثال الامتثال أخلاقيات الأخلاقيات corporate governance policy compliance ethics"
       },
       "board": {
         "title": "مجلس الإدارة",
@@ -170,7 +169,7 @@
         "keywords": "فلسفة الفلسفة مبادئ المبادئ ثقافة قيم philosophy principles culture values"
       },
       "management": {
-        "title": "الإدارة التنفيذية",
+        "title": "الإدارة",
         "path": "الحوكمة",
         "keywords": "الإدارة إدارة فريق التنفيذيين الرئيس التنفيذي القيادة management team executives ceo leadership people"
       },
@@ -180,7 +179,7 @@
         "keywords": "روابط الروابط مواقع وزارة الوزارة هيئة الهيئة نماء البورصة شركاء useful links ministry authority apsr opwp regulator partners websites"
       },
       "media": {
-        "title": "وسائل الإعلام",
+        "title": "المركز الإعلامي",
         "path": "وسائل الإعلام",
         "keywords": "إعلام الإعلام أخبار الأخبار خبر صحافة جديد فعاليات صور media news press latest updates events gallery"
       },

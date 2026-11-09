@@ -38,7 +38,6 @@
     "auditCommittee": "Audit Committee",
     "nominationCommittee": "Nomination & Remuneration Committee",
     "management": "Management",
-    "articlesOfAssociation": "Articles of Association",
     "ethics": "Ethics",
     "investors": "Investor Data & News",
     "disclosures": "Disclosures",
@@ -157,7 +156,7 @@
       "governance": {
         "title": "Corporate Governance",
         "path": "Governance",
-        "keywords": "corporate governance policy compliance ethics articles association"
+        "keywords": "corporate governance policy compliance ethics"
       },
       "board": {
         "title": "Board of Directors",

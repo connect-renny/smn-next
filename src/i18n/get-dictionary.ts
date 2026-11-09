@@ -16,6 +16,10 @@ function withFallback<T>(base: T, override: unknown): T {
   }
   if (Array.isArray(base)) {
     const list = Array.isArray(override) ? override : [];
+    // A translated list of lines (title lines) keeps its own length: Arabic may
+    // say in one line what English says in two, without an English line added.
+    const lines = list.length > 0 && base.every((item) => typeof item === "string");
+    if (lines) return list.map((item, i) => withFallback(base[i] ?? "", item)) as T;
     return base.map((item, i) => withFallback(item, list[i])) as T;
   }
   if (base && typeof base === "object") {
