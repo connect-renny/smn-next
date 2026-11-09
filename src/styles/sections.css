@@ -3454,7 +3454,7 @@
   .footer-grid {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas: "office" "contact" "about" "report" "lock" "credit" "copy";
+    grid-template-areas: "office" "contact" "about" "report" "credit" "copy";
 
     > * {
       border-bottom: 1px solid var(--color-footer-rule);
@@ -3462,7 +3462,8 @@
     > [data-area="copy"] {
       border-bottom: 0;
     }
-    > [data-area="blank"] {
+    > [data-area="blank"],
+    > [data-area="end"] {
       display: none;
     }
 
@@ -3471,7 +3472,7 @@
       grid-template-areas:
         "office contact"
         "about  report"
-        "credit lock"
+        "credit credit"
         "copy   copy";
     }
 
@@ -3480,7 +3481,7 @@
       grid-template-rows: auto clamp(100px, 6.72vw, 129px);
       grid-template-areas:
         "office contact about report"
-        "credit blank   copy  lock";
+        "credit blank   copy  end";
 
       > * {
         border-bottom: 0;
@@ -3494,7 +3495,8 @@
       > [data-area="about"] {
         border-bottom: 1px solid var(--color-footer-rule);
       }
-      > [data-area="blank"] {
+      > [data-area="blank"],
+      > [data-area="end"] {
         display: block;
       }
     }
@@ -3520,8 +3522,8 @@
     [data-area="copy"] {
       grid-area: copy;
     }
-    [data-area="lock"] {
-      grid-area: lock;
+    [data-area="end"] {
+      grid-area: end;
     }
   }
 }
