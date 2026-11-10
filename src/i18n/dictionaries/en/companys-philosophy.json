@@ -1,0 +1,23 @@
+{
+  "companysPhilosophy": {
+    "titleLines": ["Company’s", "**Philosophy**"],
+    "text": "The Company's Corporate Governance philosophy is based on three main components:",
+    "components": [
+      "Shareholders' value enhancement and transparency towards internal and external stakeholders.",
+      "Strict observance of laws, permits and regulations.",
+      "Display of the highest ethical standards in conducting its business."
+    ],
+    "componentsLabel": "The three components",
+    "framework": {
+      "eyebrow": "Governance Framework",
+      "title": "Commitment to Corporate Governance Standards",
+      "paragraphs": [
+        "The composition of the Board of Directors is designed to ensure its independence that will, in turn, ensure an effective discharge of its responsibilities. Similarly, the Audit Committee is composed of three non-executive directors with a high level of expertise in financial matters.",
+        "Management's ongoing review of corporate structures, policies and processes ensures that the highest standards are adopted and implemented, consistent with local and international governance requirements and principles.",
+        "In 2016, the Company has paid particular attention to the implementation of the New Code of Corporate Governance issued by the Capital Market Authority on 22nd July 2015 and entered into force on 21st July 2016.",
+        "The Company has embraced the rules and practices issued by the New Code by which the Board of Directors of a Company ensures accountability, fairness, and transparency in a company's relationship with all its stakeholders (shareholders, management, employees, lenders, customers, suppliers and the community)."
+      ],
+      "imageAlt": "Colleagues stacking their hands together"
+    }
+  }
+}

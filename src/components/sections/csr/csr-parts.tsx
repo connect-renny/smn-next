@@ -36,7 +36,7 @@ export function CsrPhoto({
   imageClassName?: string;
 }) {
   return (
-    <div data-animate="clip" className={className}>
+    <div data-animate="clip" data-reveal="slow" className={className}>
       <Image
         {...image}
         alt={alt}

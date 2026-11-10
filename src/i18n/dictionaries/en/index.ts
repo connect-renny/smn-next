@@ -3,6 +3,7 @@ import auditCommittee from "./audit-committee.json";
 import barkaPlant from "./barka-plant.json";
 import boardOfDirectors from "./board-of-directors.json";
 import common from "./common.json";
+import companysPhilosophy from "./companys-philosophy.json";
 import contact from "./contact.json";
 import csr from "./csr.json";
 import dividends from "./dividends.json";
@@ -22,6 +23,7 @@ const en = {
   ...ourCompany,
   ...mainShareholders,
   ...barkaPlant,
+  ...companysPhilosophy,
   ...boardOfDirectors,
   ...management,
   ...auditCommittee,

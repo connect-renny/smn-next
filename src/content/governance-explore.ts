@@ -34,3 +34,12 @@ export function leadershipExploreLinks(
   ];
   return targets.map(({ label, page }, i) => ({ label, image: TILE_ART[i], href: { page } }));
 }
+
+/**
+ * Company's Philosophy links to the bodies its text names: the Board, its two committees
+ * and Ethics (the "highest ethical standards" component), as in the design.
+ */
+export const philosophyExploreLinks: readonly { label: LabelKey; image: string; href: Href }[] = [
+  ...LEADERSHIP_PAGES.slice(0, 3),
+  { label: "ethics", page: "corporate-governance/ethics" } as const,
+].map(({ label, page }, i) => ({ label, image: TILE_ART[i], href: { page } }));

@@ -24,10 +24,6 @@ export type LabelKey = keyof Dictionary["labels"];
 export const innerPages = {
   "about/vision-mission": { label: "visionMission", related: "about" },
   "plants/al-rusail": { label: "rusailPlant", related: "about" },
-  "corporate-governance/companys-philosophy": {
-    label: "companysPhilosophy",
-    related: "governance",
-  },
   investors: { label: "investors", related: null },
   career: { label: "career", related: null },
   "media/opal-mou": { label: "newsOpalMou", related: "media" },
@@ -44,6 +40,7 @@ export const contentPages = [
   "plants/barka-ii",
   "corporate-governance/audit-committee",
   "corporate-governance/board-of-directors",
+  "corporate-governance/companys-philosophy",
   "corporate-governance/ethics",
   "corporate-governance/management",
   "corporate-governance/nomination-remuneration-committee",

@@ -22,6 +22,7 @@ const CLIP_FROM = {
  *  - `data-animate="up"`        fade + rise, batched so siblings stagger
  *  - `data-animate="clip"`      image wipe from the bottom edge
  *  - `data-animate="clip-start"` image wipe from the reading edge (RTL aware)
+ *    (add `data-reveal="slow"` to either for a slower, even wipe)
  *  - `data-parallax`            the frame's <img> drifts through a 1.2× crop
  *  - `data-drift=".8"`          the frame's <img> moves at that share of scroll speed, uncropped
  *
@@ -61,13 +62,15 @@ export function useScrollAnimations(scope: RefObject<HTMLElement | null>) {
         // ─── Clip-path image reveals ───
         gsap.utils.toArray<HTMLElement>('[data-animate^="clip"]', root).forEach((el) => {
           const fromStart = el.dataset.animate === "clip-start";
+          // `data-reveal="slow"`: an even, unhurried wipe instead of the quick snap open.
+          const slow = el.dataset.reveal === "slow";
           gsap.fromTo(
             el,
             { clipPath: fromStart ? (rtl ? CLIP_FROM.startRtl : CLIP_FROM.start) : CLIP_FROM.up },
             {
               clipPath: CLIP_OPEN,
-              duration: 1.1,
-              ease: "expo.out",
+              duration: slow ? 1.5 : 1.1,
+              ease: slow ? "power2.out" : "expo.out",
               scrollTrigger: { trigger: el, start: "top 80%", once: true },
             },
           );
