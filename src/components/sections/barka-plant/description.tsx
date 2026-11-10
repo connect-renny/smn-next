@@ -47,7 +47,7 @@ export function BarkaPlantDescription({ dict, id }: { dict: Dictionary; id: stri
             </div>
           </div>
 
-          <div data-animate="clip" className="lg:mt-[min(1.04vw,20px)]">
+          <div data-animate="clip" data-reveal="slow" className="lg:mt-[min(1.04vw,20px)]">
             <Image
               {...barkaImages.plant}
               alt={t.imageAlt}
