@@ -8,7 +8,8 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 
 import { ContactMap } from "./contact-map";
 import { ContactMotion } from "./contact-motion";
-import { PlantCards } from "./plant-cards";
+// Hidden for now with the plants block below.
+// import { PlantCards } from "./plant-cards";
 import { Lines } from "@/components/ui/lines";
 
 const OFFICE_ID = "head-office";
@@ -133,13 +134,15 @@ export function ContactSection({
           <ContactMap copy={t} />
         </section>
 
-        {/* The plants */}
+        {/* The plants: the two site-map buttons, hidden for now (client request, 2026-11-10).
+            Uncomment this block and the PlantCards import above to bring them back.
         <section className="grid gap-[clamp(16px,1.5vw,28px)]">
           <h2 data-animate="up" className="contact-heading">
             <Lines lines={[t.plantsTitle]} />
           </h2>
           <PlantCards copy={t} locale={locale} />
         </section>
+        */}
       </ContactMotion>
     </AnimatedSection>
   );
