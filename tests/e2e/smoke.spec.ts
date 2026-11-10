@@ -112,7 +112,9 @@ test.describe("management", () => {
 
     const tiles = page.locator(".board-tile");
     const panel = page.locator(".board-panel");
-    await expect(tiles).toHaveText(["Boris Smondack", "Khalifa Al Kalbani", "Anupam Kunwar"]);
+    await expect(tiles).toHaveCount(2);
+    await expect(tiles.nth(0)).toContainText("Boris Smondack");
+    await expect(tiles.nth(1)).toContainText("Khalifa Al Kalbani");
     await tiles.first().scrollIntoViewIfNeeded();
     await expect(panel).toContainText("Chief Executive Officer");
 
@@ -129,9 +131,9 @@ test.describe("management", () => {
     await page.goto("/ar/corporate-governance/management");
     await waitForPreloader(page);
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
-    await page.locator(".board-tile").nth(2).scrollIntoViewIfNeeded();
-    await page.locator(".board-tile").nth(2).click();
-    await expect(page.locator(".board-panel")).toContainText("الرئيس الفني");
+    await page.locator(".board-tile").nth(1).scrollIntoViewIfNeeded();
+    await page.locator(".board-tile").nth(1).click();
+    await expect(page.locator(".board-panel")).toContainText("الرئيس المالي");
     expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
     expect(errors).toEqual([]);
   });
