@@ -1,0 +1,16 @@
+{
+  "mediaPage": {
+    "titleLines": ["Media", "**Centre**"],
+    "intro": "The latest news and announcements from SMN Power Holding and its two plants, Barka II and Al Rusail. Here you can follow our partnerships, community initiatives and milestones as they happen. Select any story to read it in full.",
+    "latest": "Latest",
+    "readMore": "Read more",
+    "allNews": "All news",
+    "news": "News",
+    "moreNews": "More news",
+    "backToMedia": "Back to Media Centre",
+    "share": "Share",
+    "shareOn": "Share on {network}",
+    "email": "Email",
+    "noText": "The full story will be published here soon."
+  }
+}

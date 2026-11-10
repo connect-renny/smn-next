@@ -1,9 +1,7 @@
 {
   "visionMission": {
-    "titleLines": [
-      "Vision &",
-      "**Mission**"
-    ],
+    "titleLines": ["Vision &", "**Mission**"],
+    "intro": "Our mission and vision guide how SMN Power Holding works every day. They set out the difference we aim to make for Oman, our people and the communities we serve. Open each statement below to see what drives us.",
     "imageAlt": "Wind turbines and solar panels in the desert at sunset",
     "statements": {
       "mission": {

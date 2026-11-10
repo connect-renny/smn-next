@@ -111,11 +111,6 @@
   },
   "media": {
     "eyebrow": "Media Centre",
-    "title": "Latest Updates from our company",
-    "dates": {
-      "newsOpalMou": "31 August 2022",
-      "newsCsrSolar": "",
-      "newsOerTop20": ""
-    }
+    "title": "Latest Updates from our company"
   }
 }

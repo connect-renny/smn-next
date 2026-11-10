@@ -1,7 +1,7 @@
 import { resolveHref } from "@/config/routes";
-import { newsItems } from "@/content/home";
 import { localeMeta, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
+import { getNewsList } from "@/lib/news";
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { Eyebrow } from "@/components/ui/eyebrow";
 
@@ -9,13 +9,13 @@ import { MediaCarousel, type MediaCard } from "./media-carousel";
 
 type MediaCentreProps = { locale: Locale; dict: Dictionary };
 
-export function MediaCentre({ locale, dict }: MediaCentreProps) {
+export async function MediaCentre({ locale, dict }: MediaCentreProps) {
   const t = dict.media;
-  const cards: MediaCard[] = newsItems.map((item) => ({
-    title: dict.labels[item.key],
-    date: t.dates[item.key],
-    image: item.image,
-    href: resolveHref(locale, item.href),
+  const cards: MediaCard[] = (await getNewsList(locale)).map((item) => ({
+    title: item.title,
+    date: item.dateLabel ?? "",
+    image: item.cover.src,
+    href: resolveHref(locale, { news: item.slug }),
   }));
 
   return (

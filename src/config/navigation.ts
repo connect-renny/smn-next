@@ -10,7 +10,7 @@ const MSX_SNAPSHOT: Href = { external: "https://www.msx.om/snapshot.aspx?s=SMNP"
 /** Top utility bar (above the main nav). Language switch is rendered separately. */
 export const utilityNav: NavLink[] = [
   { label: "career", href: { page: "career" } },
-  { label: "media", href: { section: "media" } },
+  { label: "media", href: { page: "media" } },
   { label: "contact", href: { page: "contact" } },
 ];
 

@@ -13,15 +13,16 @@ export const visionMissionImage = {
   height: 800,
 } as const;
 
-export const visionMissionExploreLinks: readonly { label: LabelKey; image: string; href: Href }[] = [
-  {
-    label: "ourCompany",
-    image: "/images/our-company/explore-main-shareholders.jpg",
-    href: { page: "about/our-company" },
-  },
-  {
-    label: "mainShareholders",
-    image: "/images/our-company/explore-mission-vision.jpg",
-    href: { page: "about/main-shareholders" },
-  },
-];
+export const visionMissionExploreLinks: readonly { label: LabelKey; image: string; href: Href }[] =
+  [
+    {
+      label: "ourCompany",
+      image: "/images/our-company/explore-main-shareholders.jpg",
+      href: { page: "about/our-company" },
+    },
+    {
+      label: "mainShareholders",
+      image: "/images/our-company/explore-mission-vision.jpg",
+      href: { page: "about/main-shareholders" },
+    },
+  ];

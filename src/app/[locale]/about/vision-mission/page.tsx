@@ -5,7 +5,7 @@ import { AnimatedSection } from "@/components/animations/animated-section";
 import { InnerHero } from "@/components/layout/inner-hero";
 import { ExploreFurther } from "@/components/sections/explore-further";
 import { StatementPanels } from "@/components/sections/vision-mission/statement-panels";
-import { statementOrder, visionMissionExploreLinks } from "@/content/vision-mission";
+import { visionMissionExploreLinks } from "@/content/vision-mission";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pageMetadata } from "@/lib/metadata";
@@ -22,7 +22,7 @@ export async function generateMetadata({
   return pageMetadata(locale, dict, {
     path: "about/vision-mission",
     title: dict.labels.visionMission,
-    description: statementOrder.map((id) => copy.statements[id].text).join(" "),
+    description: copy.intro,
     // Stays out of search results (and the sitemap) until the design is approved.
     noIndex: true,
   });
@@ -44,6 +44,7 @@ export default async function VisionMissionPage({
         parent={{ label: dict.labels.aboutUs }}
         current={dict.labels.visionMission}
         titleLines={copy.titleLines}
+        text={copy.intro}
         nextSectionId={AFTER_HERO_ID}
       />
       <AnimatedSection

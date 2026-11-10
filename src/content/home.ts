@@ -2,7 +2,7 @@
  * Non-translatable home-page data (assets, URLs, link targets). Copy for each
  * item lives in the dictionaries at the same index / key.
  */
-import type { Href, LabelKey } from "@/config/routes";
+import type { Href } from "@/config/routes";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
 export const heroMedia = {
@@ -127,22 +127,6 @@ export const usefulLinks: Keyed<Dictionary["links"]["items"], UsefulLink> = {
   },
 };
 
-type NewsKey = keyof Dictionary["media"]["dates"] & LabelKey;
-
-export const newsItems: { key: NewsKey; image: string; href: Href }[] = [
-  { key: "newsOpalMou", image: "/images/home/news-opal-mou.jpg", href: { page: "media/opal-mou" } },
-  {
-    key: "newsCsrSolar",
-    image: "/images/home/news-solar-school.jpg",
-    href: { page: "media/csr-solar-power-initiative" },
-  },
-  {
-    key: "newsOerTop20",
-    image: "/images/home/news-oer-top20.jpg",
-    href: { page: "media/oer-top-20" },
-  },
-];
-
 /** Where each Assist search result leads (keys match `assist.index`). */
 export const assistTargets: Record<keyof Dictionary["assist"]["index"], Href> = {
   about: { page: "about/our-company" },
@@ -158,10 +142,10 @@ export const assistTargets: Record<keyof Dictionary["assist"]["index"], Href> = 
   philosophy: { page: "corporate-governance/companys-philosophy" },
   management: { page: "corporate-governance/management" },
   links: { section: "links" },
-  media: { section: "media" },
-  csrSolar: { page: "media/csr-solar-power-initiative" },
-  opal: { page: "media/opal-mou" },
-  oer: { page: "media/oer-top-20" },
+  media: { page: "media" },
+  csrSolar: { news: "csr-solar-power-initiative" },
+  opal: { news: "opal-mou" },
+  oer: { news: "oer-top-20" },
   annualReport: { document: "annualReport" },
   contact: { page: "contact" },
 };

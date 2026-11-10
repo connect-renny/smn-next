@@ -24,9 +24,6 @@ export type LabelKey = keyof Dictionary["labels"];
 export const innerPages = {
   investors: { label: "investors", related: null },
   career: { label: "career", related: null },
-  "media/opal-mou": { label: "newsOpalMou", related: "media" },
-  "media/csr-solar-power-initiative": { label: "newsCsrSolar", related: "media" },
-  "media/oer-top-20": { label: "newsOerTop20", related: "media" },
 } as const satisfies Record<string, { label: LabelKey; related: SectionId | null }>;
 
 type PlaceholderSlug = keyof typeof innerPages;
@@ -48,6 +45,7 @@ export const contentPages = [
   "investors/dividends-disclosures",
   "investors/msx-discussion-session",
   "csr",
+  "media",
   "tenders",
   "contact",
 ] as const;
@@ -58,7 +56,12 @@ export type PageSlug = PlaceholderSlug | (typeof contentPages)[number];
 export type DocumentId = "annualReport";
 
 export type Href =
-  { section: SectionId } | { page: PageSlug } | { external: string } | { document: DocumentId };
+  | { section: SectionId }
+  | { page: PageSlug }
+  | { external: string }
+  | { document: DocumentId }
+  /** One news article on the Media page, by its slug. */
+  | { news: string };
 
 export function isPageSlug(value: string): value is PlaceholderSlug {
   return Object.hasOwn(innerPages, value);
@@ -71,5 +74,6 @@ export function resolveHref(locale: Locale, href: Href): string {
     return siteConfig.annualReport?.[locale].href ?? `/${locale}/investors/annual-report`;
   }
   if ("page" in href) return `/${locale}/${href.page}`;
+  if ("news" in href) return `/${locale}/media/${href.news}`;
   return href.section === "home" ? `/${locale}` : `/${locale}#${href.section}`;
 }

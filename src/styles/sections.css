@@ -5231,3 +5231,29 @@
     }
   }
 }
+
+@layer components {
+  /* ─── Media: news cards and the feature ────────────────────────────────────
+     The photo eases in and the arrow runs ahead on hover, as on the home page. */
+  .news-card-img {
+    transition: scale 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .news-card-arrow {
+    transition: translate 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    :is(.news-card, .news-feature):hover .news-card-img {
+      scale: 1.06;
+    }
+
+    :is(.news-card, .news-feature):hover .news-card-arrow {
+      translate: 4px 0;
+    }
+
+    :is(.news-card, .news-feature):hover .news-card-arrow:dir(rtl) {
+      translate: -4px 0;
+    }
+  }
+}

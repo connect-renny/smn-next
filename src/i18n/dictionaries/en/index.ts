@@ -12,6 +12,7 @@ import ethics from "./ethics.json";
 import home from "./home.json";
 import mainShareholders from "./main-shareholders.json";
 import management from "./management.json";
+import mediaPage from "./media-page.json";
 import msxSessions from "./msx-sessions.json";
 import nominationCommittee from "./nomination-committee.json";
 import ourCompany from "./our-company.json";
@@ -37,6 +38,7 @@ const en = {
   ...annualReport,
   ...msxSessions,
   ...csr,
+  ...mediaPage,
   ...tenders,
   ...contact,
 };
