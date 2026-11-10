@@ -3,6 +3,7 @@
  * smnpower.com/msx-discussion.php. Titles live in the dictionaries. `seconds` was
  * read from each video, as the live page doesn't show running times.
  */
+import type { Href, LabelKey } from "@/config/routes";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
 export type MsxSessionId = keyof Dictionary["msxSessions"]["sessions"];
@@ -108,3 +109,17 @@ export function formatRunningTime(total: number) {
 export function vimeoEmbedUrl(id: string) {
   return `https://player.vimeo.com/video/${id}?autoplay=1&dnt=1&title=0&byline=0&portrait=0&color=f79431`;
 }
+
+/** Explore Further: the other two Investors pages, on the design's two-tile artwork. */
+export const msxExploreLinks: readonly { label: LabelKey; image: string; href: Href }[] = [
+  {
+    label: "annualReport",
+    image: "/images/our-company/explore-main-shareholders.jpg",
+    href: { page: "investors/annual-report" },
+  },
+  {
+    label: "dividendsDisclosures",
+    image: "/images/our-company/explore-mission-vision.jpg",
+    href: { page: "investors/dividends-disclosures" },
+  },
+];

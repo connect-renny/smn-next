@@ -110,7 +110,7 @@
 
     padding: var(--panel-pad);
     border: 1px solid rgb(255 255 255 / 0.28);
-    border-radius: 12px;
+    border-radius: clamp(12px, 1.1vw, 20px);
     background: #32835a;
     scroll-margin-top: calc(var(--header-h) + 12px);
 
@@ -155,7 +155,8 @@
     aspect-ratio: 230 / 235;
     overflow: hidden;
     border: 1px solid rgb(255 255 255 / 0.4);
-    border-radius: 6px;
+    /* Inset from the tile's 14px corner by its padding, so the two curves run parallel. */
+    border-radius: 8px;
     /* Oversized so the tile's depth effect has room to slide it. */
     background: #0b1e5a url("/images/board-of-directors/portrait-backdrop.svg") center / 112%;
   }
@@ -166,7 +167,7 @@
     overflow: visible;
 
     > img {
-      border-radius: 5px;
+      border-radius: 7px;
     }
   }
 
@@ -174,7 +175,7 @@
     position: absolute;
     inset: -1px;
     border: 2px solid var(--color-orange);
-    border-radius: 6px;
+    border-radius: 8px;
     opacity: 0;
     pointer-events: none;
   }
@@ -189,7 +190,7 @@
     padding: clamp(5px, 0.36vw, 7px);
     padding-bottom: 0;
     border: 1px solid rgb(255 255 255 / 0.32);
-    border-radius: 6px;
+    border-radius: 14px;
     background: rgb(255 255 255 / 0.05);
     cursor: pointer;
     transition:
@@ -621,7 +622,7 @@
     position: relative;
     overflow: hidden;
     padding: clamp(22px, 1.75vw, 34px);
-    border-radius: 12px;
+    border-radius: clamp(12px, 1.1vw, 20px);
     background: linear-gradient(155deg, #0e3362 0%, #1b5f6c 52%, #3fa95e 100%);
 
     @media (width >= 64rem) {
@@ -859,7 +860,7 @@
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border: 1px solid rgb(255 255 255 / 0.16);
-    border-radius: 14px;
+    border-radius: clamp(12px, 1.1vw, 20px);
     background: #000;
     container-type: inline-size;
   }
@@ -2327,7 +2328,7 @@
     min-height: clamp(170px, 13vw, 250px);
     padding: clamp(18px, 1.5vw, 28px);
     overflow: hidden;
-    border-radius: 14px;
+    border-radius: clamp(12px, 1.1vw, 20px);
     color: #fff;
     cursor: pointer;
     text-align: start;
@@ -3234,6 +3235,9 @@
     flex-direction: column;
     overflow: hidden;
     padding: 0 clamp(14px, 1.7vw, 32px) clamp(10px, 1.4vh, 15px);
+    /* Curved top; the bottom stays square so it sits flush on the orange rule. */
+    border-start-start-radius: clamp(12px, 1.1vw, 20px);
+    border-start-end-radius: clamp(12px, 1.1vw, 20px);
 
     &::before {
       content: "";
@@ -3804,7 +3808,7 @@
   .ethics-sheet {
     position: absolute;
     inset: 0;
-    border-radius: 6px;
+    border-radius: clamp(12px, 1.1vw, 20px);
     background: #fff;
     box-shadow: 0 18px 48px rgb(18 41 79 / 0.16);
     transition: transform 0.7s var(--ease-out-expo);
@@ -3988,12 +3992,11 @@
     }
   }
 
-  /* One box for both logos, so the tall ENGIE and the wide Mubadala read the same size. */
+  /* Both logos share one height; the width follows each logo's own proportions. */
   .confluence-logo {
     width: auto;
-    max-width: min(100%, clamp(130px, 13vw, 250px));
-    height: auto;
-    max-height: clamp(36px, 3.6vw, 68px);
+    max-width: 100%;
+    height: clamp(22px, 2.6vw, 50px);
     object-fit: contain;
   }
 
@@ -4249,7 +4252,7 @@
     padding: clamp(18px, 1.5vw, 28px);
     overflow: hidden;
     border: 1px solid rgb(255 255 255 / 0.12);
-    border-radius: 16px;
+    border-radius: clamp(12px, 1.1vw, 20px);
     background: rgb(255 255 255 / 0.04);
     transition:
       background-color 0.4s,
@@ -4811,7 +4814,7 @@
     --vm-ease: cubic-bezier(0.22, 1, 0.36, 1);
     --vm-time: 0.9s;
     --vm-gap: clamp(12px, 1.05vw, 20px);
-    --vm-radius: clamp(16px, 1.25vw, 24px);
+    --vm-radius: clamp(12px, 1.1vw, 20px);
     --vm-pad: clamp(20px, 2.1vw, 40px);
     display: grid;
     gap: var(--vm-gap);
@@ -4939,8 +4942,10 @@
     position: relative;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
+    /* Rows hug their content, so the fixed-height panel's spare room sits at the bottom. */
+    align-content: start;
     align-items: start;
-    gap: clamp(16px, 2.6vw, 50px);
+    gap: 0 clamp(16px, 2.6vw, 50px);
     overflow: hidden;
     padding: var(--vm-pad);
     border-radius: var(--vm-radius);
@@ -5014,10 +5019,14 @@
     -webkit-text-stroke-color: transparent;
   }
 
+  /* The heading sits beside the number; the statement runs the full width of the
+     panel below them, so it starts at the number's edge. */
   .vm-main {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
+    display: contents;
+  }
+
+  .vm-body {
+    grid-column: 1 / -1;
   }
 
   .vm-heading {
@@ -5113,7 +5122,8 @@
     display: block;
     width: clamp(48px, 4vw, 76px);
     height: 3px;
-    margin-block: clamp(18px, 1.8vw, 34px) clamp(14px, 1.3vw, 24px);
+    /* Tight under the number, which now sits directly above it. */
+    margin-block: clamp(8px, 0.7vw, 14px) clamp(12px, 1vw, 20px);
     border-radius: 3px;
     background: var(--color-orange);
     scale: 0 1;
@@ -5165,24 +5175,14 @@
     }
   }
 
-  /* Stacked: a smaller number beside the heading, and the text runs the full
-     width of the panel below them. */
+  /* Stacked: a smaller number, centred on the heading beside it. */
   @media (width < 64rem) {
     .vm-panel {
       align-items: center;
-      row-gap: 0;
     }
 
     .vm-num {
       font-size: clamp(48px, 13vw, 88px);
-    }
-
-    .vm-main {
-      display: contents;
-    }
-
-    .vm-body {
-      grid-column: 1 / -1;
     }
 
     .vm-trigger {

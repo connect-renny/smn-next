@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { InnerHero } from "@/components/layout/inner-hero";
+import { ExploreFurther } from "@/components/sections/explore-further";
 import { MsxTheatre } from "@/components/sections/msx-sessions/msx-theatre";
 import { resolveHref } from "@/config/routes";
+import { msxExploreLinks } from "@/content/msx-sessions";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pageMetadata } from "@/lib/metadata";
@@ -50,6 +52,11 @@ export default async function MsxDiscussionSessionPage({
       <AnimatedSection id={AFTER_HERO_ID} ink="light" snap={false} className="msx-theatre">
         <MsxTheatre copy={dict.msxSessions} />
       </AnimatedSection>
+      <ExploreFurther
+        locale={locale}
+        title={dict.ourCompany.explore.title}
+        links={msxExploreLinks.map((link) => ({ ...link, label: dict.labels[link.label] }))}
+      />
     </main>
   );
 }

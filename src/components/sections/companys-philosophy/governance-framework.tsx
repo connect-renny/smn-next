@@ -43,7 +43,7 @@ export function GovernanceFramework({ dict, id }: { dict: Dictionary; id: string
               {...philosophyImage}
               alt={t.imageAlt}
               sizes="(min-width: 1024px) 28vw, 100vw"
-              className="h-auto w-full rounded-[12px] max-lg:mx-auto max-lg:max-w-[525px]"
+              className="h-auto w-full rounded-[clamp(12px,1.1vw,20px)] max-lg:mx-auto max-lg:max-w-[525px]"
             />
           </div>
         </div>

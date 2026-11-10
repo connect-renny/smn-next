@@ -26,7 +26,7 @@ function Arrow({ kind, label }: { kind: "prev" | "next"; label: string }) {
       aria-label={label}
       onClick={kind === "prev" ? scrollPrev : scrollNext}
       className={cn(
-        "grid size-11 place-items-center border border-transparent text-about-ink transition-colors hover:border-orange hover:text-orange lg:size-[clamp(44px,3.23vw,62px)]",
+        "grid size-11 place-items-center rounded-full border border-transparent text-about-ink transition-colors hover:border-orange hover:text-orange lg:size-[clamp(44px,3.23vw,62px)]",
         kind === "next" && "border-media-rule",
       )}
     >
@@ -86,7 +86,7 @@ export function MediaCarousel({ heading, label, cards, labels, dir }: MediaCarou
               className="basis-full ps-5 md:basis-1/2 md:ps-[26px] xl:basis-1/3 xl:ps-[1.77vw]"
             >
               <Link href={card.href} className="group block text-inherit">
-                <figure className="relative m-0 aspect-[418/303] overflow-hidden">
+                <figure className="relative isolate m-0 aspect-[418/303] overflow-hidden rounded-[clamp(12px,1.1vw,20px)]">
                   <Image
                     src={card.image}
                     alt={card.title}

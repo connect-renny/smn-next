@@ -45,7 +45,7 @@ export function MediaList({
           <div
             data-animate="clip"
             data-reveal="slow"
-            className="relative aspect-[1000/560] overflow-hidden rounded-[clamp(12px,1vw,20px)] bg-page-tint"
+            className="relative aspect-[1000/560] overflow-hidden rounded-[clamp(12px,1.1vw,20px)] bg-page-tint"
           >
             <Image
               src={latest.image.src}

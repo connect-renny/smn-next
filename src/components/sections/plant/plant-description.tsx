@@ -66,7 +66,11 @@ export function PlantDescription({
             </div>
           </div>
 
-          <div data-animate="clip" data-reveal="slow" className="lg:mt-[min(1.04vw,20px)]">
+          <div
+            data-animate="clip"
+            data-reveal="slow"
+            className="isolate overflow-hidden rounded-[clamp(12px,1.1vw,20px)] lg:mt-[min(1.04vw,20px)]"
+          >
             <Image
               {...images.plant}
               alt={t.imageAlt}
@@ -89,7 +93,7 @@ export function PlantDescription({
               {...images.diagram}
               alt={t.diagramAlt}
               sizes="(min-width: 1024px) 54vw, 640px"
-              className="mx-auto h-auto w-full max-w-[1022px] max-sm:w-[640px] max-sm:max-w-none lg:w-[53.2vw]"
+              className="mx-auto h-auto w-full max-w-[1022px] rounded-[clamp(12px,1.1vw,20px)] max-sm:w-[640px] max-sm:max-w-none lg:w-[53.2vw]"
             />
           </div>
         </div>

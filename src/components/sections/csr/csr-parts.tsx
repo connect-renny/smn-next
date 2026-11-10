@@ -36,7 +36,11 @@ export function CsrPhoto({
   imageClassName?: string;
 }) {
   return (
-    <div data-animate="clip" data-reveal="slow" className={className}>
+    <div
+      data-animate="clip"
+      data-reveal="slow"
+      className={cn("isolate overflow-hidden rounded-[clamp(12px,1.1vw,20px)]", className)}
+    >
       <Image
         {...image}
         alt={alt}

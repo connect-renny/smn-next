@@ -32,7 +32,7 @@ export function Plants({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <div
                 data-drift=".8"
                 className={cn(
-                  "relative aspect-529/575 w-full overflow-hidden",
+                  "relative isolate aspect-529/575 w-full overflow-hidden rounded-[clamp(12px,1.1vw,20px)]",
                   imageEnd && "lg:order-last",
                 )}
               >

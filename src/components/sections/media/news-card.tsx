@@ -24,7 +24,7 @@ export function NewsArrow({ className }: { className?: string }) {
 export function NewsCard({ item, href }: { item: NewsItem; href: string }) {
   return (
     <Link href={href} className="news-card group block text-inherit">
-      <figure className="relative m-0 aspect-[418/303] overflow-hidden rounded-[clamp(12px,1vw,20px)] bg-page-tint">
+      <figure className="relative m-0 aspect-[418/303] overflow-hidden rounded-[clamp(12px,1.1vw,20px)] bg-page-tint">
         <Image
           src={item.cover.src}
           alt=""

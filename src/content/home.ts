@@ -13,7 +13,7 @@ export const heroMedia = {
 export const heroTabs: { key: "barka" | "rusail" | "news"; href: Href }[] = [
   { key: "barka", href: { page: "plants/barka-ii" } },
   { key: "rusail", href: { page: "plants/al-rusail" } },
-  { key: "news", href: { section: "media" } },
+  { key: "news", href: { page: "media" } },
 ];
 
 export const sectionVideos = {

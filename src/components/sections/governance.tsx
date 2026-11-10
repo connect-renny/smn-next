@@ -47,7 +47,8 @@ export function Governance({ locale, dict }: GovernanceProps) {
       </div>
 
       <div className="relative z-1 shell mt-block-gap">
-        <div className="grid grid-cols-2 lg:grid-cols-3">
+        {/* The three pairs read as one block, so only its outer corners curve. */}
+        <div className="isolate grid grid-cols-2 overflow-hidden rounded-[clamp(12px,1.1vw,20px)] lg:grid-cols-3">
           {entries(governanceCells).map(([key, cell]) => {
             const copy = t.cells[key];
             return [
