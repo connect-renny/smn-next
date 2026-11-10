@@ -315,10 +315,22 @@ export function BoardExplorer({
                 </span>
                 <span
                   data-board-name
-                  dir="auto"
-                  className="block px-1 py-[clamp(12px,1.05vw,20px)] text-center text-[clamp(11px,0.625vw,12px)] leading-[1.25] font-semibold"
+                  className="block px-1 py-[clamp(12px,1.05vw,20px)] text-center leading-[1.25]"
                 >
-                  {copy.members[id].name}
+                  <span
+                    dir="auto"
+                    className="block text-[clamp(11px,0.625vw,12px)] font-semibold"
+                  >
+                    {copy.members[id].name}
+                  </span>
+                  {copy.members[id].role && (
+                    <span
+                      dir="auto"
+                      className="mt-[0.4em] block text-[clamp(9.5px,0.55vw,10.5px)] font-medium tracking-[0.04em] uppercase opacity-75 rtl:tracking-normal"
+                    >
+                      {copy.members[id].role}
+                    </span>
+                  )}
                 </span>
               </button>
             </li>
