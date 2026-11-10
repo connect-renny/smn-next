@@ -1,0 +1,94 @@
+{
+  "rusailPlant": {
+    "hero": {
+      "current": "Al Rusail Plant",
+      "titleLines": ["Al **Rusail Plant**"],
+      "text": [
+        "Al Rusail is a natural gas-fired power plant, the first state-owned power generation company to be privatized in the Sultanate of Oman. In December 2006, the shareholders acquired the shares of Al Rusail from the Government (through acquisition of 99% of the shares in Al Rusail by SMN Jafza).",
+        "The plant is located inland, approximately 40 km west of Muscat in an industrial area. It consists of eight Frame 9E gas turbines installed in four phases between 1984 and 2000."
+      ],
+      "stats": {
+        "location": {
+          "label": "Situated approximately",
+          "value": "40km",
+          "sub": "west of Muscat, Oman."
+        },
+        "power": {
+          "label": "Capacity of",
+          "value": "186.2 MW",
+          "sub": "Power Production"
+        },
+        "turbines": {
+          "label": "Consists of",
+          "value": "8 Gas Turbines",
+          "sub": "Frame 9E, installed 1984 to 2000"
+        }
+      }
+    },
+    "description": {
+      "eyebrow": "Description",
+      "title": "Description of Al Rusail Plant",
+      "imageAlt": "Al Rusail Plant",
+      "diagramAlt": "Process diagram of Al Rusail Plant: air and natural gas feed eight gas turbines (6 x 80 MW and 2 x 93 MW), which send power to the grid at 132 kV.",
+      "intro": [
+        "Al Rusail’s primary fuel is natural gas supplied by MEM, but diesel oil is also stored on site to serve as a backup fuel. Power capacity and production are sold to OPWP under the 17-year PPA which ended in September 2021 for 6 gas turbines and March 2022 for 2 gas turbines (Units 7&8). The PPA was extended initially up to 31st October 2022 and again extended up to 31st December 2023. The power plant capacity was initially 665MW (until September 2021), however, after expiration of the PPA for 6 gas turbines, the power capacity is reduced to 186.2 MW.",
+        "The combustion turbines are laid out side by side. An overhead travelling crane can access all turbines for maintenance purposes. The generating equipment is outdoor type with the 132 kV Gas Insulated Switchgear (GIS) housed in brick buildings. Underground cable circuits run from the generator step-up transformers to the 132 kV switchgear and then by overhead line to the system at the northern and southern site boundaries.",
+        "The control room, management offices and administration are housed in one building adjacent to the gatehouse. Spares are housed in a separate building on the site. The Plant is connected to the main interconnected transmission system at 132 kV.\nAl Rusail has contracted all O&M activities at the power plant to STOMO."
+      ],
+      "details": []
+    },
+    "equipment": {
+      "turbines": {
+        "title": "Gas Turbines (GTs)",
+        "text": "The Gas Turbines are all the same frame size but have been provided by different suppliers at different times. The EPC Contractors who built Al Rusail units prior to the privatization were MJB / GE / Alstom / BHEL, recognized as some of the world’s leading suppliers of systems, components and services in the generation, transmission and distribution of power. The units at Al Rusail were installed in four phases between 1984 and 2000:",
+        "phases": [
+          "Phase I consists of GTs 1, 2 and 3 the first being commissioned in 1984.",
+          "Phase II consists of GTs 4, 5 and 6 the first being commissioned in 1987.",
+          "Phase III consists of GT 7 commissioned in 1997.",
+          "Phase IV consists of GT 8 commissioned in 2000."
+        ],
+        "note": "As a result of technology advances over time, the machines have different firing temperatures and spares are therefore not necessarily interchangeable between units."
+      },
+      "parts": [
+        {
+          "title": "Generators",
+          "text": "Generators for GTs 1 to 6 are of Brush (UK) manufacture, for GT 7, Alstom (France) and GT 8, BHEL (India)."
+        },
+        {
+          "title": "Generator transformers",
+          "text": "GTs 1 to 3 transformers are Bonar Long (UK) manufacture, GTs 4 to 6 Nuova di Legano (Italy), GT 7 Crompton Greaves (UK) and GT 8 BHEL (India). Following the failure of GT2 transformer in July 2012, it was replaced with a new ABB make transformer."
+        },
+        {
+          "title": "132 kV switchgear",
+          "text": "The 132 kV SF6 switchgear comprises two (2) phases, phase 1 being of GEC (UK) manufacture (12 bays), whilst phase 2 is of Merlin Gerin (France) manufacture, DHT7 (13 bays)."
+        }
+      ]
+    },
+    "milestones": {
+      "title": "Al Rusail Milestones",
+      "items": [
+        {
+          "date": "31 Dec 2023",
+          "label": "Expiry of Power Purchase Agreement Extension for Phase 3 (GT7 & GT8)"
+        },
+        {
+          "date": "31 Oct 2022",
+          "label": "Expiry of Power Purchase Agreement Extension for Phase 3 (GT7 & GT8)"
+        },
+        {
+          "date": "31 Mar 2022",
+          "label": "Expiry of Phase 3 (GT7 & GT8) Power Purchase Agreement"
+        },
+        {
+          "date": "30 Sep 2021",
+          "label": "Expiry of Phase 1 and Phase 2 (GT1 to GT6) Power Purchase Agreement. Available Capacity - 186.2 MW"
+        },
+        { "date": "20 Feb 2007", "label": "Financial Close / Facilities Agreement" },
+        { "date": "31 Jan 2007", "label": "Completion under SPA / Settlement Agreement" },
+        { "date": "6 Dec 2006", "label": "Execution of Project Documents" },
+        { "date": "26 Jun 2006", "label": "Bid Submission" },
+        { "date": "2 Nov 2005", "label": "Request for Proposal issued by Tender Board" }
+      ]
+    }
+  }
+}

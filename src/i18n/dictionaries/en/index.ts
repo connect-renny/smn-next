@@ -1,3 +1,4 @@
+import alRusailPlant from "./al-rusail-plant.json";
 import annualReport from "./annual-report.json";
 import auditCommittee from "./audit-committee.json";
 import barkaPlant from "./barka-plant.json";
@@ -23,6 +24,7 @@ const en = {
   ...ourCompany,
   ...mainShareholders,
   ...barkaPlant,
+  ...alRusailPlant,
   ...companysPhilosophy,
   ...boardOfDirectors,
   ...management,

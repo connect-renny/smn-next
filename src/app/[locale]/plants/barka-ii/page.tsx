@@ -3,11 +3,11 @@ import { notFound } from "next/navigation";
 
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { InnerHero } from "@/components/layout/inner-hero";
-import { BarkaPlantDescription } from "@/components/sections/barka-plant/description";
-import { BarkaMilestones } from "@/components/sections/barka-plant/milestones";
-import { BarkaPlantStats } from "@/components/sections/barka-plant/plant-stats";
 import { ExploreFurther } from "@/components/sections/explore-further";
-import { barkaExploreLinks } from "@/content/barka-plant";
+import { PlantDescription } from "@/components/sections/plant/plant-description";
+import { PlantMilestones } from "@/components/sections/plant/plant-milestones";
+import { PlantStats } from "@/components/sections/plant/plant-stats";
+import { barkaImages, barkaStats, plantExploreLinks } from "@/content/barka-plant";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pageMetadata } from "@/lib/metadata";
@@ -47,18 +47,22 @@ export default async function BarkaPlantPage({ params }: PageProps<"/[locale]/pl
         textClassName="lg:max-w-[40vw]"
         nextSectionId={AFTER_HERO_ID}
       >
-        <BarkaPlantStats dict={dict} />
+        <PlantStats stats={barkaStats} copy={t.stats} />
       </InnerHero>
-      <BarkaPlantDescription dict={dict} id={AFTER_HERO_ID} />
+      <PlantDescription
+        copy={dict.barkaPlant.description}
+        images={barkaImages}
+        id={AFTER_HERO_ID}
+      />
       <AnimatedSection ink="light" snap={false}>
-        <BarkaMilestones copy={dict.barkaPlant.milestones} />
+        <PlantMilestones copy={dict.barkaPlant.milestones} />
       </AnimatedSection>
       <ExploreFurther
         locale={locale}
         title={dict.ourCompany.explore.title}
         links={[
-          { ...barkaExploreLinks.barka, label: t.current },
-          { ...barkaExploreLinks.rusail, label: dict.labels.rusailPlant },
+          { ...plantExploreLinks.barka, label: t.current },
+          { ...plantExploreLinks.rusail, label: dict.labels.rusailPlant },
         ]}
       />
     </main>

@@ -5,8 +5,8 @@ export const barkaStats = [
   { key: "water", icon: "/images/barka-plant/icon-water.png" },
 ] as const;
 
-/** The two plants, as in the comp, on the same tile art as Our Company's closing links. */
-export const barkaExploreLinks = {
+/** The two plants, as in the comp (both plant pages close with them), on the same tile art as Our Company's closing links. */
+export const plantExploreLinks = {
   barka: {
     image: "/images/our-company/explore-mission-vision.jpg",
     href: { page: "plants/barka-ii" },

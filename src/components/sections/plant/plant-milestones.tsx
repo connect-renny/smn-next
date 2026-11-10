@@ -5,7 +5,6 @@ import { useRef } from "react";
 
 import { Droplet } from "@/components/ui/droplet";
 import { Lines } from "@/components/ui/lines";
-import type { Dictionary } from "@/i18n/get-dictionary";
 import { gsap, MOTION_OK, useGSAP } from "@/lib/gsap";
 
 /** Keep in step with the pinned media query of `.mile-stage` in sections.css. */
@@ -43,7 +42,13 @@ function buildReels(years: readonly string[]) {
  * section pins for the run; on small screens the line runs down the page as it
  * scrolls. Without motion, or on a short large screen, it is simply the full timeline.
  */
-export function BarkaMilestones({ copy }: { copy: Dictionary["barkaPlant"]["milestones"] }) {
+export type MilestonesCopy = {
+  title: string;
+  /** Newest first, as the drop runs. */
+  items: readonly { date: string; label: string }[];
+};
+
+export function PlantMilestones({ copy }: { copy: MilestonesCopy }) {
   const stage = useRef<HTMLDivElement>(null);
   const years = copy.items.map((item) => yearOf(item.date));
   const reels = buildReels(years);
@@ -176,7 +181,11 @@ export function BarkaMilestones({ copy }: { copy: Dictionary["barkaPlant"]["mile
   );
 
   return (
-    <div ref={stage} className="mile-stage company-band text-white">
+    <div
+      ref={stage}
+      className="mile-stage company-band text-white"
+      style={{ "--mile-count": copy.items.length } as React.CSSProperties}
+    >
       <Image
         data-mile-art
         src="/images/our-company/hero-droplet.svg"

@@ -4427,6 +4427,8 @@
     --mile-node: clamp(11px, 0.68vw, 13px);
     --mile-line: 3px;
     --mile-node-top: 0.72rem;
+    /* Set inline from the number of milestones. */
+    --mile-count: 9;
 
     position: relative;
     overflow: clip;
@@ -4525,7 +4527,7 @@
 
   .mile-rail {
     position: absolute;
-    inset-block: var(--mile-node-top) calc(100% / 9 - var(--mile-node-top));
+    inset-block: var(--mile-node-top) calc(100% / var(--mile-count) - var(--mile-node-top));
     inset-inline-start: calc(var(--mile-node) / 2 - var(--mile-line) / 2);
     width: var(--mile-line);
     border-radius: 2px;
@@ -4533,7 +4535,7 @@
 
     @media (width >= 64rem) {
       inset-block: calc(50% - var(--mile-line) / 2) auto;
-      inset-inline: 0 calc(100% / 9);
+      inset-inline: 0 calc(100% / var(--mile-count));
       width: auto;
       height: var(--mile-line);
     }
@@ -4700,7 +4702,7 @@
       padding-inline: 0;
     }
 
-    /* Nine equal steps from the comp's 275px, the last one holding only its text. */
+    /* Equal steps (nine in the comp) from the comp's 275px, the last one holding only its text. */
     .mile-track {
       width: 71.6vw;
       height: clamp(340px, 23vw, 440px);
@@ -4715,7 +4717,7 @@
     .mile-list {
       height: 100%;
       grid-auto-rows: auto;
-      grid-template-columns: repeat(9, 1fr);
+      grid-template-columns: repeat(var(--mile-count), 1fr);
     }
 
     .mile-item {
@@ -4784,16 +4786,16 @@
     }
   }
 
-  /* ─── Barka Plant: hero stats ───────────────────────────────────────────────
+  /* ─── Plant pages: hero stats ───────────────────────────────────────────────
      Hovering a stat lifts its icon and nothing else. */
-  .barka-stat-icon {
+  .plant-stat-icon {
     transition:
       scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
       translate 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .barka-stat:hover .barka-stat-icon {
+    .plant-stat:hover .plant-stat-icon {
       scale: 1.12;
       translate: 0 -6px;
     }

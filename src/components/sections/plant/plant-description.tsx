@@ -3,9 +3,18 @@ import Image from "next/image";
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Lines } from "@/components/ui/lines";
-import { barkaImages } from "@/content/barka-plant";
-import type { Dictionary } from "@/i18n/get-dictionary";
 import { cn } from "@/lib/utils";
+
+type ImageData = { src: string; width: number; height: number };
+
+export type PlantDescriptionCopy = {
+  eyebrow: string;
+  title: string;
+  imageAlt: string;
+  diagramAlt: string;
+  intro: readonly string[];
+  details: readonly string[];
+};
 
 /** A `\n` in a paragraph is the comp's line break with no gap after it. */
 function Copy({ paragraphs, className }: { paragraphs: readonly string[]; className?: string }) {
@@ -20,9 +29,19 @@ function Copy({ paragraphs, className }: { paragraphs: readonly string[]; classN
   );
 }
 
-export function BarkaPlantDescription({ dict, id }: { dict: Dictionary; id: string }) {
-  const t = dict.barkaPlant.description;
-
+/** A plant's description: intro beside its photo, the process diagram, then the details. */
+export function PlantDescription({
+  copy: t,
+  images,
+  id,
+  children,
+}: {
+  copy: PlantDescriptionCopy;
+  images: { plant: ImageData; diagram: ImageData };
+  id: string;
+  /** Anything the page adds after the details. */
+  children?: React.ReactNode;
+}) {
   return (
     <AnimatedSection
       id={id}
@@ -49,7 +68,7 @@ export function BarkaPlantDescription({ dict, id }: { dict: Dictionary; id: stri
 
           <div data-animate="clip" data-reveal="slow" className="lg:mt-[min(1.04vw,20px)]">
             <Image
-              {...barkaImages.plant}
+              {...images.plant}
               alt={t.imageAlt}
               sizes="(min-width: 1024px) 28vw, 100vw"
               className="h-auto w-full"
@@ -67,7 +86,7 @@ export function BarkaPlantDescription({ dict, id }: { dict: Dictionary; id: stri
             className="overflow-x-auto"
           >
             <Image
-              {...barkaImages.diagram}
+              {...images.diagram}
               alt={t.diagramAlt}
               sizes="(min-width: 1024px) 54vw, 640px"
               className="mx-auto h-auto w-full max-w-[1022px] max-sm:w-[640px] max-sm:max-w-none lg:w-[53.2vw]"
@@ -75,9 +94,13 @@ export function BarkaPlantDescription({ dict, id }: { dict: Dictionary; id: stri
           </div>
         </div>
 
-        <div className="mt-[clamp(40px,5.5vw,106px)]">
-          <Copy paragraphs={t.details} />
-        </div>
+        {t.details.length > 0 && (
+          <div className="mt-[clamp(40px,5.5vw,106px)]">
+            <Copy paragraphs={t.details} />
+          </div>
+        )}
+
+        {children}
       </div>
     </AnimatedSection>
   );
