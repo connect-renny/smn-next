@@ -16,12 +16,14 @@ import msxSessions from "./msx-sessions.json";
 import nominationCommittee from "./nomination-committee.json";
 import ourCompany from "./our-company.json";
 import tenders from "./tenders.json";
+import visionMission from "./vision-mission.json";
 
 /** One file per page; shared text is in common.json. Every page reads this combined object. */
 const en = {
   ...common,
   ...home,
   ...ourCompany,
+  ...visionMission,
   ...mainShareholders,
   ...barkaPlant,
   ...alRusailPlant,

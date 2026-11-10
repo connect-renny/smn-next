@@ -22,7 +22,6 @@ export type LabelKey = keyof Dictionary["labels"];
  * the home section that already covers the topic.
  */
 export const innerPages = {
-  "about/vision-mission": { label: "visionMission", related: "about" },
   investors: { label: "investors", related: null },
   career: { label: "career", related: null },
   "media/opal-mou": { label: "newsOpalMou", related: "media" },
@@ -36,6 +35,7 @@ type PlaceholderSlug = keyof typeof innerPages;
 export const contentPages = [
   "about/our-company",
   "about/main-shareholders",
+  "about/vision-mission",
   "plants/al-rusail",
   "plants/barka-ii",
   "corporate-governance/audit-committee",

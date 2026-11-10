@@ -4801,3 +4801,433 @@
     }
   }
 }
+
+@layer components {
+  /* ─── Vision & Mission: photo beside two statement panels ──────────────────
+     After the designer's reference: headings only until a panel opens. The open
+     panel takes most of the column (flex-grow), its text unfolds (grid rows
+     0fr → 1fr), and the photo and its caption follow it. */
+  .vm-stage {
+    --vm-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --vm-time: 0.9s;
+    --vm-gap: clamp(12px, 1.05vw, 20px);
+    --vm-radius: clamp(16px, 1.25vw, 24px);
+    --vm-pad: clamp(20px, 2.1vw, 40px);
+    display: grid;
+    gap: var(--vm-gap);
+  }
+
+  /* ─── The photo ─── */
+  .vm-photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--vm-radius);
+    background: var(--color-navy-deep);
+    aspect-ratio: 4 / 3;
+    isolation: isolate;
+  }
+
+  .vm-photo-zoom {
+    position: absolute;
+    inset: 0;
+    scale: 1.04;
+    transition:
+      scale 1.6s var(--vm-ease),
+      translate 1.6s var(--vm-ease);
+  }
+
+  .vm-stage[data-active="1"] .vm-photo-zoom {
+    scale: 1.14;
+    translate: -3% 1%;
+  }
+
+  .vm-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+
+  .vm-photo-shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top, rgb(11 28 57 / 0.85) 0%, rgb(11 28 57 / 0.25) 42%, transparent 65%),
+      linear-gradient(to bottom, rgb(11 28 57 / 0.35), transparent 30%);
+  }
+
+  .vm-photo-caption {
+    position: absolute;
+    inset-inline: var(--vm-pad);
+    bottom: var(--vm-pad);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 0.6vw, 12px);
+    color: #fff;
+  }
+
+  /* 01 / 02: the current number rolls like a counter. */
+  .vm-photo-count {
+    display: inline-flex;
+    gap: 0.4em;
+    font-size: var(--text-eyebrow-md);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+    direction: ltr;
+    align-self: flex-start;
+  }
+
+  .vm-photo-reel {
+    display: inline-flex;
+    flex-direction: column;
+    height: 1em;
+    overflow: hidden;
+    color: var(--color-orange);
+
+    & > span {
+      transition: translate var(--vm-time) var(--vm-ease);
+    }
+  }
+
+  .vm-stage[data-active="1"] .vm-photo-reel > span {
+    translate: 0 -100%;
+  }
+
+  .vm-photo-total {
+    opacity: 0.6;
+  }
+
+  /* The open statement's title: the outgoing one slides up and away, the new one rises in. */
+  .vm-photo-titles {
+    display: grid;
+    overflow: hidden;
+    font-size: clamp(30px, 3.4vw, 64px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+
+    & > span {
+      grid-area: 1 / 1;
+      opacity: 0;
+      translate: 0 -105%;
+      transition:
+        translate 0.7s var(--vm-ease),
+        opacity 0.5s ease;
+    }
+
+    & > span[data-on] {
+      opacity: 1;
+      translate: 0 0;
+      transition-delay: 0.12s;
+    }
+
+    & > span[data-on] ~ span {
+      translate: 0 105%;
+    }
+  }
+
+  /* ─── The panels ─── */
+  .vm-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--vm-gap);
+  }
+
+  .vm-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(16px, 2.6vw, 50px);
+    overflow: hidden;
+    padding: var(--vm-pad);
+    border-radius: var(--vm-radius);
+    background: #eef1f6;
+    color: var(--color-navy);
+    cursor: pointer;
+    isolation: isolate;
+    transition:
+      flex-grow var(--vm-time) var(--vm-ease),
+      background-color 0.6s ease,
+      color 0.6s ease,
+      box-shadow 0.6s ease;
+  }
+
+  .vm-panel[data-open] {
+    background: var(--color-navy-deep);
+    color: #fff;
+    cursor: default;
+    box-shadow: 0 24px 60px -28px rgb(11 28 57 / 0.55);
+  }
+
+  /* A soft orange-and-blue sweep that slides in behind the open panel. */
+  .vm-glow {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(120% 90% at 100% 100%, rgb(31 58 132 / 0.95), transparent 60%),
+      radial-gradient(60% 70% at 92% 8%, rgb(247 148 49 / 0.28), transparent 70%);
+    opacity: 0;
+    translate: 12% 0;
+    transition:
+      opacity 0.8s ease,
+      translate 1.2s var(--vm-ease);
+
+    &:dir(rtl) {
+      scale: -1 1;
+      translate: -12% 0;
+    }
+  }
+
+  .vm-panel[data-open] .vm-glow {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  /* The big number: an outline at rest, solid orange once open. */
+  .vm-num {
+    font-size: clamp(88px, 8.6vw, 168px);
+    font-weight: 600;
+    line-height: 0.78;
+    letter-spacing: -0.06em;
+    font-variant-numeric: tabular-nums;
+    /* One width for every number, so the headings line up. */
+    inline-size: 1.22em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgb(18 41 79 / 0.32);
+    transform-origin: 0 0;
+    transition:
+      color 0.6s ease,
+      -webkit-text-stroke-color 0.6s ease,
+      scale var(--vm-time) var(--vm-ease);
+
+    &:dir(rtl) {
+      transform-origin: 100% 0;
+    }
+  }
+
+  .vm-panel[data-open] .vm-num {
+    color: var(--color-orange);
+    -webkit-text-stroke-color: transparent;
+  }
+
+  .vm-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .vm-heading {
+    margin: 0;
+  }
+
+  .vm-trigger {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: clamp(32px, 3.3vw, 64px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    text-align: start;
+    cursor: inherit;
+
+    &:dir(rtl) {
+      letter-spacing: 0;
+      line-height: 1.4;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-orange);
+      outline-offset: 6px;
+      border-radius: 6px;
+    }
+  }
+
+  /* A plus that turns into a cross and fills orange when its panel opens. */
+  .vm-icon {
+    position: relative;
+    flex: none;
+    width: clamp(36px, 2.4vw, 46px);
+    aspect-ratio: 1;
+    margin-top: 0.1em;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    opacity: 0.55;
+    transition:
+      rotate var(--vm-time) var(--vm-ease),
+      background-color 0.5s ease,
+      border-color 0.5s ease,
+      opacity 0.5s ease;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 38%;
+      height: 1.5px;
+      background: currentColor;
+      translate: -50% -50%;
+    }
+
+    &::after {
+      rotate: 90deg;
+    }
+  }
+
+  .vm-panel[data-open] .vm-icon {
+    rotate: 135deg;
+    background: var(--color-orange);
+    border-color: var(--color-orange);
+    opacity: 1;
+  }
+
+  /* The statement unfolds: grid rows 0fr → 1fr, then the words rise in. */
+  .vm-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--vm-time) var(--vm-ease);
+  }
+
+  .vm-panel[data-open] .vm-body {
+    grid-template-rows: 1fr;
+  }
+
+  .vm-body-clip {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .vm-rule {
+    display: block;
+    width: clamp(48px, 4vw, 76px);
+    height: 3px;
+    margin-block: clamp(18px, 1.8vw, 34px) clamp(14px, 1.3vw, 24px);
+    border-radius: 3px;
+    background: var(--color-orange);
+    scale: 0 1;
+    transform-origin: 0 50%;
+    transition: scale 0.5s var(--vm-ease);
+
+    &:dir(rtl) {
+      transform-origin: 100% 50%;
+    }
+  }
+
+  .vm-text {
+    max-width: 54ch;
+    margin: 0;
+    /* 18px at every size, like the other pages' intro text. */
+    font-size: var(--text-intro);
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgb(255 255 255 / 0.86);
+    opacity: 0;
+    translate: 0 18px;
+    filter: blur(6px);
+    transition:
+      opacity 0.35s ease,
+      translate 0.35s ease,
+      filter 0.35s ease;
+  }
+
+  .vm-panel[data-open] {
+    .vm-rule {
+      scale: 1 1;
+      transition-delay: 0.25s;
+      transition-duration: 0.8s;
+    }
+
+    .vm-text {
+      opacity: 1;
+      translate: 0 0;
+      filter: blur(0);
+      transition-duration: 0.8s, 0.9s, 0.8s;
+      transition-delay: 0.3s;
+      transition-timing-function: ease, var(--vm-ease), ease;
+    }
+  }
+
+  @media (hover: hover) {
+    .vm-panel:not([data-open]):hover {
+      background: #e4e9f1;
+    }
+  }
+
+  /* Stacked: a smaller number beside the heading, and the text runs the full
+     width of the panel below them. */
+  @media (width < 64rem) {
+    .vm-panel {
+      align-items: center;
+      row-gap: 0;
+    }
+
+    .vm-num {
+      font-size: clamp(48px, 13vw, 88px);
+    }
+
+    .vm-main {
+      display: contents;
+    }
+
+    .vm-body {
+      grid-column: 1 / -1;
+    }
+
+    .vm-trigger {
+      align-items: center;
+    }
+  }
+
+  /* Side by side: one fixed height shared by the photo and the panels, so the
+     open panel grows at the cost of the closed one and nothing below moves. */
+  @media (width >= 64rem) {
+    .vm-stage {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      height: clamp(560px, 40vw, 770px);
+    }
+
+    .vm-photo {
+      aspect-ratio: auto;
+      height: 100%;
+    }
+
+    .vm-panel {
+      flex: 1 1 0;
+      min-height: 0;
+    }
+
+    .vm-panel[data-open] {
+      flex-grow: 2.5;
+    }
+
+    /* Folded, the number shrinks so the panel can be short. */
+    .vm-panel:not([data-open]) .vm-num {
+      scale: 0.82;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vm-stage *,
+    .vm-stage *::before,
+    .vm-stage *::after {
+      transition-duration: 0.01ms !important;
+      transition-delay: 0s !important;
+    }
+
+    .vm-stage .vm-panel {
+      transition: none;
+    }
+  }
+}

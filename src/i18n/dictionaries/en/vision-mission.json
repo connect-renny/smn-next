@@ -1,0 +1,19 @@
+{
+  "visionMission": {
+    "titleLines": [
+      "Vision &",
+      "**Mission**"
+    ],
+    "imageAlt": "Wind turbines and solar panels in the desert at sunset",
+    "statements": {
+      "mission": {
+        "title": "Mission",
+        "text": "To contribute to the growth of the Sultanate of Oman and to improve people's lives by providing reliable Power & Water, while being committed to employee development and empowerment."
+      },
+      "vision": {
+        "title": "Vision",
+        "text": "The most reliable, innovative and flexible company in the Power and Water sector with advanced Health, Safety and Environment (H&SE) practices and respectful work environment, developing new business opportunities and Omani leaders while promoting social responsibility initiatives."
+      }
+    }
+  }
+}

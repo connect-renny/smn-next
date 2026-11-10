@@ -57,7 +57,7 @@ test.describe("pages", () => {
   });
 
   test("an inner page shows 'coming soon', an unknown page is a 404", async ({ page }) => {
-    await page.goto("/en/about/vision-mission");
+    await page.goto("/en/career");
     await expect(page.getByText("Coming soon", { exact: false }).first()).toBeVisible();
 
     const missing = await page.goto("/en/this-page-does-not-exist");
