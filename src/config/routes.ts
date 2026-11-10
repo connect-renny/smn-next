@@ -28,10 +28,6 @@ export const innerPages = {
     label: "companysPhilosophy",
     related: "governance",
   },
-  "corporate-governance/nomination-remuneration-committee": {
-    label: "nominationCommittee",
-    related: "governance",
-  },
   investors: { label: "investors", related: null },
   career: { label: "career", related: null },
   "media/opal-mou": { label: "newsOpalMou", related: "media" },
@@ -50,6 +46,7 @@ export const contentPages = [
   "corporate-governance/board-of-directors",
   "corporate-governance/ethics",
   "corporate-governance/management",
+  "corporate-governance/nomination-remuneration-committee",
   "investors/annual-report",
   "investors/dividends-disclosures",
   "investors/msx-discussion-session",

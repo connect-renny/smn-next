@@ -11,6 +11,7 @@ import home from "./home.json";
 import mainShareholders from "./main-shareholders.json";
 import management from "./management.json";
 import msxSessions from "./msx-sessions.json";
+import nominationCommittee from "./nomination-committee.json";
 import ourCompany from "./our-company.json";
 import tenders from "./tenders.json";
 
@@ -24,6 +25,7 @@ const ar = {
   ...boardOfDirectors,
   ...management,
   ...auditCommittee,
+  ...nominationCommittee,
   ...ethics,
   ...dividends,
   ...annualReport,

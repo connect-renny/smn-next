@@ -1,0 +1,16 @@
+{
+  "nominationCommittee": {
+    "titleLines": ["Nomination &", "Remuneration", "**Committee**"],
+    "text": "The primary purpose of the Nomination and Remuneration Committee (\"NRC\") is to assist the General Meeting in the nomination of proficient and high caliber directors, to prepare job descriptions of the directors including the chairperson of the Board, to develop a succession plan for the Board or at least the chairperson and executive management and to propose a proper remuneration and incentives policy to attract competent executive management.",
+    "eyebrow": "Corporate Governance",
+    "title": "Nomination & Remuneration Committee",
+    "yearOfJoining": "Year of Joining",
+    "education": "Education",
+    "experience": "Experience",
+    "roles": {
+      "mohammed": "Committee Chairman",
+      "abdullah": "Member",
+      "david": "Member"
+    }
+  }
+}
