@@ -1,4 +1,4 @@
-import type { Href, LabelKey } from "@/config/routes";
+import { leadershipExploreLinks } from "./governance-explore";
 
 /** The four principles, in the order of smnpower.com/ethics.php. Wording is in the dictionaries. */
 export const ethicsPrinciples = [
@@ -14,26 +14,4 @@ export type EthicsPrincipleId = (typeof ethicsPrinciples)[number]["id"];
 export const ethicsCharterHref =
   "https://www.smnpower.com/uploads/1629801217_ETHICS%20CHARTER%20%20Rules%20for%20Gifts%20and%20Hospitality%20Version%2003%20(Updated)%20Rev4.pdf";
 
-export const ethicsExploreLinks: readonly { label: LabelKey; image: string; href: Href }[] = [
-  {
-    label: "companysPhilosophy",
-    image: "/images/board-of-directors/explore-companys-philosophy.jpg",
-    href: { page: "corporate-governance/companys-philosophy" },
-  },
-  {
-    label: "boardOfDirectors",
-    // The set's fourth tile: this page's own link is the one the Board page spends it on.
-    image: "/images/board-of-directors/explore-ethics.jpg",
-    href: { page: "corporate-governance/board-of-directors" },
-  },
-  {
-    label: "auditCommittee",
-    image: "/images/board-of-directors/explore-audit-committee.jpg",
-    href: { page: "corporate-governance/audit-committee" },
-  },
-  {
-    label: "nominationCommittee",
-    image: "/images/board-of-directors/explore-nomination-committee.jpg",
-    href: { page: "corporate-governance/nomination-remuneration-committee" },
-  },
-];
+export const ethicsExploreLinks = leadershipExploreLinks("corporate-governance/ethics");
