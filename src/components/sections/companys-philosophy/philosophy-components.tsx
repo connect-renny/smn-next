@@ -21,7 +21,7 @@ export function PhilosophyComponents({
           >
             {i + 1}
           </span>
-          <p className="mt-[clamp(18px,2vw,40px)] text-[clamp(18px,1.3vw,25px)] leading-[1.05] font-medium tracking-[-0.03em] rtl:leading-[1.6] rtl:tracking-normal">
+          <p className="mt-[clamp(18px,2vw,40px)] text-[clamp(18px,1.3vw,25px)] leading-[1.3] font-medium tracking-[-0.03em] rtl:leading-[1.6] rtl:tracking-normal">
             <Lines lines={[item]} />
           </p>
         </li>

@@ -45,8 +45,8 @@
   /* Running text on every page: 16px on laptops and phones, 18px from 1920. */
   --text-body: clamp(16px, calc(10px + 0.417vw), 18px);
   --text-body--line-height: var(--leading-body);
-  /* The one paragraph under a page title: 18px, up to 22px from 1920. */
-  --text-intro: clamp(18px, calc(6px + 0.833vw), 22px);
+  /* The one paragraph under a page title: 18px at every size (designer, 2026-11-10). */
+  --text-intro: 18px;
   --text-intro--line-height: var(--leading-intro);
   --leading-body: 1.6;
   --leading-intro: 1.4;
