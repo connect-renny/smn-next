@@ -1,4 +1,5 @@
 import annualReport from "./annual-report.json";
+import auditCommittee from "./audit-committee.json";
 import barkaPlant from "./barka-plant.json";
 import boardOfDirectors from "./board-of-directors.json";
 import common from "./common.json";
@@ -22,6 +23,7 @@ const en = {
   ...barkaPlant,
   ...boardOfDirectors,
   ...management,
+  ...auditCommittee,
   ...ethics,
   ...dividends,
   ...annualReport,

@@ -1,0 +1,16 @@
+{
+  "auditCommittee": {
+    "titleLines": ["Audit", "**Committee**"],
+    "text": "The primary purpose of the Audit Committee is to serve as an independent and objective party to monitor the Company's financial reporting process and internal control system and to review and appraise the audit efforts of the Company's statutory auditors to the Board.",
+    "eyebrow": "Corporate Governance",
+    "title": "Audit Committee",
+    "yearOfJoining": "Year of Joining",
+    "education": "Education",
+    "experience": "Experience",
+    "roles": {
+      "imran": "Committee Chairman",
+      "ruben": "Member",
+      "nujayma": "Member"
+    }
+  }
+}

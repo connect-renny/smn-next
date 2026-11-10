@@ -28,7 +28,6 @@ export const innerPages = {
     label: "companysPhilosophy",
     related: "governance",
   },
-  "corporate-governance/audit-committee": { label: "auditCommittee", related: "governance" },
   "corporate-governance/nomination-remuneration-committee": {
     label: "nominationCommittee",
     related: "governance",
@@ -47,6 +46,7 @@ export const contentPages = [
   "about/our-company",
   "about/main-shareholders",
   "plants/barka-ii",
+  "corporate-governance/audit-committee",
   "corporate-governance/board-of-directors",
   "corporate-governance/ethics",
   "corporate-governance/management",

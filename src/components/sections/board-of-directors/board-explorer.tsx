@@ -317,10 +317,7 @@ export function BoardExplorer({
                   data-board-name
                   className="block px-1 py-[clamp(12px,1.05vw,20px)] text-center leading-[1.25]"
                 >
-                  <span
-                    dir="auto"
-                    className="block text-[clamp(11px,0.625vw,12px)] font-semibold"
-                  >
+                  <span dir="auto" className="block text-[clamp(11px,0.625vw,12px)] font-semibold">
                     {copy.members[id].name}
                   </span>
                   {copy.members[id].role && (

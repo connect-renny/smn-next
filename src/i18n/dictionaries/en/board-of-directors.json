@@ -1,9 +1,6 @@
 {
   "boardOfDirectors": {
-    "titleLines": [
-      "Board of",
-      "**Directors**"
-    ],
+    "titleLines": ["Board of", "**Directors**"],
     "text": "The Board of Directors of SMN Power comprises experienced leaders and financial experts from diverse corporate and energy backgrounds, led by Chairman Dr. Abdullah Al Yahya'ey, to provide strategic guidance, governance, and operational oversight.",
     "eyebrow": "Leadership",
     "title": "Board Of Directors",
